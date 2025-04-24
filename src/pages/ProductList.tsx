@@ -1,21 +1,23 @@
 import { useSelector } from 'react-redux';
 import { RootState } from '../app/store';
+import { Bike } from '../types/Bike';
+import { Accessoiry } from '../types/Accessoiry';
 
 function ProductList() {
-  const bikes = useSelector((state: RootState) => state.bikes.bikes);
-  const accessoires = useSelector(
-    (state: RootState) => state.accessories.accessoires
+  const bikesList = useSelector((state: RootState) => state.bikes.bikesList);
+  const accessoiresList = useSelector(
+    (state: RootState) => state.accessories.accessoiresList
   );
 
   return (
     <div>
       <h1>List of bikes</h1>
-      {bikes.map((bike: { id: string; name: string }) => {
+      {bikesList.map((bike: Bike) => {
         return <div key={bike.id}>{bike.name}</div>;
       })}
 
       <h1>List of accessoires</h1>
-      {accessoires.map((accessoiry: { id: string; name: string }) => {
+      {accessoiresList.map((accessoiry: Accessoiry) => {
         return <div key={accessoiry.id}>{accessoiry.name}</div>;
       })}
     </div>

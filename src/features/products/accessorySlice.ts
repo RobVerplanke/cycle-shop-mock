@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  accessoires: [
+  accessoiresList: [
     { id: 'a1', name: 'accessoiry one' },
     { id: 'a2', name: 'accessoiry two' },
   ],
@@ -12,7 +12,7 @@ const accessoirySlice = createSlice({
   initialState,
   reducers: {
     addAccessoiry: (state, action) => {
-      state.accessoires.push(action.payload);
+      state.accessoiresList.push(action.payload);
     },
   },
 });

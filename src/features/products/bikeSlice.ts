@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  bikes: [
+  bikesList: [
     { id: 'b1', name: 'bike one' },
     { id: 'b2', name: 'bike two' },
   ],
@@ -12,7 +12,7 @@ const bikeSlice = createSlice({
   initialState,
   reducers: {
     addBike: (state, action) => {
-      state.bikes.push(action.payload);
+      state.bikesList.push(action.payload);
     },
   },
 });
