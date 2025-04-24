@@ -1,8 +1,9 @@
 import { useSelector } from 'react-redux';
 import { RootState } from '../app/store';
 import { CartItem } from '../types/CartItem';
+import { Link } from 'react-router-dom';
 
-function ProductList() {
+function ShoppingCart() {
   const cartList = useSelector((state: RootState) => state.cart.cartList);
 
   return (
@@ -11,8 +12,9 @@ function ProductList() {
       {cartList.map((cartItem: CartItem) => {
         return <div key={cartItem.id}>{cartItem.name}</div>;
       })}
+      <Link to="/checkout">Checkout</Link>
     </div>
   );
 }
 
-export default ProductList;
+export default ShoppingCart;

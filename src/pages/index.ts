@@ -5,6 +5,7 @@ import Home from '../pages/Home';
 import ProductDetail from '../pages/ProductDetail';
 import ProductList from '../pages/ProductList';
 import ShoppingCart from '../pages/ShoppingCart';
+import Checkout from './Checkout';
 
 export {
   About,
@@ -14,4 +15,5 @@ export {
   ProductDetail,
   ProductList,
   ShoppingCart,
+  Checkout,
 };

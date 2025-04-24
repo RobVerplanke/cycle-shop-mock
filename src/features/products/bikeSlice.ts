@@ -2,8 +2,18 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   bikesList: [
-    { id: 'b1', name: 'bike one' },
-    { id: 'b2', name: 'bike two' },
+    {
+      id: 'b1',
+      name: 'bike one',
+      description: 'Description of bike one',
+      price: 250,
+    },
+    {
+      id: 'b2',
+      name: 'bike two',
+      description: 'Description of bike two',
+      price: 300,
+    },
   ],
 };
 
