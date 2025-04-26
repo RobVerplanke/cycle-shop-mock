@@ -20,15 +20,15 @@
   &__menu-icon {
     display: block;
 
-    @include util.breakpoint(small) {
+    @include util.breakpoint('small') {
       display: none;
     }
   }
 
-  &__menu {
+  &__menu--open {
     display: none;
 
-    @include util.breakpoint(small) {
+    @include util.breakpoint('small') {
       display: flex;
       flex-direction: row;
       list-style: none;
@@ -36,7 +36,7 @@
     }
   }
 
-  &__menu--open {
+  &__menu {
     position: absolute;
     display: flex;
     flex-direction: column;
@@ -45,12 +45,11 @@
     top: 80px;
     gap: 2rem;
 
-    @include util.breakpoint(small) {
+    @include util.breakpoint('small') {
       position: relative;
-      display: flex;
       flex-direction: row;
       display: flex;
-      top: 0px;
+      top: 0;
     }
   }
 
@@ -61,7 +60,7 @@
       color: red;
     }
 
-    @include util.breakpoint(small) {
+    @include util.breakpoint('small') {
       display: block;
     }
   }

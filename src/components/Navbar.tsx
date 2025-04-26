@@ -22,30 +22,35 @@ function Navbar() {
           <MdPedalBike size={70} />
         </div>
 
-        <div className="navbar__menu-icon" onClick={toggleMenu}>
+        <div
+          className="navbar__menu-icon"
+          onClick={toggleMenu}
+          role="button"
+          tabIndex={0}
+        >
           {isNavOpen ? <IoClose size={40} /> : <IoMenu size={40} />}
         </div>
 
-        <ul className={isNavVisible ? 'navbar__menu' : 'navbar__menu--open'}>
+        <ul className={isNavVisible ? 'navbar__menu--open' : 'navbar__menu'}>
           <li className="navbar__item">
-            <Link to={'/'}>HOME</Link>
+            <Link to="/">HOME</Link>
           </li>
           <li className="navbar__item">
-            <Link to={'/products'}>BYCICLES</Link>
+            <Link to="/products">BICYCLES</Link>
           </li>
           <li className="navbar__item">
-            <Link to={'/products'}>ACCESOIRES</Link>
+            <Link to="/products">ACCESSOIRES</Link>
           </li>
           <li className="navbar__item">
-            <Link to={'/about'}>ABOUT US</Link>
+            <Link to="/about">ABOUT US</Link>
           </li>
           <li className="navbar__item">
-            <Link to={'/contact'}>CONTACT</Link>
+            <Link to="/contact">CONTACT</Link>
           </li>
         </ul>
 
         <div className="navbar__cart-icon">
-          <Link to={'/cart'}>
+          <Link to="/cart">
             <IoCart size={20} />
           </Link>
         </div>
