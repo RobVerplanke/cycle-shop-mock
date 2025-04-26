@@ -1,0 +1,68 @@
+@use '../util/' as util;
+
+.navbar {
+  position: relative;
+  background-color: transparent;
+
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1024px;
+    margin: 0 auto;
+    padding: 1rem 2rem;
+  }
+
+  &__logo {
+    color: red;
+  }
+
+  &__menu-icon {
+    display: block;
+
+    @include util.breakpoint(small) {
+      display: none;
+    }
+  }
+
+  &__menu {
+    display: none;
+
+    @include util.breakpoint(small) {
+      display: flex;
+      flex-direction: row;
+      list-style: none;
+      gap: 2rem;
+    }
+  }
+
+  &__menu--open {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    list-style: none;
+    top: 80px;
+    gap: 2rem;
+
+    @include util.breakpoint(small) {
+      position: relative;
+      display: flex;
+      flex-direction: row;
+      display: flex;
+      top: 0px;
+    }
+  }
+
+  &__cart-icon {
+    display: none;
+
+    & a {
+      color: red;
+    }
+
+    @include util.breakpoint(small) {
+      display: block;
+    }
+  }
+}

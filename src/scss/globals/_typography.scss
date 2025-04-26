@@ -1,0 +1,23 @@
+h1,
+h2,
+h3 {
+  margin-top: 0;
+  font-family: var(--font-heading-family);
+  font-weight: var(--font-heading-weight);
+  font-style: var(--font-heading-style);
+}
+
+p {
+  margin-top: 0;
+}
+
+.navbar__item a {
+  text-decoration: none;
+  font-weight: var(--font-body-weight);
+  color: #333;
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: green;
+  }
+}
