@@ -1,12 +1,43 @@
+@use '../../util/' as util;
+
 .header {
+  background-image: url('../assets/bike-hero.jpg');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  height: 28em;
-  padding-left: 20px;
+  justify-content: start;
+
   gap: 2em;
 
-  &__specs {
+  @include util.breakpoint('small') {
+    height: 48em;
+    padding: 0;
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    min-width: 100%;
+    min-height: 450px;
+    padding: 20px 20px;
+
+    margin: 0 auto;
+    gap: 2em;
+
+    @include util.breakpoint('small') {
+      min-width: 1024px;
+      padding: 100px 20px;
+    }
+  }
+
+  &__subtitle {
+    max-width: 400px;
+  }
+
+  &__specs-container {
     display: flex;
     flex-direction: column;
     gap: 1em;
