@@ -1,3 +1,5 @@
+@use '../util/' as util;
+
 h1,
 h2,
 h3 {
@@ -16,8 +18,13 @@ p {
   font-weight: var(--font-body-weight);
   color: #333;
   transition: color 0.3s ease;
+  font-size: var(--font-navbar-small-size);
 
   &:hover {
     color: green;
+  }
+
+  @include util.breakpoint('small') {
+    font-size: var(--font-navbar-large-size);
   }
 }
