@@ -3,10 +3,20 @@
 h1,
 h2,
 h3 {
-  margin-top: 0;
+  margin: 0;
   font-family: var(--font-heading-family);
   font-weight: var(--font-heading-weight);
   font-style: var(--font-heading-style);
+}
+
+h1 {
+  font-size: 4.5em;
+  text-transform: uppercase;
+}
+
+h2 {
+  font-size: 1.3em;
+  text-transform: uppercase;
 }
 
 p {
@@ -15,16 +25,22 @@ p {
 
 .navbar__item a {
   text-decoration: none;
-  font-weight: var(--font-body-weight);
-  color: #333;
   transition: color 0.3s ease;
+  font-weight: var(--font-body-weight);
   font-size: var(--font-navbar-small-size);
-
-  &:hover {
-    color: green;
-  }
 
   @include util.breakpoint('small') {
     font-size: var(--font-navbar-large-size);
+  }
+}
+
+.header {
+  &__list-item {
+    font-weight: var(--font-body-weight);
+  }
+
+  &__buy-button button {
+    transition: background-color 0.3s ease;
+    font-weight: var(--font-body-weight);
   }
 }

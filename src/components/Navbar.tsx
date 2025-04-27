@@ -28,7 +28,7 @@ function Navbar() {
           role="button"
           tabIndex={0}
         >
-          {isNavOpen ? <IoClose size={40} /> : <IoMenu size={40} />}
+          {isNavOpen ? <IoClose size={25} /> : <IoMenu size={25} />}
         </div>
 
         <ul className={isNavVisible ? 'navbar__menu--open' : 'navbar__menu'}>

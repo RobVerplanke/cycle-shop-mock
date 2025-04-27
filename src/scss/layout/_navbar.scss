@@ -8,17 +8,16 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    max-width: 1024px;
-    margin: 0 auto;
-    padding: 0.2rem 2rem;
-  }
 
-  &__logo {
-    color: red;
+    max-width: 1024px;
+    padding: 0.2rem 2rem;
+    margin: 0 auto;
   }
 
   &__menu-icon {
     display: block;
+    display: flex;
+    padding: 5px;
 
     @include util.breakpoint('small') {
       display: none;
@@ -37,20 +36,19 @@
   }
 
   &__menu {
-    width: 100%;
     position: absolute;
     display: flex;
     flex-direction: column;
     text-align: left;
     list-style: none;
-    background-color: orange;
+
+    width: 100%;
+    padding: 0;
     top: 80px;
     left: 0;
-    padding: 0;
 
     & li {
       padding: 0.3em 1em;
-      border-bottom: 1px solid red;
 
       @include util.breakpoint('small') {
         border-bottom: none;
@@ -59,12 +57,12 @@
 
     @include util.breakpoint('small') {
       position: relative;
-      flex-direction: row;
-      width: auto;
-      background-color: transparent;
-      text-align: center;
-
       display: flex;
+      flex-direction: row;
+      text-align: center;
+      background-color: transparent;
+
+      width: auto;
       top: 0;
       gap: 0.2rem;
     }
@@ -72,10 +70,6 @@
 
   &__cart-icon {
     display: none;
-
-    & a {
-      color: red;
-    }
 
     @include util.breakpoint('small') {
       display: block;

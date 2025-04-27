@@ -1,4 +1,46 @@
 :root {
-  --background-color: white;
-  --text-color: black;
+  --background-color: #333;
+  --text-color: white;
+}
+
+.navbar {
+  &__logo {
+    color: white;
+  }
+
+  &__menu-icon {
+    background-color: black;
+    color: rgb(144, 40, 35);
+  }
+
+  &__menu li {
+    background-color: #333;
+    border-bottom: 1px solid rgb(144, 40, 35);
+  }
+
+  &__cart-icon a {
+    color: white;
+  }
+}
+
+.navbar__item a {
+  color: white;
+
+  &:hover {
+    color: rgb(144, 40, 35);
+  }
+}
+
+.header {
+  color: white;
+  background-color: #333;
+
+  &__buy-button button {
+    background-color: rgb(144, 40, 35);
+    color: white;
+
+    &:hover {
+      background-color: rgb(126, 36, 31);
+    }
+  }
 }
