@@ -1,0 +1,88 @@
+@use '../../util/' as util;
+
+.discover {
+  position: relative;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 2rem;
+
+  &__overlay {
+    z-index: 1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+
+  &__container {
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: left;
+    min-height: 550px;
+    gap: 20px;
+    width: 100%;
+    max-width: 1024px;
+    margin: 0 auto;
+  }
+
+  &__title {
+    z-index: 10;
+  }
+
+  &__subtitle {
+    z-index: 10;
+  }
+
+  &__introduction {
+    z-index: 10;
+    max-width: 480px;
+  }
+
+  &__list {
+    z-index: 10;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    max-width: 530px;
+
+    @include util.breakpoint('small') {
+      flex-direction: row;
+    }
+  }
+
+  &__list-items ul {
+    z-index: 10;
+    display: flex;
+    flex-wrap: wrap;
+    max-height: 260px;
+    gap: 10px;
+
+    @include util.breakpoint('small') {
+      flex-direction: column;
+      max-height: 100px;
+    }
+  }
+
+  &__list-item {
+    z-index: 10;
+    display: flex;
+    list-style: none;
+    gap: 20px;
+  }
+
+  &__button {
+    z-index: 10;
+  }
+
+  &__button button {
+    z-index: 10;
+    margin-top: 20px;
+    padding: 10px 20px;
+    border: 0;
+  }
+}

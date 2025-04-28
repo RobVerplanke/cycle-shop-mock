@@ -48,6 +48,7 @@
 
   &__buy-button button {
     background-color: rgb(144, 40, 35);
+    transition: background-color 0.3s ease;
     color: white;
 
     &:hover {
@@ -72,5 +73,26 @@
 
   &:hover {
     color: rgb(126, 36, 31);
+  }
+}
+
+.discover {
+  &__overlay {
+    background-image: linear-gradient(transparent, rgb(32, 32, 32));
+  }
+
+  &__list-style {
+    color: rgb(126, 36, 31);
+  }
+
+  &__button button {
+    background-color: rgb(144, 40, 35);
+    transition: background-color 0.3s ease;
+    color: white;
+
+    &:hover {
+      cursor: pointer;
+      background-color: rgb(126, 36, 31);
+    }
   }
 }
