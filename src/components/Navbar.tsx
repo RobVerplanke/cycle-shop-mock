@@ -19,7 +19,9 @@ function Navbar() {
     <nav className="navbar">
       <div className="navbar__container">
         <div className="navbar__logo">
-          <MdPedalBike size={70} />
+          <Link to="/">
+            <MdPedalBike size={70} />
+          </Link>
         </div>
 
         <div
