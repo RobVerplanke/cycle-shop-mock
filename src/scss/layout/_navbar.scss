@@ -13,7 +13,7 @@
     padding: 0.2rem 2rem;
     margin: 0 auto;
 
-    @include util.breakpoint('small') {
+    @include util.breakpoint('medium') {
       max-width: 1020px;
       margin: 0 auto;
     }
@@ -24,7 +24,7 @@
     display: flex;
     padding: 5px;
 
-    @include util.breakpoint('small') {
+    @include util.breakpoint('medium') {
       display: none;
     }
   }
@@ -33,7 +33,7 @@
     z-index: 10;
     display: none;
 
-    @include util.breakpoint('small') {
+    @include util.breakpoint('medium') {
       display: flex;
       flex-direction: row;
       list-style: none;
@@ -56,12 +56,12 @@
     & li {
       padding: 0.5em 1em;
 
-      @include util.breakpoint('small') {
+      @include util.breakpoint('medium') {
         border-bottom: none;
       }
     }
 
-    @include util.breakpoint('small') {
+    @include util.breakpoint('medium') {
       position: relative;
       display: flex;
       flex-direction: row;
@@ -75,7 +75,7 @@
   &__cart-icon {
     display: none;
 
-    @include util.breakpoint('small') {
+    @include util.breakpoint('medium') {
       display: block;
     }
   }

@@ -12,7 +12,7 @@
   justify-content: start;
   gap: 2em;
 
-  @include util.breakpoint('small') {
+  @include util.breakpoint('medium') {
     height: 56em;
     padding: 0;
   }
@@ -47,7 +47,7 @@
     margin: 0 auto;
     gap: 2em;
 
-    @include util.breakpoint('small') {
+    @include util.breakpoint('medium') {
       min-width: 1024px;
       padding: 200px 20px;
     }

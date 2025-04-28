@@ -1,0 +1,51 @@
+@use '../util/' as util;
+
+.footer {
+  &__top {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, auto));
+    gap: 2rem;
+    max-width: 1024px;
+    margin: 0 auto;
+    padding: 2rem 2rem 6rem 2rem;
+    justify-content: center;
+  }
+
+  &__logo {
+    margin-right: 4em;
+  }
+
+  &__link-list {
+    flex: 1 1 200px;
+    min-width: 200px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+
+    @include util.breakpoint('small') {
+      text-align: start;
+      align-items: start;
+    }
+  }
+
+  &__bottom {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    max-width: 1024px;
+    margin: 0 auto;
+    padding: 1rem;
+
+    @include util.breakpoint('small') {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  }
+
+  &__socials {
+    display: flex;
+    gap: 1em;
+  }
+}

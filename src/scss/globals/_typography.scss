@@ -13,7 +13,7 @@ h1 {
   font-size: 2.5em;
   text-transform: uppercase;
 
-  @include util.breakpoint('small') {
+  @include util.breakpoint('medium') {
     font-size: 4.5em;
   }
 }
@@ -33,7 +33,7 @@ p {
   font-weight: var(--font-body-weight);
   font-size: var(--font-navbar-small-size);
 
-  @include util.breakpoint('small') {
+  @include util.breakpoint('medium') {
     font-size: var(--font-navbar-large-size);
   }
 }
@@ -48,6 +48,10 @@ p {
     font-weight: var(--font-body-weight);
   }
 
-  @include util.breakpoint('small') {
+  @include util.breakpoint('medium') {
   }
+}
+
+.footer__copyright {
+  font-size: 0.8em;
 }

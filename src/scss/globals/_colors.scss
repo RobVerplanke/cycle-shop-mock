@@ -1,7 +1,7 @@
 @use '../util/' as util;
 
 :root {
-  --background-color: #333;
+  --background-color: #222;
   --text-color: white;
 }
 
@@ -11,15 +11,15 @@
   }
 
   &__menu-icon {
-    background-color: black;
+    background-color: #222;
     color: rgb(144, 40, 35);
   }
 
   &__menu li {
-    background-color: #333;
+    background-color: #222;
     border-bottom: 1px solid #555555;
 
-    @include util.breakpoint('small') {
+    @include util.breakpoint('medium') {
       background-color: transparent;
     }
   }
@@ -36,7 +36,7 @@
     color: rgb(144, 40, 35);
   }
 
-  @include util.breakpoint('small') {
+  @include util.breakpoint('medium') {
     &:hover {
       color: white;
     }
@@ -53,5 +53,24 @@
     &:hover {
       background-color: rgb(126, 36, 31);
     }
+  }
+}
+
+.footer__link {
+  color: white;
+  transition: color 0.3s ease;
+  cursor: pointer;
+
+  &:hover {
+    color: rgb(126, 36, 31);
+  }
+}
+
+.social-link {
+  color: white;
+  cursor: pointer;
+
+  &:hover {
+    color: rgb(126, 36, 31);
   }
 }

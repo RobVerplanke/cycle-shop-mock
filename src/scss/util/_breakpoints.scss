@@ -1,7 +1,8 @@
 @use 'sass:map';
 
 $breakpoints-up: (
-  'small': 57em,
+  'small': 25.9em,
+  'medium': 57em,
 );
 
 @mixin breakpoint($size) {

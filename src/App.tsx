@@ -5,7 +5,7 @@ import './scss/style.scss';
 
 function App() {
   return (
-    <div className="app-container">
+    <div className="">
       <Navbar />
       <Outlet />
       <Footer />
