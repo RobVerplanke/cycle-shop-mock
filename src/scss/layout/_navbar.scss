@@ -1,21 +1,26 @@
 @use '../util/' as util;
 
 .navbar {
-  position: relative;
+  z-index: 20;
+  position: absolute;
   background-color: transparent;
+  min-width: 100%;
 
   &__container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-
-    max-width: 1024px;
     padding: 0.2rem 2rem;
     margin: 0 auto;
+
+    @include util.breakpoint('small') {
+      max-width: 1020px;
+      margin: 0 auto;
+    }
   }
 
   &__menu-icon {
-    display: block;
+    z-index: 10;
     display: flex;
     padding: 5px;
 
@@ -25,6 +30,7 @@
   }
 
   &__menu--open {
+    z-index: 10;
     display: none;
 
     @include util.breakpoint('small') {
@@ -36,15 +42,15 @@
   }
 
   &__menu {
+    z-index: 10;
     position: absolute;
     display: flex;
     flex-direction: column;
     text-align: left;
     list-style: none;
-
     width: 100%;
     padding: 0;
-    top: 80px;
+    top: 60px;
     left: 0;
 
     & li {
@@ -61,10 +67,8 @@
       flex-direction: row;
       text-align: center;
       background-color: transparent;
-
       width: auto;
       top: 0;
-      gap: 0.2rem;
     }
   }
 

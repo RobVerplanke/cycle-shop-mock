@@ -1,12 +1,13 @@
 import { SiTarget } from 'react-icons/si';
-import Navbar from '../Navbar';
 
 function Header() {
   return (
     <header className="header">
-      <div className="header__navbar">
-        <Navbar />
+      <div className="header__overlay">
+        <div className="header__overlay__left-column"></div>
+        <div className="header__overlay__right-column"></div>
       </div>
+
       <div className="header__container">
         <div className="header__title">
           <h2>Newly Launched</h2>

@@ -35,6 +35,12 @@
   &:hover {
     color: rgb(144, 40, 35);
   }
+
+  @include util.breakpoint('small') {
+    &:hover {
+      color: white;
+    }
+  }
 }
 
 .header {
