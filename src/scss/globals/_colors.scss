@@ -130,3 +130,23 @@
     }
   }
 }
+
+.contact {
+  &__overlay {
+    background-image: linear-gradient(transparent, rgb(32, 32, 32));
+  }
+}
+
+.telephone {
+  &__sales__icon {
+    color: rgb(144, 40, 35);
+  }
+
+  &__service__icon {
+    color: rgb(144, 40, 35);
+  }
+
+  &__dealer__icon {
+    color: rgb(144, 40, 35);
+  }
+}

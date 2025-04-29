@@ -1,7 +1,13 @@
+import GoogleMap from '../components/contact/GoogleMap';
+import Header from '../components/contact/Header';
+import Telephone from '../components/contact/Telephone';
+
 function Contact() {
   return (
     <div>
-      <p>Contact page</p>
+      <Header />
+      <GoogleMap />
+      <Telephone />
     </div>
   );
 }

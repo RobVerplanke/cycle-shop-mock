@@ -1,0 +1,47 @@
+@use '../../util/' as util;
+
+.telephone {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  max-width: 1024px;
+  height: 100%;
+  margin: 0 auto;
+  gap: 20px;
+  padding: 80px;
+
+  @include util.breakpoint('medium') {
+    flex-direction: row;
+    gap: 150px;
+  }
+
+  &__sales {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &__icon {
+      padding-bottom: 10px;
+    }
+  }
+
+  &__service {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &__icon {
+      padding-bottom: 10px;
+    }
+  }
+
+  &__dealer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &__icon {
+      padding-bottom: 10px;
+    }
+  }
+}

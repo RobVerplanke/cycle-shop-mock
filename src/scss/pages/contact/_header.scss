@@ -1,0 +1,27 @@
+.contact {
+  position: relative;
+  background-image: url(../assets/contact-1.jpg);
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 320px;
+
+  &__overlay {
+    z-index: 1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+
+  &__title {
+    margin-top: 30px;
+    padding: 0 20px;
+    z-index: 10;
+  }
+}
