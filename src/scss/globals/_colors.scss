@@ -96,3 +96,20 @@
     }
   }
 }
+
+.specifications {
+  background-color: white;
+  color: black;
+
+  &__overlay {
+    background-image: linear-gradient(transparent, rgb(32, 32, 32));
+
+    &:hover {
+      background-image: linear-gradient(rgba(32, 32, 32, 0.3), rgb(32, 32, 32));
+    }
+  }
+
+  &__articles {
+    color: white;
+  }
+}

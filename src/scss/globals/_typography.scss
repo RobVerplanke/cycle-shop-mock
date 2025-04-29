@@ -63,3 +63,13 @@ p {
 .discover__title {
   text-transform: uppercase;
 }
+
+.specifications {
+  &__title {
+    font-size: 0.7em;
+  }
+}
+
+.specifications p {
+  font-size: 0.9em;
+}
