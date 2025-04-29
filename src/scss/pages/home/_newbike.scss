@@ -1,0 +1,58 @@
+@use '../../util/' as util;
+
+.newbike {
+  position: relative;
+  background-image: url(../assets/bike-hero.jpg);
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 2rem;
+
+  &__overlay {
+    z-index: 1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+
+  &__container {
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 550px;
+    gap: 20px;
+    width: 100%;
+    max-width: 1024px;
+    margin: 0 auto;
+  }
+
+  &__title {
+    z-index: 10;
+  }
+
+  &__subtitle {
+    z-index: 10;
+  }
+
+  &__introduction {
+    z-index: 10;
+    max-width: 680px;
+    width: 100%;
+  }
+
+  &__button {
+    z-index: 10;
+  }
+
+  &__button button {
+    z-index: 10;
+    margin-top: 20px;
+    padding: 10px 20px;
+    border: 0;
+  }
+}

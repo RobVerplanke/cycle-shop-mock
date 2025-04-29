@@ -73,3 +73,9 @@ p {
 .specifications p {
   font-size: 0.9em;
 }
+
+.newbike {
+  &__subtitle {
+    font-size: 1.8em;
+  }
+}
