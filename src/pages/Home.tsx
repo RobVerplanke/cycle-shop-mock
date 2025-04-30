@@ -5,6 +5,7 @@ import moutainBikeImg from '../assets/mountain-bike.jpg';
 import specialityBikeImg from '../assets/speciality-bike.jpg';
 import Specifications from '../components/home/Specifications';
 import NewBike from '../components/home/NewBike';
+import Programme from '../components/about/Programme';
 
 const bikesListItems = [
   'Officia deserunt mollit',
@@ -47,6 +48,7 @@ function Home() {
         listItems={bikesListItems}
       />
       <Specifications />
+      <Programme />
       <NewBike />
     </div>
   );

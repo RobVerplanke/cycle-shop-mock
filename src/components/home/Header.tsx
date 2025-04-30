@@ -10,14 +10,14 @@ function Header() {
 
       <div className="header__container">
         <div className="header__title">
-          <h2>Newly Launched</h2>
+          <h4>Newly Launched</h4>
         </div>
         <div className="header__subtitle">
           <h1>Kryo X26 MTB</h1>
         </div>
         <div className="header__specs-container">
           <div className="header__specs__title">
-            <h2>Specifications:</h2>
+            <h5>Specifications:</h5>
           </div>
           <div className="header__specs">
             <ul className="header__list">
@@ -26,7 +26,7 @@ function Header() {
                   <SiTarget />
                 </div>
                 <div className="header__list-item__content">
-                  Lightweight 18" Frame
+                  <span>Lightweight 18" Frame</span>
                 </div>
               </li>
               <li className="header__list-item">
@@ -34,7 +34,7 @@ function Header() {
                   <SiTarget />
                 </div>
                 <div className="header__list-item__content">
-                  Steel Suspension Fork
+                  <span>Steel Suspension Fork</span>
                 </div>
               </li>
               <li className="header__list-item">
@@ -42,7 +42,7 @@ function Header() {
                   <SiTarget />
                 </div>
                 <div className="header__list-item__content">
-                  Steel Hardtail Frame
+                  <span>Steel Hardtail Frame</span>
                 </div>
               </li>
             </ul>

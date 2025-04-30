@@ -4,10 +4,10 @@ function NewBike() {
       <div className="newbike__overlay"></div>
       <div className="newbike__container">
         <div className="newbike__title">
-          <h2>The All New</h2>
+          <h4>The All New</h4>
         </div>
         <div className="newbike__subtitle">
-          <h3>Kryo X26 MTB Is Here</h3>
+          <h2>Kryo X26 MTB Is Here</h2>
         </div>
         <div className="newbike__introduction">
           <p>

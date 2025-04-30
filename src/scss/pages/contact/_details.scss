@@ -28,4 +28,13 @@
     text-align: start;
     align-items: start;
   }
+
+  &__hours__title {
+    padding-bottom: 20px;
+  }
+
+  &__location__adress,
+  &__contact__phone {
+    padding-top: 20px;
+  }
 }

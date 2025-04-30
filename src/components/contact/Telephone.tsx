@@ -10,7 +10,7 @@ function Telephone() {
           <FaTruckMoving size={30} />
         </div>
         <div className="telephone__sales__number">
-          <h2>1 800 755 60 21</h2>
+          <h5>1 800 755 60 21</h5>
         </div>
         <div className="telephone__sales__subtitle">
           <p>Sales Related Enquiries</p>
@@ -21,7 +21,7 @@ function Telephone() {
           <MdHomeRepairService size={30} />
         </div>
         <div className="telephone__service__number">
-          <h2>1 800 755 60 22</h2>
+          <h5>1 800 755 60 22</h5>
         </div>
         <div className="telephone__service__subtitle">
           Service Related Enquiries
@@ -32,7 +32,7 @@ function Telephone() {
           <FaStore size={30} />
         </div>
         <div className="telephone__dealer__number">
-          <h2>1 800 755 60 23</h2>
+          <h5>1 800 755 60 23</h5>
         </div>
         <div className="telephone__dealer__subtitle">
           Dealership Related Enquiries

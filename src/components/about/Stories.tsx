@@ -3,7 +3,7 @@ function Stories() {
     <article className="stories">
       <div className="stories__container">
         <div className="stories__title">
-          <h1>Explore The Stories</h1>
+          <h2>Explore The Stories</h2>
         </div>
         <div className="stories__articles">
           <div className="stories__top">
@@ -11,7 +11,7 @@ function Stories() {
               <div className="stories__top-left__top">
                 <div className="stories__overlay">
                   <div className="stories__overlay__title">
-                    <h2>Get on & Go!</h2>
+                    <h5>Get on & Go!</h5>
                   </div>
                   <div className="stories__overlay__year">
                     <p>2002</p>
@@ -21,7 +21,7 @@ function Stories() {
               <div className="stories__top-left__bottom">
                 <div className="stories__overlay">
                   <div className="stories__overlay__title">
-                    <h2>First Garage & Shop</h2>
+                    <h5>First Garage & Shop</h5>
                   </div>
                   <div className="stories__overlay__year">
                     <p>2004</p>
@@ -32,7 +32,7 @@ function Stories() {
             <div className="stories__top-right">
               <div className="stories__overlay">
                 <div className="stories__overlay__title">
-                  <h2>First Cycle Launched</h2>
+                  <h4>First Cycle Launched</h4>
                 </div>
                 <div className="stories__overlay__year">
                   <p>2005</p>
@@ -45,7 +45,7 @@ function Stories() {
             <div className="stories__bottom-left">
               <div className="stories__overlay">
                 <div className="stories__overlay__title">
-                  <h2>First #GoEcoBiking Event</h2>
+                  <h4>First #GoEcoBiking Event</h4>
                 </div>
                 <div className="stories__overlay__year">
                   <p>2005</p>
@@ -56,7 +56,7 @@ function Stories() {
               <div className="stories__bottom-right__top">
                 <div className="stories__overlay">
                   <div className="stories__overlay__title">
-                    <h2>100+ Service Networks</h2>
+                    <h5>100+ Service Networks</h5>
                   </div>
                   <div className="stories__overlay__year">
                     <p>2008</p>
@@ -66,7 +66,7 @@ function Stories() {
               <div className="stories__bottom-right__bottom">
                 <div className="stories__overlay">
                   <div className="stories__overlay__title">
-                    <h2>50+ Models & Accessories</h2>
+                    <h5>50+ Models & Accessories</h5>
                   </div>
                   <div className="stories__overlay__year">
                     <p>today</p>

@@ -2,30 +2,55 @@
 
 h1,
 h2,
-h3 {
+h3,
+h4,
+h5 {
   margin: 0;
   font-family: var(--font-heading-family);
   font-weight: var(--font-heading-weight);
   font-style: var(--font-heading-style);
+  text-transform: uppercase;
 }
 
 h1 {
-  font-size: 2.5em;
-  text-transform: uppercase;
+  font-size: 60px;
+  line-height: 1.4em;
 
   @include util.breakpoint('medium') {
-    font-size: 4.5em;
+    font-size: 5.3125rem;
   }
 }
 
 h2 {
-  font-size: 1.2em;
+  font-size: 36px;
   text-transform: uppercase;
+
+  @include util.breakpoint('medium') {
+    font-size: 3.625rem;
+  }
 }
 
 h3 {
-  font-size: 1.8em;
+  font-size: 2.2em;
   text-transform: uppercase;
+}
+
+h4 {
+  font-size: 1.375rem;
+
+  @include util.breakpoint('medium') {
+    font-size: 2rem;
+  }
+}
+
+h5 {
+  font-size: 1.2rem;
+}
+
+span {
+  font-size: inherit;
+  font-weight: 700;
+  margin-top: 0;
 }
 
 p {
@@ -59,22 +84,6 @@ p {
 
 .discover__title {
   text-transform: uppercase;
-}
-
-.specifications {
-  &__title {
-    font-size: 0.7em;
-  }
-}
-
-.specifications p {
-  font-size: 0.9em;
-}
-
-.newbike {
-  &__subtitle {
-    font-size: 1.8em;
-  }
 }
 
 .stories__overlay__year {

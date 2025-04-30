@@ -58,10 +58,13 @@
   &__specs-container {
     display: flex;
     flex-direction: column;
-    gap: 1em;
+    gap: 1.5em;
   }
 
   &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
     padding: 0;
     margin: 0;
   }
@@ -76,6 +79,10 @@
       width: 100%;
       padding-left: 15px;
     }
+  }
+
+  &__buy-button {
+    padding-top: 20px;
   }
 
   &__buy-button button {

@@ -16,7 +16,7 @@ function DiscoverBikes({
       <div className="discover__overlay"></div>
       <div className="discover__container">
         <div className="discover__title">
-          <h2>{title}</h2>
+          <h5>{title}</h5>
         </div>
         <div className="discover__subtitle">
           <h3>{subTitle}</h3>
@@ -32,7 +32,9 @@ function DiscoverBikes({
                   <div className="discover__list-style">
                     <SiTarget />
                   </div>
-                  <div className="discover__list-item__content">{item}</div>
+                  <div className="discover__list-item__content">
+                    <span>{item}</span>
+                  </div>
                 </li>
               );
             })}

@@ -13,7 +13,7 @@ function Footer() {
         </div>
         <div className="footer__link-list">
           <div className="footer__list-title">
-            <h2>Usefull Links</h2>
+            <h5>Usefull Links</h5>
           </div>
           <div className="footer_list">
             <div className="footer__link">Home</div>
@@ -24,7 +24,7 @@ function Footer() {
         </div>
         <div className="footer__link-list">
           <div className="footer__list-title">
-            <h2>Our Collection</h2>
+            <h5>Our Collection</h5>
           </div>
           <div className="footer_list">
             <div className="footer__link">Mountain Bikes</div>
@@ -35,7 +35,7 @@ function Footer() {
         </div>
         <div className="footer__link-list">
           <div className="footer__list-title">
-            <h2>Account</h2>
+            <h5>Account</h5>
           </div>
           <div className="footer_list">
             <div className="footer__link">Customer Login</div>

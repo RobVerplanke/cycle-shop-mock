@@ -5,7 +5,7 @@ function Programme() {
     <header className="programme">
       <div className="programme__overlay"></div>
       <div className="programme__title">
-        <h3>Join #GoEcoBiking Programme</h3>
+        <h2>Join #GoEcoBiking Programme</h2>
       </div>
       <div className="programme__movie">
         <div className="programme__movie__play-button">
@@ -18,7 +18,7 @@ function Programme() {
       <div className="programme__content">
         <div className="programme__content__left">
           <div className="programme__content__left__title">
-            <h2>Duis aute irure dolor in reprehenderit velit.</h2>
+            <h4>Duis aute irure dolor in reprehenderit velit.</h4>
           </div>
           <div className="programme__content__left__text">
             <p>
