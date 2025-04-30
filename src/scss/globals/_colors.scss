@@ -143,6 +143,23 @@
   }
 }
 
+.programme {
+  &__overlay {
+    background-image: linear-gradient(transparent, rgb(32, 32, 32));
+  }
+
+  &__content__button button {
+    background-color: rgb(144, 40, 35);
+    transition: background-color 0.3s ease;
+    color: white;
+
+    &:hover {
+      cursor: pointer;
+      background-color: rgb(126, 36, 31);
+    }
+  }
+}
+
 .stories {
   &__overlay {
     background-image: linear-gradient(transparent, rgb(32, 32, 32));
@@ -155,6 +172,10 @@
       color: rgb(144, 40, 35);
     }
   }
+}
+
+.process__steps__step__number {
+  color: rgb(144, 40, 35);
 }
 
 .telephone {

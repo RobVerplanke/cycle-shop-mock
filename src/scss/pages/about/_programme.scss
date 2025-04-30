@@ -1,18 +1,14 @@
 @use '../../util/' as util;
 
-.about {
+.programme {
   position: relative;
-  background-image: url(../assets/mountain-bike.jpg);
-  background-attachment: fixed;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
   display: flex;
   gap: 40px;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 800px;
+  margin: 40px 0;
 
   &__overlay {
     z-index: 1;
@@ -30,7 +26,7 @@
   }
 
   &__movie {
-    background-image: url(../assets/contact-1.jpg);
+    background-image: url(../assets/about/join-programme.jpg);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -58,6 +54,41 @@
 
     &__title {
       z-index: 10;
+    }
+  }
+
+  &__content {
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    max-width: 800px;
+    width: 100%;
+    justify-content: space-between;
+
+    @include util.breakpoint('small') {
+      flex-direction: row;
+    }
+
+    &__left {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      max-width: 500px;
+      width: 100%;
+
+      &__title {
+        max-width: 300px;
+      }
+    }
+
+    &__button button {
+      border: none;
+      z-index: 10;
+      padding: 10px 20px;
+
+      &:hover {
+        cursor: pointer;
+      }
     }
   }
 }

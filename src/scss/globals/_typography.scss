@@ -51,9 +51,6 @@ p {
   &__buy-button button {
     font-weight: var(--font-body-weight);
   }
-
-  @include util.breakpoint('medium') {
-  }
 }
 
 .footer__copyright {
@@ -82,4 +79,8 @@ p {
 
 .stories__overlay__year {
   font-weight: 700;
+}
+
+.programme__content__button button {
+  text-transform: uppercase;
 }
