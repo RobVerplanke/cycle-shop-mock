@@ -1,0 +1,55 @@
+.about {
+  position: relative;
+  background-image: url(../assets/mountain-bike.jpg);
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  gap: 40px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 800px;
+
+  &__overlay {
+    z-index: 1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+
+  &__title {
+    margin-top: 30px;
+    padding: 0 20px;
+    z-index: 10;
+  }
+
+  &__movie {
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    gap: 20px;
+    padding: 20px;
+    width: 800px;
+    height: 450px;
+    background-image: url(../assets/contact-1.jpg);
+    background-size: 800px 450px;
+    background-repeat: no-repeat;
+
+    &__play-button {
+      z-index: 10;
+      width: 30px;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+
+    &__title {
+      z-index: 10;
+    }
+  }
+}
