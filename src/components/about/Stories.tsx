@@ -14,7 +14,7 @@ function Stories() {
                     <h5>Get on & Go!</h5>
                   </div>
                   <div className="stories__overlay__year">
-                    <p>2002</p>
+                    <h5>2002</h5>
                   </div>
                 </div>
               </div>
@@ -24,7 +24,7 @@ function Stories() {
                     <h5>First Garage & Shop</h5>
                   </div>
                   <div className="stories__overlay__year">
-                    <p>2004</p>
+                    <h5>2004</h5>
                   </div>
                 </div>
               </div>
@@ -35,7 +35,7 @@ function Stories() {
                   <h4>First Cycle Launched</h4>
                 </div>
                 <div className="stories__overlay__year">
-                  <p>2005</p>
+                  <h5>2005</h5>
                 </div>
               </div>
             </div>
@@ -48,7 +48,7 @@ function Stories() {
                   <h4>First #GoEcoBiking Event</h4>
                 </div>
                 <div className="stories__overlay__year">
-                  <p>2005</p>
+                  <h5>2005</h5>
                 </div>
               </div>
             </div>
@@ -59,7 +59,7 @@ function Stories() {
                     <h5>100+ Service Networks</h5>
                   </div>
                   <div className="stories__overlay__year">
-                    <p>2008</p>
+                    <h5>2008</h5>
                   </div>
                 </div>
               </div>
@@ -69,7 +69,7 @@ function Stories() {
                     <h5>50+ Models & Accessories</h5>
                   </div>
                   <div className="stories__overlay__year">
-                    <p>today</p>
+                    <h5>today</h5>
                   </div>
                 </div>
               </div>

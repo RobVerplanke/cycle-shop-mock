@@ -12,6 +12,10 @@
     margin: 0 auto;
   }
 
+  &__title {
+    padding: 10px;
+  }
+
   &__overlay {
     display: flex;
     flex-direction: column;
