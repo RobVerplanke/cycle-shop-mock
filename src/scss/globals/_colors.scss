@@ -150,3 +150,16 @@
     color: rgb(144, 40, 35);
   }
 }
+
+.form {
+  &__button button {
+    background-color: rgb(144, 40, 35);
+    transition: background-color 0.3s ease;
+    color: white;
+
+    &:hover {
+      cursor: pointer;
+      background-color: rgb(126, 36, 31);
+    }
+  }
+}

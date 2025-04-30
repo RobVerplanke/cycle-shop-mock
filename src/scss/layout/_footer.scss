@@ -12,7 +12,13 @@
   }
 
   &__logo {
-    margin-right: 4em;
+    text-align: center;
+    align-items: center;
+
+    @include util.breakpoint('small') {
+      text-align: start;
+      align-items: start;
+    }
   }
 
   &__link-list {
