@@ -1,6 +1,6 @@
 function NewBike() {
   return (
-    <article className="newbike">
+    <section className="newbike">
       <div className="newbike__overlay"></div>
       <div className="newbike__container">
         <div className="newbike__title">
@@ -21,7 +21,7 @@ function NewBike() {
           <button>SHOP NOW</button>
         </div>
       </div>
-    </article>
+    </section>
   );
 }
 

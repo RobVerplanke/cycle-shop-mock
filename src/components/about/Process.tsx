@@ -1,12 +1,14 @@
 function OurProcess() {
   return (
-    <div className="process">
+    <section className="process">
       <div className="process__title">
         <h2>Our Process</h2>
       </div>
       <div className="process__steps">
         <div className="process__steps__step">
-          <div className="process__steps__step__number">01.</div>
+          <div className="process__steps__step__number">
+            <h5>01.</h5>
+          </div>
           <div className="process__steps__step__title">
             <h5>Research</h5>
           </div>
@@ -18,7 +20,9 @@ function OurProcess() {
           </div>
         </div>
         <div className="process__steps__step">
-          <div className="process__steps__step__number">02.</div>
+          <div className="process__steps__step__number">
+            <h5>02.</h5>
+          </div>
           <div className="process__steps__step__title">
             <h5>Idea & Concept</h5>
           </div>
@@ -30,7 +34,9 @@ function OurProcess() {
           </div>
         </div>
         <div className="process__steps__step">
-          <div className="process__steps__step__number">03.</div>
+          <div className="process__steps__step__number">
+            <h5>03.</h5>
+          </div>
           <div className="process__steps__step__title">
             <h5>Design & Production</h5>
           </div>
@@ -42,7 +48,9 @@ function OurProcess() {
           </div>
         </div>
         <div className="process__steps__step">
-          <div className="process__steps__step__number">04.</div>
+          <div className="process__steps__step__number">
+            <h5>04.</h5>
+          </div>
           <div className="process__steps__step__title">
             <h5>Sales & Service</h5>
           </div>
@@ -54,7 +62,7 @@ function OurProcess() {
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 }
 

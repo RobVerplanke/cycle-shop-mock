@@ -11,8 +11,10 @@ function Contact() {
       <GoogleMap />
       <Telephone />
       <div className="contact-details">
-        <ContactForm />
-        <ContactDetails />
+        <div className="contact-details__container">
+          <ContactForm />
+          <ContactDetails />
+        </div>
       </div>
     </div>
   );

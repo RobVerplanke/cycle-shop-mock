@@ -1,6 +1,6 @@
 function GoogleMap() {
   return (
-    <div>
+    <section>
       <div className="google-map">
         <iframe
           className="google-map__iframe"
@@ -10,7 +10,7 @@ function GoogleMap() {
           loading="lazy"
         ></iframe>
       </div>
-    </div>
+    </section>
   );
 }
 

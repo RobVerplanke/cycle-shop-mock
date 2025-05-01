@@ -1,6 +1,6 @@
 function ContactDetails() {
   return (
-    <div className="details">
+    <section className="details">
       <div className="details__title">
         <h3>Contact Details</h3>
       </div>
@@ -24,7 +24,7 @@ function ContactDetails() {
           Email: contact@company.com
         </div>
       </div>
-    </div>
+    </section>
   );
 }
 

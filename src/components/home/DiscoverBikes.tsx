@@ -9,7 +9,7 @@ function DiscoverBikes({
   backgroundImage,
 }: DiscoverProps) {
   return (
-    <article
+    <section
       className="discover"
       style={{ backgroundImage: `url(${backgroundImage})` }}
     >
@@ -44,7 +44,7 @@ function DiscoverBikes({
           <button>EXPLORE NOW</button>
         </div>
       </div>
-    </article>
+    </section>
   );
 }
 

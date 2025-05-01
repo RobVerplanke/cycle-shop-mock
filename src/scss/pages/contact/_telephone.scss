@@ -3,8 +3,6 @@
 .telephone {
   display: flex;
   justify-content: center;
-  flex-direction: column;
-  max-width: 1024px;
   height: 100%;
   margin: 0 auto;
   gap: 20px;
@@ -13,6 +11,17 @@
   @include util.breakpoint('medium') {
     flex-direction: row;
     gap: 150px;
+  }
+
+  &__container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    max-width: 1024px;
+    @include util.breakpoint('medium') {
+      flex-direction: row;
+      gap: 150px;
+    }
   }
 
   &__sales {

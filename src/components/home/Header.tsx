@@ -26,7 +26,7 @@ function Header() {
                   <SiTarget />
                 </div>
                 <div className="header__list-item__content">
-                  <span>Lightweight 18" Frame</span>
+                  <p>Lightweight 18" Frame</p>
                 </div>
               </li>
               <li className="header__list-item">
@@ -34,7 +34,7 @@ function Header() {
                   <SiTarget />
                 </div>
                 <div className="header__list-item__content">
-                  <span>Steel Suspension Fork</span>
+                  <p>Steel Suspension Fork</p>
                 </div>
               </li>
               <li className="header__list-item">
@@ -42,7 +42,7 @@ function Header() {
                   <SiTarget />
                 </div>
                 <div className="header__list-item__content">
-                  <span>Steel Hardtail Frame</span>
+                  <p>Steel Hardtail Frame</p>
                 </div>
               </li>
             </ul>

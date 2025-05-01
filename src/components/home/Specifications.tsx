@@ -1,11 +1,11 @@
 function Specifications() {
   return (
-    <article className="specifications">
+    <section className="specifications">
       <div className="specifications__container">
         <div className="specifications__title">
           <h2>Why Choose KRYO?</h2>
         </div>
-        <div className="specifications__articles">
+        <div className="specifications__sections">
           <div className="specifications__top">
             <div className="specifications__top-left">
               <div className="specifications__overlay">
@@ -45,7 +45,7 @@ function Specifications() {
           </div>
         </div>
       </div>
-    </article>
+    </section>
   );
 }
 

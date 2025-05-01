@@ -1,6 +1,6 @@
 function Stories() {
   return (
-    <article className="stories">
+    <section className="stories">
       <div className="stories__container">
         <div className="stories__title">
           <h2>Explore The Stories</h2>
@@ -77,7 +77,7 @@ function Stories() {
           </div>
         </div>
       </div>
-    </article>
+    </section>
   );
 }
 

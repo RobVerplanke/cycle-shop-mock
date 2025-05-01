@@ -5,13 +5,26 @@
   flex-direction: column;
   justify-content: space-evenly;
   gap: 100px;
-  max-width: 1024px;
   width: 100%;
   margin: 0 auto;
   padding: 40px 0;
 
   @include util.breakpoint('small') {
     flex-direction: row;
+  }
+
+  &__container {
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+    align-items: center;
+    max-width: 1024px;
+    width: 100%;
+    gap: 60px;
+
+    @include util.breakpoint('medium') {
+      flex-direction: row;
+    }
   }
 }
 

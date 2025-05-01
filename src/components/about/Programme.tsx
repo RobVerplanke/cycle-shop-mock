@@ -2,17 +2,18 @@ import { FaRegCirclePlay } from 'react-icons/fa6';
 
 function Programme() {
   return (
-    <header className="programme">
-      <div className="programme__overlay"></div>
+    <section className="programme">
       <div className="programme__title">
         <h2>Join #GoEcoBiking Programme</h2>
       </div>
       <div className="programme__movie">
-        <div className="programme__movie__play-button">
-          <FaRegCirclePlay size={40} />
-        </div>
-        <div className="programme__movie__title">
-          <h3>Watch Full Video</h3>
+        <div className="programme__movie__overlay">
+          <div className="programme__movie__play-button">
+            <FaRegCirclePlay size={40} />
+          </div>
+          <div className="programme__movie__title">
+            <h3>Watch Full Video</h3>
+          </div>
         </div>
       </div>
       <div className="programme__content">
@@ -31,7 +32,7 @@ function Programme() {
           <button>Join the programme</button>
         </div>
       </div>
-    </header>
+    </section>
   );
 }
 

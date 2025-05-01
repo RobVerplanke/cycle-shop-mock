@@ -102,15 +102,12 @@
   color: black;
 
   &__overlay {
+    color: white;
     background-image: linear-gradient(transparent, rgb(32, 32, 32));
 
     &:hover {
       background-image: linear-gradient(rgba(32, 32, 32, 0.3), rgb(32, 32, 32));
     }
-  }
-
-  &__articles {
-    color: white;
   }
 }
 
@@ -137,6 +134,11 @@
   }
 }
 
+.contact-details {
+  background-color: rgb(238, 238, 238);
+  color: black;
+}
+
 .about {
   &__overlay {
     background-image: linear-gradient(transparent, rgb(32, 32, 32));
@@ -144,8 +146,14 @@
 }
 
 .programme {
-  &__overlay {
-    background-image: linear-gradient(transparent, rgb(32, 32, 32));
+  background-color: rgb(238, 238, 238);
+  color: black;
+
+  &__movie {
+    color: white;
+    &__overlay {
+      background-image: linear-gradient(transparent, rgb(32, 32, 32));
+    }
   }
 
   &__content__button button {
@@ -161,11 +169,18 @@
 }
 
 .stories {
+  background-color: white;
+  color: black;
+
   &__overlay {
     background-image: linear-gradient(transparent, rgb(32, 32, 32));
 
     &:hover {
       background-image: linear-gradient(rgba(32, 32, 32, 0.3), rgb(32, 32, 32));
+    }
+
+    &__title {
+      color: white;
     }
 
     &__year {
@@ -174,27 +189,35 @@
   }
 }
 
+.process {
+  background-color: white;
+  color: black;
+}
+
 .process__steps__step__number {
-  color: rgb(144, 40, 35);
+  color: #df453e;
 }
 
 .telephone {
+  background-color: white;
+  color: black;
+
   &__sales__icon {
-    color: rgb(144, 40, 35);
+    color: #df453e;
   }
 
   &__service__icon {
-    color: rgb(144, 40, 35);
+    color: #df453e;
   }
 
   &__dealer__icon {
-    color: rgb(144, 40, 35);
+    color: #df453e;
   }
 }
 
 .form {
   &__button button {
-    background-color: rgb(144, 40, 35);
+    background-color: #df453e;
     transition: background-color 0.3s ease;
     color: white;
 
