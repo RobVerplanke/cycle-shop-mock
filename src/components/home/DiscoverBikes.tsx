@@ -26,9 +26,9 @@ function DiscoverBikes({
         </div>
         <div className="discover__list-items">
           <ul className="discover__list">
-            {listItems.map((item) => {
+            {listItems.map((item, index) => {
               return (
-                <li className="discover__list-item">
+                <li key={index} className="discover__list-item">
                   <div className="discover__list-style">
                     <SiTarget />
                   </div>
