@@ -1,24 +1,24 @@
 import { useSelector } from 'react-redux';
 import { RootState } from '../app/store';
-import { Bike } from '../types/Bike';
-import { Accessoiry } from '../types/Accessoiry';
+import { Product } from '../types/Product';
+import { useParams } from 'react-router-dom';
 
 function ProductList() {
-  const bikesList = useSelector((state: RootState) => state.bikes.bikesList);
-  const accessoiresList = useSelector(
-    (state: RootState) => state.accessories.accessoiresList
-  );
+  // Determine the selected category from the url
+  const { category } = useParams<{ category: string }>();
+
+  // Collect the corresponding data
+  const productList = useSelector((state: RootState) => {
+    if (category === 'bicycles') return state.bicycles.productList;
+    if (category === 'accessories') return state.accessories.productList;
+    return [];
+  });
 
   return (
     <div>
-      <h1>List of bikes</h1>
-      {bikesList.map((bike: Bike) => {
-        return <div key={bike.id}>{bike.name}</div>;
-      })}
-
-      <h1>List of accessoires</h1>
-      {accessoiresList.map((accessoiry: Accessoiry) => {
-        return <div key={accessoiry.id}>{accessoiry.name}</div>;
+      <h1>List of products</h1>
+      {productList.map((product: Product) => {
+        return <div key={product.id}>{product.name}</div>;
       })}
     </div>
   );
