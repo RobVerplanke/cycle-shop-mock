@@ -3,7 +3,7 @@ import Contact from '../pages/Contact';
 import ErrorPage from '../pages/ErrorPage';
 import Home from '../pages/Home';
 import ProductDetail from '../pages/ProductDetail';
-import ProductList from '../pages/ProductList';
+import Shop from './Shop';
 import ShoppingCart from '../pages/ShoppingCart';
 import Checkout from './Checkout';
 
@@ -13,7 +13,7 @@ export {
   ErrorPage,
   Home,
   ProductDetail,
-  ProductList,
+  Shop,
   ShoppingCart,
   Checkout,
 };

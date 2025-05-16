@@ -38,10 +38,10 @@ function Navbar() {
             <Link to="/">HOME</Link>
           </li>
           <li className="navbar__item">
-            <Link to="/products">BICYCLES</Link>
+            <Link to="/product-category/bicycles">BICYCLES</Link>
           </li>
           <li className="navbar__item">
-            <Link to="/products">ACCESSOIRES</Link>
+            <Link to="/product-category/accessories">ACCESSOIRIES</Link>
           </li>
           <li className="navbar__item">
             <Link to="/about">ABOUT US</Link>
@@ -52,9 +52,7 @@ function Navbar() {
         </ul>
 
         <div className="navbar__cart-icon">
-          <Link to="/cart">
-            <IoCart size={20} />
-          </Link>
+          <IoCart size={20} />
         </div>
       </div>
     </nav>
