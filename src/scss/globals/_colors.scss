@@ -227,3 +227,16 @@
     }
   }
 }
+
+.shop {
+  &__search-container,
+  &__filter-price,
+  &__filter-category,
+  &__recently {
+    background-color: #1b1b1b;
+  }
+
+  &__right {
+    background-color: #1b1b1b;
+  }
+}
