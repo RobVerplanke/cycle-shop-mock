@@ -4,7 +4,8 @@ h1,
 h2,
 h3,
 h4,
-h5 {
+h5,
+h6 {
   margin: 0;
   font-family: var(--font-heading-family);
   font-weight: var(--font-heading-weight);
@@ -49,6 +50,10 @@ h5 {
   font-size: 1.2rem;
 }
 
+h6 {
+  font-size: 0.9rem;
+}
+
 span {
   font-size: inherit;
   font-weight: 700;
@@ -68,8 +73,10 @@ p {
   }
 }
 
+a,
 .navbar__item a {
   text-decoration: none;
+  color: inherit;
   transition: color 0.3s ease;
   font-weight: var(--font-body-weight);
   font-size: var(--font-navbar-small-size);
@@ -103,4 +110,21 @@ p {
 
 .programme__content__button button {
   text-transform: uppercase;
+}
+
+.card {
+  &__type {
+    font-size: 0.9em;
+  }
+}
+
+.shop {
+  &__list-header,
+  select {
+    font-size: 1em;
+  }
+
+  &__breadcrumb {
+    font-size: 0.9em;
+  }
 }

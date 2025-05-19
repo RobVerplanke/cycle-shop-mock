@@ -229,14 +229,41 @@
 }
 
 .shop {
+  background-color: rgb(230, 230, 230);
+  color: black;
   &__search-container,
   &__filter-price,
   &__filter-category,
   &__recently {
-    background-color: #1b1b1b;
+    background-color: white;
   }
 
   &__right {
-    background-color: #1b1b1b;
+    background-color: white;
+  }
+
+  &__right h2 {
+    color: #df453e;
+  }
+
+  &__search-form button {
+    color: white;
+    border: none;
+    background-color: #df453e;
+  }
+
+  &__search-form input {
+    border: solid 1px rgb(226, 226, 226);
+  }
+
+  &__list-header select {
+    border: none;
+    background-color: white;
+  }
+}
+
+.card {
+  &__type {
+    color: gray;
   }
 }

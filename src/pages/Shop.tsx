@@ -1,7 +1,9 @@
 import { useSelector } from 'react-redux';
 import { RootState } from '../app/store';
 import { Accessory, Bicycle } from '../types/Product';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
+import { capitalizeString } from '../utils/helperFunctions';
+import { ProductCard } from '../components/ProductCard';
 
 function ProductList() {
   // Determine the selected category from the url
@@ -20,7 +22,7 @@ function ProductList() {
         <div className="shop__search-container">
           <div className="shop__search-title">Search</div>
           <div className="shop__search-form">
-            <input type="text" />
+            <input type="text" placeholder="Search products..." />
             <button type="submit">SEARCH</button>
           </div>
         </div>
@@ -35,20 +37,31 @@ function ProductList() {
         </div>
       </aside>
       <main className="shop__right">
-        <div className="shop__breadcrumb">{/* Breadcrumb module here */}</div>
+        <div className="shop__breadcrumb">
+          <Link to="/">Home</Link>
+          <span> / {capitalizeString(category as string)}</span>
+        </div>
         <div className="shop__title">
           <h2>{category}</h2>
         </div>
         <div className="shop__product-container">
           <div className="shop__list-header">
-            <div className="shop__header-results">Showing x results</div>
+            <div className="shop__header-results">
+              {productList.length < 2 ? (
+                <p>Showing the single result </p>
+              ) : (
+                <p>Showing all {productList.length} results</p>
+              )}
+            </div>
             <div className="shop__header-sort">
-              <select />
+              <select>
+                <option value="default">Default sorting</option>
+              </select>
             </div>
           </div>
           <div className="shop__productlist">
             {productList.map((product: Accessory | Bicycle) => {
-              return <div key={product.id}>{product.name}</div>;
+              return <ProductCard key={product.id} product={product} />;
             })}
           </div>
         </div>
