@@ -260,6 +260,12 @@
     border: none;
     background-color: white;
   }
+
+  &__filter-category {
+    & ul a {
+      color: #df453e;
+    }
+  }
 }
 
 .card {

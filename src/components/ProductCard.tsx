@@ -1,4 +1,5 @@
 import { Bicycle, Accessory } from '../types/Product';
+import ProductRating from './shop/ProductRating';
 
 export function ProductCard({ product }: { product: Accessory | Bicycle }) {
   return (
@@ -12,7 +13,9 @@ export function ProductCard({ product }: { product: Accessory | Bicycle }) {
       <div className="card__name">
         <h6>{product.name}</h6>
       </div>
-      {/* <p>{rating}</p> */}
+      <div>
+        <ProductRating id={product.id} type={product.type} />
+      </div>
       {/* <p>€{product.price}</p> */}
       {/* <p>{variants}</p> */}
     </div>

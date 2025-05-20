@@ -4,6 +4,7 @@ import { Accessory, Bicycle } from '../types/Product';
 import { Link, useParams } from 'react-router-dom';
 import { capitalizeString } from '../utils/helperFunctions';
 import { ProductCard } from '../components/ProductCard';
+import CategoryOverview from '../components/shop/CategoryOverview';
 
 function ProductList() {
   // Determine the selected category from the url
@@ -31,6 +32,7 @@ function ProductList() {
         </div>
         <div className="shop__filter-category">
           <h5>Filter by categories</h5>
+          <CategoryOverview />
         </div>
         <div className="shop__recently">
           <h5>Recently viewed products</h5>
