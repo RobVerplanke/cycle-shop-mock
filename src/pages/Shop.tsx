@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
 import { RootState } from '../app/store';
-import { Accessory, Bicycle } from '../types/Product';
+import { ProductItem } from '../types/Product';
 import { Link, useParams } from 'react-router-dom';
 import { capitalizeString } from '../utils/helperFunctions';
 import { ProductCard } from '../components/ProductCard';
@@ -62,7 +62,7 @@ function ProductList() {
             </div>
           </div>
           <div className="shop__productlist">
-            {productList.map((product: Accessory | Bicycle) => {
+            {productList.map((product: ProductItem) => {
               return <ProductCard key={product.id} product={product} />;
             })}
           </div>

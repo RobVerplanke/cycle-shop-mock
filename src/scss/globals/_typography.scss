@@ -133,3 +133,10 @@ a,
     font-weight: 700;
   }
 }
+
+.price {
+  &__value {
+    font-weight: 700;
+    font-size: 0.9em;
+  }
+}

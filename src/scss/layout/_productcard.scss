@@ -11,3 +11,21 @@
     height: 25px;
   }
 }
+
+.price {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  &__selection {
+    display: flex;
+    gap: 5px;
+  }
+
+  &__selection button {
+    cursor: pointer;
+    width: 25px;
+    height: 25px;
+    padding: 2px;
+  }
+}

@@ -273,3 +273,21 @@
     color: gray;
   }
 }
+
+.price {
+  &__variant-button {
+    background-color: white;
+    border: 1px solid rgb(226, 226, 226);
+    transition: border 300ms ease-out;
+
+    &:hover {
+      border: 1px solid gray;
+    }
+
+    &--active {
+      background-color: white;
+      border: 1px solid gray;
+      transition: border 300ms ease-out;
+    }
+  }
+}

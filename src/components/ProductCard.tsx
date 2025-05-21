@@ -1,7 +1,8 @@
-import { Bicycle, Accessory } from '../types/Product';
+import { ProductItem } from '../types/Product';
+import ProductPrice from './shop/ProductPrice';
 import ProductRating from './shop/ProductRating';
 
-export function ProductCard({ product }: { product: Accessory | Bicycle }) {
+export function ProductCard({ product }: { product: ProductItem }) {
   return (
     <div className="card">
       <div className="card__thumbnail">
@@ -16,7 +17,9 @@ export function ProductCard({ product }: { product: Accessory | Bicycle }) {
       <div>
         <ProductRating id={product.id} type={product.type} />
       </div>
-      {/* <p>€{product.price}</p> */}
+      <div className="card__price">
+        <ProductPrice product={product} />
+      </div>
       {/* <p>{variants}</p> */}
     </div>
   );

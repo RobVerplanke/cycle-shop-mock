@@ -17,3 +17,5 @@ export type Accessory = {
   category: string;
   image_url: string;
 };
+
+export type ProductItem = Bicycle | Accessory;
