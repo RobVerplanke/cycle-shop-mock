@@ -20,7 +20,6 @@ export function ProductCard({ product }: { product: ProductItem }) {
       <div className="card__price">
         <ProductPrice product={product} />
       </div>
-      {/* <p>{variants}</p> */}
     </div>
   );
 }

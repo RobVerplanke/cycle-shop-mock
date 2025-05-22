@@ -1,14 +1,18 @@
-import { useSelector } from 'react-redux';
-import { RootState } from '../app/store';
+import { useDispatch, useSelector } from 'react-redux';
+import { AppDispatch, RootState } from '../app/store';
 import { ProductItem } from '../types/Product';
 import { Link, useParams } from 'react-router-dom';
 import { capitalizeString } from '../utils/helperFunctions';
 import { ProductCard } from '../components/ProductCard';
 import CategoryOverview from '../components/shop/CategoryOverview';
+import { useEffect } from 'react';
+import { loadItems } from '../features/products/accessorySlice';
 
 function ProductList() {
   // Determine the selected category from the url
   const { category } = useParams<{ category: string }>();
+
+  const dispatch = useDispatch<AppDispatch>();
 
   // Collect the corresponding data
   const productList = useSelector((state: RootState) => {
@@ -16,6 +20,11 @@ function ProductList() {
     if (category === 'accessories') return state.accessories.productList;
     return [];
   });
+
+  useEffect(() => {
+    dispatch(loadItems());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <div className="shop">

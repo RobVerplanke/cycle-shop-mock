@@ -19,3 +19,10 @@ export type Accessory = {
 };
 
 export type ProductItem = Bicycle | Accessory;
+
+export type Variant = {
+  id: number;
+  accessory_id: number;
+  size: string;
+  price: number;
+};

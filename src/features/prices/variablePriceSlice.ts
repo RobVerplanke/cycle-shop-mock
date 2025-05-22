@@ -1,32 +1,45 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import { PRODUCTS_ENDPOINTS } from '../../library/api/api';
 
-const initialState = {
-  variants: [
-    {
-      id: 1,
-      accessory_id: 2,
-      size: 'M',
-      price: 27.0,
-    },
-    {
-      id: 2,
-      accessory_id: 2,
-      size: 'L',
-      price: 30.0,
-    },
-    { id: 3, accessory_id: 2, size: 'XL', price: 35.0 },
-  ],
-};
+// Thunk function that contains async request
+export const loadItems = createAsyncThunk('variants/load', async () => {
+  const res = await fetch(`${PRODUCTS_ENDPOINTS.variants}`);
+  return await res.json();
+});
 
 const variablePriceSlice = createSlice({
-  name: 'prices',
-  initialState,
-  reducers: {
-    addPrice: (state, action) => {
-      state.variants.push(action.payload);
-    },
+  name: 'variants',
+  initialState: { variants: [], loading: false },
+  reducers: {},
+  extraReducers: (builder) => {
+    builder
+      .addCase(loadItems.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(loadItems.fulfilled, (state, action) => {
+        state.loading = false;
+        state.variants = action.payload;
+      })
+      .addCase(loadItems.rejected, (state) => {
+        state.loading = false;
+      });
   },
 });
 
-export const { addPrice } = variablePriceSlice.actions;
 export default variablePriceSlice.reducer;
+
+// const mockData = [
+//   {
+//     id: 1,
+//     accessory_id: 1,
+//     size: 'M',
+//     price: 27.0,
+//   },
+//   {
+//     id: 2,
+//     accessory_id: 1,
+//     size: 'L',
+//     price: 30.0,
+//   },
+//   { id: 3, accessory_id: 1, size: 'XL', price: 35.0 },
+// ];

@@ -1,15 +1,20 @@
 import { useEffect, useState } from 'react';
-import { ProductItem } from '../../types/Product';
-import { RootState } from '../../app/store';
-import { useSelector } from 'react-redux';
+import { ProductItem, Variant } from '../../types/Product';
+import { AppDispatch, RootState } from '../../app/store';
+import { useDispatch, useSelector } from 'react-redux';
+import { loadItems } from '../../features/prices/variablePriceSlice';
 
 export default function ProductPriceVariable({
   product,
 }: {
   product: ProductItem;
 }) {
+  const dispatch = useDispatch<AppDispatch>();
+
   // First get a list of all variable prices
-  const variantsList = useSelector((state: RootState) => state.prices.variants);
+  const variantsList: Variant[] = useSelector(
+    (state: RootState) => state.variants.variants
+  );
 
   // Select the corresponding variants for this product
   const productVariants = variantsList.filter(
@@ -20,9 +25,8 @@ export default function ProductPriceVariable({
   const productSizes = productVariants.map((variant) => variant.size);
 
   // Select the lowest and highest price variant for this specific product
-  const lowestPrice = productVariants[0]?.price.toFixed(2);
-  const highestPrice =
-    productVariants[productVariants.length - 1]?.price.toFixed(2);
+  const lowestPrice = productVariants[0]?.price;
+  const highestPrice = productVariants[productVariants.length - 1]?.price;
   const priceRange = `€${lowestPrice} - €${highestPrice}`;
 
   // Price(s) to be displayed, by default show the lowest and the highest price
@@ -43,13 +47,18 @@ export default function ProductPriceVariable({
     }
 
     // Get the corresponding price for the choosen variant
-    const selectedPrice = productVariants
-      .filter((variant) => variant.size === e.currentTarget.id)[0]
-      .price.toFixed(2);
+    const selectedPrice = productVariants.filter(
+      (variant) => variant.size === e.currentTarget.id
+    )[0].price;
 
     // Set price to be displayed
     setPrice(`€${selectedPrice}`);
   }
+
+  useEffect(() => {
+    dispatch(loadItems());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   // Show pricing range when a choosen variant is unselected again
   useEffect(() => {
@@ -60,9 +69,10 @@ export default function ProductPriceVariable({
     <>
       <div className="price__value">{price}</div>
       <div className="price__selection">
-        {productSizes.map((size) => {
+        {productSizes.map((size, index) => {
           return (
             <button
+              key={index}
               className={
                 size === activeVariant
                   ? 'price__variant-button--active'
