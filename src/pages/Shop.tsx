@@ -1,12 +1,13 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch, RootState } from '../app/store';
-import { ProductItem } from '../types/Product';
 import { Link, useParams } from 'react-router-dom';
 import { capitalizeString } from '../utils/helperFunctions';
 import { ProductCard } from '../components/ProductCard';
 import CategoryOverview from '../components/shop/CategoryOverview';
 import { useEffect } from 'react';
-import { loadItems } from '../features/products/accessorySlice';
+import { loadAccessories } from '../features/products/accessorySlice';
+import { ProductItem } from '../types/Product';
+import { loadBicycles } from '../features/products/bikeSlice';
 
 function ProductList() {
   // Determine the selected category from the url
@@ -21,8 +22,15 @@ function ProductList() {
     return [];
   });
 
+  // Get loading status to show short message when data is loading
+  const isLoading = useSelector((state: RootState) =>
+    category === 'bicycles' ? state.bicycles.loading : state.accessories.loading
+  );
+
+  // Update displayed products when category is changed
   useEffect(() => {
-    dispatch(loadItems());
+    dispatch(loadAccessories());
+    dispatch(loadBicycles());
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -71,9 +79,13 @@ function ProductList() {
             </div>
           </div>
           <div className="shop__productlist">
-            {productList.map((product: ProductItem) => {
-              return <ProductCard key={product.id} product={product} />;
-            })}
+            {isLoading ? (
+              <p>Wakening database...</p>
+            ) : (
+              productList.map((product: ProductItem) => (
+                <ProductCard key={product.id} product={product} />
+              ))
+            )}
           </div>
         </div>
       </main>
