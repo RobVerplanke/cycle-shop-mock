@@ -1,5 +1,5 @@
 import { SiTarget } from 'react-icons/si';
-import { DiscoverProps } from '../../types/discovery';
+import { DiscoverProps } from '../../types/Discovery';
 
 function DiscoverBikes({
   title,
