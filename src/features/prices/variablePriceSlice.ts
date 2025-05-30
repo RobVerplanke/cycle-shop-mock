@@ -7,7 +7,7 @@ export const loadItems = createAsyncThunk('variants/load', async () => {
   return await res.json();
 });
 
-const variablePriceSlice = createSlice({
+const variablePriceReducer = createSlice({
   name: 'variants',
   initialState: { variants: [], loading: false },
   reducers: {},
@@ -26,20 +26,4 @@ const variablePriceSlice = createSlice({
   },
 });
 
-export default variablePriceSlice.reducer;
-
-// const mockData = [
-//   {
-//     id: 1,
-//     accessory_id: 1,
-//     size: 'M',
-//     price: 27.0,
-//   },
-//   {
-//     id: 2,
-//     accessory_id: 1,
-//     size: 'L',
-//     price: 30.0,
-//   },
-//   { id: 3, accessory_id: 1, size: 'XL', price: 35.0 },
-// ];
+export default variablePriceReducer.reducer;

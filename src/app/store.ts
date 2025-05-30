@@ -3,7 +3,7 @@ import bikeReducer from '../features/products/bikeSlice';
 import accessoryReducer from '../features/products/accessorySlice';
 import reviewReducer from '../features/reviews/reviewSlice';
 import cartReducer from '../features/cart/cartSlice';
-import variablePriceSlice from '../features/prices/variablePriceSlice';
+import variablePriceReducer from '../features/prices/variablePriceSlice';
 
 const store = configureStore({
   reducer: {
@@ -11,7 +11,7 @@ const store = configureStore({
     accessories: accessoryReducer,
     cart: cartReducer,
     reviews: reviewReducer,
-    variants: variablePriceSlice,
+    variants: variablePriceReducer,
   },
 });
 

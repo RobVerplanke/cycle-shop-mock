@@ -1,11 +1,12 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { PRODUCTS_ENDPOINTS } from '../../library/api/api';
+import { SortingOptions } from '../../types/SortingOptions';
 
 // Thunk function that contains async request
 export const loadAccessories = createAsyncThunk(
-  'accessories/load',
-  async () => {
-    const res = await fetch(`${PRODUCTS_ENDPOINTS.accessories}`);
+  'acessories/load',
+  async (sort: SortingOptions) => {
+    const res = await fetch(`${PRODUCTS_ENDPOINTS.accessories[sort]}`);
     return await res.json();
   }
 );

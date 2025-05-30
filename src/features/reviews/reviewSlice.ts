@@ -1,39 +1,29 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import { PRODUCTS_ENDPOINTS } from '../../library/api/api';
 
-const initialState = {
-  reviewList: [
-    {
-      id: 1,
-      item_type: 'Accessories',
-      item_id: '2',
-      rating: 4,
-      review:
-        'Accessories lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-      name: 'Rob Verplanke',
-      email: 'rob@mail.com',
-    },
-    {
-      id: 2,
-      item_type: 'Bicycles',
-      item_id: '3',
-      rating: 3,
-      review:
-        'Bicycles lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-      name: 'Robbie Verplanke',
-      email: 'robbie@mail.com',
-    },
-  ],
-};
+// Thunk function that contains async request
+export const loadReviews = createAsyncThunk('reviews/load', async () => {
+  const res = await fetch(`${PRODUCTS_ENDPOINTS.reviews}`);
+  return await res.json();
+});
 
 const reviewSlice = createSlice({
   name: 'reviews',
-  initialState,
-  reducers: {
-    addReview: (state, action) => {
-      state.reviewList.push(action.payload);
-    },
+  initialState: { reviewsList: [], loading: false },
+  reducers: {},
+  extraReducers: (builder) => {
+    builder
+      .addCase(loadReviews.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(loadReviews.fulfilled, (state, action) => {
+        state.loading = false;
+        state.reviewsList = action.payload;
+      })
+      .addCase(loadReviews.rejected, (state) => {
+        state.loading = false;
+      });
   },
 });
 
-export const { addReview } = reviewSlice.actions;
 export default reviewSlice.reducer;

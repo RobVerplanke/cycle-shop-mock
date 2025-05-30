@@ -1,11 +1,15 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { PRODUCTS_ENDPOINTS } from '../../library/api/api';
+import { SortingOptions } from '../../types/SortingOptions';
 
 // Thunk function that contains async request
-export const loadBicycles = createAsyncThunk('bicycles/load', async () => {
-  const res = await fetch(`${PRODUCTS_ENDPOINTS.bikes}`);
-  return await res.json();
-});
+export const loadBicycles = createAsyncThunk(
+  'bicycles/load',
+  async (sort: SortingOptions) => {
+    const res = await fetch(`${PRODUCTS_ENDPOINTS.bicycles[sort]}`);
+    return await res.json();
+  }
+);
 
 const bikeSlice = createSlice({
   name: 'bicycles',

@@ -2,6 +2,7 @@ import { FaStar } from 'react-icons/fa';
 import { FaRegStar } from 'react-icons/fa';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../app/store';
+import { Review } from '../../types/Review';
 
 export default function ProductRating({
   id,
@@ -10,14 +11,15 @@ export default function ProductRating({
   id: number;
   type: string;
 }) {
-  const reviews = useSelector((state: RootState) => state.reviews.reviewList);
+  // Get all reviews
+  const reviews: Review[] = useSelector(
+    (state: RootState) => state.reviews.reviewsList
+  );
 
-  // First get all the ratings for this specific item
+  // Get all the ratings for this specific item
   const matchingRatings = reviews
-    .filter(
-      (review) => review.item_id === id.toString() && review.item_type === type
-    )
-    .map((review) => review.rating);
+    .filter((review) => review.item_id === id && review.item_type === type)
+    .map((review) => Number(review.rating));
 
   // Calculate the average rating
   const averageRating = matchingRatings.length

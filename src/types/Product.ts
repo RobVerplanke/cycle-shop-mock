@@ -26,3 +26,9 @@ export type Variant = {
   size: string;
   price: number;
 };
+
+export type ShopCategories =
+  | 'bicycles'
+  | 'accessories'
+  | 'reviews'
+  | 'variants';
