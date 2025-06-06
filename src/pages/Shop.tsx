@@ -4,43 +4,51 @@ import { Link, useParams } from 'react-router-dom';
 import { capitalizeString } from '../utils/helperFunctions';
 import { ProductCard } from '../components/ProductCard';
 import CategoryOverview from '../components/shop/CategoryOverview';
-import { useEffect, useState } from 'react';
-import { loadAccessories } from '../features/products/accessorySlice';
-import { ProductItem } from '../types/Product';
-import { loadBicycles } from '../features/products/bikeSlice';
+import { useEffect, useRef, useState } from 'react';
+import { ProductItem, ShopCategories } from '../types/Product';
 import ProductListHeader from '../components/shop/ProductListHeader';
 import { SyncLoader } from 'react-spinners';
-import { SortingOptions } from '../types/SortingOptions';
 import { loadReviews } from '../features/reviews/reviewSlice';
+import PriceFilter from '../components/shop/PriceFilter';
+import { loadProducts } from '../features/products/productSlice';
+import { SortingOptions } from '../types/SortingOptions';
 
 function ProductList() {
+  const renderCount = useRef(0);
+  renderCount.current += 1;
+  console.log('Render count:', renderCount.current);
   const dispatch = useDispatch<AppDispatch>();
 
   // Determine the selected category from the url
-  const { category } = useParams<{ category: string }>();
+  const { category } = useParams<{ category: ShopCategories }>();
 
-  // Keep track of the active sorting option
-  const [sortingOption, setSortingOption] = useState('default');
-
-  // Collect the corresponding data
-  const productList = useSelector((state: RootState) => {
-    if (category === 'bicycles') return state.bicycles.productList;
-    if (category === 'accessories') return state.accessories.productList;
-    return [];
-  });
-
-  // Get loading status to show short message when data is loading
-  const isLoading = useSelector((state: RootState) =>
-    category === 'bicycles' ? state.bicycles.loading : state.accessories.loading
+  // Get acces to the price variants from all products in the 'accessories' category
+  const variantsList = useSelector(
+    (state: RootState) => state.variants.variants
   );
 
-  // Update displayed products when category is changed
-  // Load all products when loading page to keep the amount of categories in 'categoryOverview' updated
+  // Get a list of all products in the active category
+  const productList = useSelector((state: RootState) =>
+    category ? state.products.productList[category] : []
+  );
+
+  // Get loading status that determines whether to show a short message while the data is loading or not
+  const isLoading = useSelector((state: RootState) => state.products.loading);
+
+  // Keep track of the active sorting option
+  const [sortingOption, setSortingOption] = useState<SortingOptions>('default');
+
+  // Load the rating (stars) for each product
   useEffect(() => {
-    dispatch(loadBicycles(sortingOption as SortingOptions));
-    dispatch(loadAccessories(sortingOption as SortingOptions));
     dispatch(loadReviews());
-  }, [category, sortingOption, dispatch]);
+  }, [dispatch]);
+
+  // Initially load all products to determine the amount of products in each category to keep the
+  // counters in 'filter by categories' up-to-date
+  useEffect(() => {
+    dispatch(loadProducts({ sortingOption, category: 'bicycles' }));
+    dispatch(loadProducts({ sortingOption, category: 'accessories' }));
+  }, [dispatch, sortingOption]);
 
   return (
     <div className="shop">
@@ -53,7 +61,11 @@ function ProductList() {
           </div>
         </div>
         <div className="shop__filter-price">
-          <h5>Filter by price</h5>
+          <PriceFilter
+            category={category}
+            productList={productList}
+            variantsList={variantsList}
+          />
         </div>
 
         {/* Show a list with clickable categories that display the corresponing product items  */}

@@ -4,7 +4,7 @@ export type Bicycle = {
   name: string;
   introduction: string;
   description: string;
-  price: string;
+  price: number;
   image_url: string;
 };
 
@@ -27,8 +27,10 @@ export type Variant = {
   price: number;
 };
 
-export type ShopCategories =
-  | 'bicycles'
-  | 'accessories'
-  | 'reviews'
-  | 'variants';
+export type ShopCategories = 'bicycles' | 'accessories';
+
+export type PriceFilterProps = {
+  category: ShopCategories | undefined;
+  productList: ProductItem[];
+  variantsList: Variant[];
+};

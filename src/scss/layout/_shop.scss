@@ -82,4 +82,21 @@
   &__spinner {
     margin-top: 20px;
   }
+
+  &__filter-price {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  &__filter-range {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.price-slider {
+  --range-slider-bar-color: #ddd;
+  --range-slider-active-bar-color: #df453e;
+  --range-slider-thumb-color: #df453e;
 }

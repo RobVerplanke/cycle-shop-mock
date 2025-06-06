@@ -11,13 +11,13 @@ export default function ProductPriceVariable({
 }) {
   const dispatch = useDispatch<AppDispatch>();
 
-  // First get a list of all variable prices
-  const variantsList: Variant[] = useSelector(
+  // Get a list of all variable prices from the accessories
+  const priceVariants: Variant[] = useSelector(
     (state: RootState) => state.variants.variants
   );
 
   // Select the corresponding variants for this product
-  const productVariants = variantsList.filter(
+  const productVariants = priceVariants.filter(
     (variant) => variant.accessory_id === product.id
   );
 

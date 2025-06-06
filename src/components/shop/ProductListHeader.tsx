@@ -1,5 +1,6 @@
 import { ProductItem } from '../../types/Product';
 import { sortingOptions } from '../../library/sortingOptions';
+import { SortingOptions } from '../../types/SortingOptions';
 
 export default function ProductListHeader({
   productList,
@@ -7,12 +8,12 @@ export default function ProductListHeader({
   setSortingOption,
 }: {
   productList: ProductItem[];
-  sortingOption: string;
-  setSortingOption: React.Dispatch<React.SetStateAction<string>>;
+  sortingOption: SortingOptions | undefined;
+  setSortingOption: React.Dispatch<React.SetStateAction<SortingOptions>>;
 }) {
   // Change sorting option
   function onChange(e: React.ChangeEvent<HTMLSelectElement>) {
-    setSortingOption(e.target.value);
+    setSortingOption(e.target.value as SortingOptions);
   }
 
   return (

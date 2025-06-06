@@ -2,25 +2,19 @@
 import { useSelector } from 'react-redux';
 import { RootState } from '../../app/store';
 import { Link } from 'react-router-dom';
+import { ShopCategories } from '../../types/Product';
 
-const categories = [
-  { key: 'bicycles', label: 'Bicycles' },
-  { key: 'accessories', label: 'Accessories' },
+const categories: { key: ShopCategories; label: string }[] = [
+  { key: 'bicycles', label: 'Fietsen' },
+  { key: 'accessories', label: 'Accessoires' },
 ];
 
 // Returns all categories with the total amount of items in it
 function CategoryOverview() {
-  const bicycles = useSelector(
-    (state: RootState) => state.bicycles.productList
-  );
-  const accessories = useSelector(
-    (state: RootState) => state.accessories.productList
-  );
-
-  const productCounts: Record<string, number> = {
-    bicycles: bicycles.length,
-    accessories: accessories.length,
-  };
+  const productCounts = useSelector((state: RootState) => ({
+    bicycles: state.products.productList.bicycles.length,
+    accessories: state.products.productList.accessories.length,
+  }));
 
   return (
     <ul>
