@@ -1,36 +1,57 @@
-# 🛍️ Cycle Shop Mock – E-commerce Webshop (React + Vite + TypeScript)
+# 🛍️ Cycle Shop Mock – E-commerce Webshop (React + Vite + TypeScript + Node.js)
 
-This project is a mock webshop for a fictional bicycle store. The goal is to gain hands-on experience with modern frontend technologies and to build a scalable e-commerce frontend.
+This project is a mock webshop for a fictional bicycle store. The goal is to gain hands-on experience with both modern frontend and backend technologies, and to build a scalable, full-stack e-commerce application.
+
+---
 
 ## ⚙️ Technologies Used
 
+### Frontend
+
 - **React** – Component-based frontend library
 - **TypeScript** – Strongly typed JavaScript for better reliability and development experience
-- **Vite** – Development environment and build tool
-- **SASS (SCSS)** – For advanced styling with variables and nesting
+- **Vite** – Fast development environment and build tool
+- **SASS (SCSS)** – Advanced styling with nesting and variables
 - **Redux Toolkit** – Centralized state management with minimal boilerplate
 - **React-Redux** – Bindings between Redux and React components
-- **React Router DOM** – For client-side routing between pages
+- **React Router DOM** – Client-side routing between pages
 
-## 📁 Features (In Progress)
+### Backend
 
-- Project setup with Vite + React + TypeScript
-- Styling with SCSS
-- Centralized state management using Redux Toolkit
-- Pages such as Home, Product Detail, and Cart
-- Dynamic routing with React Router
-- Mock product data and shopping cart functionality
+- **Node.js** – JavaScript runtime environment for the backend
+- **Express.js** – Minimalist web framework for building APIs
+- **RESTful API** – Custom API endpoints to serve product and category data
+
+### Database
+
+- **SupaBase** – Used to store product and category data persistently
+
+---
+
+## 📁 Features
+
+- ✅ Project setup with Vite + React + TypeScript
+- ✅ Styling with SCSS
+- ✅ Centralized state management using Redux Toolkit
+- ✅ Client-side routing with React Router
+- ✅ Mock product data displayed dynamically
+- ✅ Shopping cart functionality
+- ✅ Node.js + Express backend server
+- ✅ REST API for product/category data
+- ✅ Connected to a real database for persistent data
+- ✅ Full separation of frontend and backend for scalability
+
+---
 
 ## 🎯 Purpose of This Project
 
-This project serves as a learning exercise for building a modern webshop using up-to-date tools. It includes all the basic principles for an e-commerce frontend, with a focus on scalability and maintainability.
+This project started as a frontend-only exercise and has evolved into a full-stack application. It serves as a learning platform for:
 
-👩‍💻 Made for learning purposes
-📦 Work in progress – not intended for production
+- Building a scalable React frontend
+- Managing global state with Redux Toolkit
+- Creating and connecting a backend with Express.js
+- Storing and retrieving data from a database
+- Structuring full-stack applications using modern best practices
 
-## 🚀 Installation
-
-```bash
-npm install
-npm run dev
-```
+🛠️ Built as a learning project  
+📦 Still in development – not intended for production use
