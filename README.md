@@ -2,8 +2,6 @@
 
 This project is a mock webshop for a fictional bicycle store. The goal is to gain hands-on experience with both modern frontend and backend technologies, and to build a scalable, full-stack e-commerce application.
 
----
-
 ## ⚙️ Technologies Used
 
 ### Frontend
@@ -30,16 +28,16 @@ This project is a mock webshop for a fictional bicycle store. The goal is to gai
 
 ## 📁 Features
 
-- ✅ Project setup with Vite + React + TypeScript
-- ✅ Styling with SCSS
-- ✅ Centralized state management using Redux Toolkit
-- ✅ Client-side routing with React Router
-- ✅ Mock product data displayed dynamically
-- ✅ Shopping cart functionality
-- ✅ Node.js + Express backend server
-- ✅ REST API for product/category data
-- ✅ Connected to a real database for persistent data
-- ✅ Full separation of frontend and backend for scalability
+- Project setup with Vite + React + TypeScript
+- Styling with SCSS
+- Centralized state management using Redux Toolkit
+- Client-side routing with React Router
+- Mock product data displayed dynamically
+- Product sorting and filtering
+- Shopping cart functionality
+- Node.js + Express backend server
+- REST API for product/category data
+- Connected to a real database for persistent data
 
 ---
 
