@@ -1,6 +1,6 @@
-import { ProductItem } from '../types/Product';
-import ProductPrice from './shop/ProductPrice';
-import ProductRating from './shop/ProductRating';
+import { ProductItem } from '../../types/Product';
+import ProductRating from './ProductRating';
+import ProductPrice from './ProductPrice';
 
 export function ProductCard({ product }: { product: ProductItem }) {
   return (
@@ -15,7 +15,7 @@ export function ProductCard({ product }: { product: ProductItem }) {
         <h6>{product.name}</h6>
       </div>
       <div>
-        <ProductRating id={product.id} type={product.type} />
+        <ProductRating product={product} />
       </div>
       <div className="card__price">
         <ProductPrice product={product} />

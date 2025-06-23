@@ -1,4 +1,4 @@
-export type SortingOptions =
+export type SortingOption =
   | 'default'
   | 'highToLow'
   | 'lowToHigh'

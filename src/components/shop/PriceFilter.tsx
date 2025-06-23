@@ -1,35 +1,45 @@
-import { useEffect, useMemo, useState } from 'react';
-import { getPriceRange } from '../../utils/helperFunctions';
-import { Bicycle, PriceFilterProps } from '../../types/Product';
+import { useEffect, useState } from 'react';
+import { ShopCategories } from '../../types/Product';
 import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css';
+import { useSelector } from 'react-redux';
+import { selectBicyclePrices } from '../../features/bicycle/bicycleSelectors';
+import { selectAccessoryPrices } from '../../features/accessory/accessorySelectors';
 
 export default function PriceFilter({
   category,
-  productList,
-  variantsList,
-}: PriceFilterProps) {
-  // Keep track of the current lowest and highest prices
-  const [priceRange, setPriceRange] = useState<[number, number] | null>(null);
+}: {
+  category: ShopCategories;
+}) {
+  // Extract prices by using selectors
+  const bicyclePrices = useSelector(selectBicyclePrices);
+  const accessoryPrices = useSelector(selectAccessoryPrices);
 
-  // Control values for the price filter
+  // Determine active prices
+  const priceList =
+    category === 'bicycles'
+      ? bicyclePrices
+      : category === 'accessories'
+      ? accessoryPrices
+      : [];
+
+  // Calculate price range
+  const minPrice = Math.min(...priceList);
+  const maxPrice = Math.max(...priceList);
+
+  // States
+  const [priceRange, setPriceRange] = useState<[number, number] | null>(null);
   const [priceFilterLowEnd, setPriceFilterLowEnd] = useState<number>(0);
   const [priceFilterHighEnd, setPriceFilterHighEnd] = useState<number>(0);
 
-  // Keep pricerange variable stable to prevent unnecessary rerenders
-  const calculatedPriceRange = useMemo(() => {
-    if (category === 'accessories') return getPriceRange(variantsList);
-    if (category === 'bicycles') return getPriceRange(productList as Bicycle[]);
-    return [0, 0];
-  }, [category, productList, variantsList]);
-
-  // When the prices on the page change (user changes category), update the price filter with the new prices
+  // Load prices and update on category change
   useEffect(() => {
-    setPriceRange([calculatedPriceRange[0], calculatedPriceRange[1]]);
-    setPriceFilterLowEnd(calculatedPriceRange[0]);
-    setPriceFilterHighEnd(calculatedPriceRange[1]);
-  }, [calculatedPriceRange]);
+    setPriceRange([minPrice, maxPrice]);
+    setPriceFilterLowEnd(minPrice);
+    setPriceFilterHighEnd(maxPrice);
+  }, [maxPrice, minPrice]);
 
+  // Check if prices are loaded correctly
   if (!priceRange) return null;
 
   return (
@@ -40,8 +50,8 @@ export default function PriceFilter({
       <div className="shop__filter-container">
         <Slider
           range
-          min={priceRange[0]}
-          max={priceRange[1]}
+          min={minPrice}
+          max={maxPrice}
           value={[priceFilterLowEnd, priceFilterHighEnd]}
           allowCross={false}
           pushable={10}

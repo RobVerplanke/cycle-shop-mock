@@ -1,19 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit';
-import productReducer from '../features/products/productSlice';
-// import bikeReducer from '../features/products/bikeSlice';
-// import accessoryReducer from '../features/products/accessorySlice';
-import reviewReducer from '../features/reviews/reviewSlice';
-import cartReducer from '../features/cart/cartSlice';
-import variablePriceReducer from '../features/prices/variablePriceSlice';
+import { bicycleReducer } from '../features/bicycle/bicycleSlice';
+import { accessoryReducer } from '../features/accessory/accessorySlice';
+import { reviewsReducer } from '../features/reviews/reviewSlice';
 
 const store = configureStore({
   reducer: {
-    products: productReducer,
-    // bicycles: bikeReducer,
-    // accessories: accessoryReducer,
-    cart: cartReducer,
-    reviews: reviewReducer,
-    variants: variablePriceReducer,
+    bicycles: bicycleReducer,
+    accessories: accessoryReducer,
+    reviews: reviewsReducer,
   },
 });
 

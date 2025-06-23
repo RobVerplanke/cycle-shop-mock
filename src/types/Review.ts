@@ -6,3 +6,5 @@ export type Review = {
   name: string;
   email: string;
 };
+
+export type ReviewCategory = 'bike' | 'accessory';

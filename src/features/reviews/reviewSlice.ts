@@ -1,29 +1,41 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { PRODUCTS_ENDPOINTS } from '../../library/api/api';
+import { API_BASE_URL } from '../../library/api/api';
+import axios from 'axios';
+import { ReviewCategory } from '../../types/Review';
 
-// Thunk function that contains async request
-export const loadReviews = createAsyncThunk('reviews/load', async () => {
-  const res = await fetch(`${PRODUCTS_ENDPOINTS.reviews}`);
-  return await res.json();
-});
+const initialState = {
+  loading: false,
+  reviews: [],
+  error: '',
+};
+
+export const fetchReviews = createAsyncThunk(
+  'review/fetchReviews',
+  async ({ category, id }: { category: ReviewCategory; id: number }) => {
+    const res = await axios.get(
+      `${API_BASE_URL}/products/${category}/${id}/reviews`
+    );
+    return res.data;
+  }
+);
 
 const reviewSlice = createSlice({
-  name: 'reviews',
-  initialState: { reviewsList: [], loading: false },
+  name: 'review',
+  initialState,
   reducers: {},
   extraReducers: (builder) => {
-    builder
-      .addCase(loadReviews.pending, (state) => {
-        state.loading = true;
-      })
-      .addCase(loadReviews.fulfilled, (state, action) => {
-        state.loading = false;
-        state.reviewsList = action.payload;
-      })
-      .addCase(loadReviews.rejected, (state) => {
-        state.loading = false;
-      });
+    builder.addCase(fetchReviews.pending, (state) => {
+      state.loading = true;
+    });
+    builder.addCase(fetchReviews.fulfilled, (state, action) => {
+      state.loading = false;
+      state.reviews = action.payload;
+    });
+    builder.addCase(fetchReviews.rejected, (state, action) => {
+      state.loading = false;
+      state.error = action.error.message as string;
+    });
   },
 });
 
-export default reviewSlice.reducer;
+export const reviewsReducer = reviewSlice.reducer;
