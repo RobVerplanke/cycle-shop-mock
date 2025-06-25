@@ -22,7 +22,8 @@ function ProductList() {
   renderCount.current += 1;
   console.log('Render count:', renderCount.current);
 
-  // Manage active sorting option
+  // States
+  const [priceRange, setPriceRange] = useState<[number, number] | null>(null);
   const [activeSortingOption, setActiveSortingOption] =
     useState<SortingOption>('default');
 
@@ -50,7 +51,11 @@ function ProductList() {
           </div>
         </div>
         <div className="shop__filter-price">
-          <PriceFilter category={category} />
+          <PriceFilter
+            category={category}
+            priceRange={priceRange}
+            setPriceRange={setPriceRange}
+          />
         </div>
 
         {/* Show a list with clickable categories that display the corresponing product items  */}
@@ -77,6 +82,7 @@ function ProductList() {
           <div className="shop__productlist">
             <ProductGrid
               category={category as ShopCategories}
+              priceRange={priceRange}
               activeSortingOption={activeSortingOption}
               setActiveSortingOption={setActiveSortingOption}
             />

@@ -8,8 +8,12 @@ import { selectAccessoryPrices } from '../../features/accessory/accessorySelecto
 
 export default function PriceFilter({
   category,
+  priceRange,
+  setPriceRange,
 }: {
   category: ShopCategories;
+  priceRange: [number, number] | null;
+  setPriceRange: React.Dispatch<React.SetStateAction<[number, number] | null>>;
 }) {
   // Extract prices by using selectors
   const bicyclePrices = useSelector(selectBicyclePrices);
@@ -24,22 +28,30 @@ export default function PriceFilter({
       : [];
 
   // Calculate price range
-  const minPrice = Math.min(...priceList);
-  const maxPrice = Math.max(...priceList);
+  const hasPrices = priceList.length > 0;
+  const minPrice = hasPrices ? Math.min(...priceList) : 0;
+  const maxPrice = hasPrices ? Math.max(...priceList) : 0;
 
   // States
-  const [priceRange, setPriceRange] = useState<[number, number] | null>(null);
-  const [priceFilterLowEnd, setPriceFilterLowEnd] = useState<number>(0);
-  const [priceFilterHighEnd, setPriceFilterHighEnd] = useState<number>(0);
+  const [priceFilterLowEnd, setPriceFilterLowEnd] = useState<number>(minPrice);
+  const [priceFilterHighEnd, setPriceFilterHighEnd] =
+    useState<number>(maxPrice);
 
-  // Load prices and update on category change
   useEffect(() => {
-    setPriceRange([minPrice, maxPrice]);
-    setPriceFilterLowEnd(minPrice);
-    setPriceFilterHighEnd(maxPrice);
-  }, [maxPrice, minPrice]);
+    if (hasPrices) {
+      setPriceFilterLowEnd(minPrice);
+      setPriceFilterHighEnd(maxPrice);
+      setPriceRange([minPrice, maxPrice]);
+    }
+  }, [minPrice, maxPrice, setPriceRange, hasPrices]);
 
-  // Check if prices are loaded correctly
+  // Directly update product list when price range is adjusted on the filter
+  // useEffect(() => {
+  //   setPriceRange([priceFilterLowEnd, priceFilterHighEnd]);
+  // }, [priceFilterLowEnd, priceFilterHighEnd, setPriceRange]);
+
+  // Check if prices are loaded
+  if (!hasPrices) return null;
   if (!priceRange) return null;
 
   return (
@@ -60,6 +72,13 @@ export default function PriceFilter({
               const [min, max] = value;
               setPriceFilterLowEnd(min);
               setPriceFilterHighEnd(max);
+            }
+          }}
+          // Reduces extra renders, in opposite of live update using the UseEffect hook
+          onChangeComplete={(value) => {
+            if (Array.isArray(value)) {
+              const [min, max] = value;
+              setPriceRange([min, max]);
             }
           }}
         />
