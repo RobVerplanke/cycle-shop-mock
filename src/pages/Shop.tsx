@@ -1,5 +1,4 @@
 import { Link, useParams } from 'react-router-dom';
-import { capitalizeString } from '../utils/helperFunctions';
 import { useEffect, useRef, useState } from 'react';
 import { AppDispatch } from '../app/store.ts';
 import { useDispatch } from 'react-redux';
@@ -10,6 +9,7 @@ import ProductGrid from '../components/shop/ProductGrid.tsx';
 import { SortingOption } from '../types/SortingOptions.ts';
 import CategoryFilter from '../components/shop/CategoryFilter.tsx';
 import PriceFilter from '../components/shop/PriceFilter.tsx';
+import BreadCrumb from '../components/shop/BreadCrumb.tsx';
 
 function ProductList() {
   const dispatch = useDispatch<AppDispatch>();
@@ -69,8 +69,12 @@ function ProductList() {
       </aside>
       <main className="shop__right">
         <div className="shop__breadcrumb">
-          <Link to="/">Home</Link>
-          <span> / {capitalizeString(category as ShopCategories)}</span>
+          <div className="shop__breadcrumb__fixed">
+            <Link to="/">Home /</Link>
+          </div>
+          <div className="shop__breadcrumb__path">
+            <BreadCrumb />
+          </div>
         </div>
         <div className="shop__title">
           <h2>{category}</h2>

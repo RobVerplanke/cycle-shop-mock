@@ -56,6 +56,11 @@
     max-width: 770px;
   }
 
+  &__breadcrumb {
+    display: flex;
+    gap: 3px;
+  }
+
   &__list-header {
     display: flex;
     flex-direction: column;
