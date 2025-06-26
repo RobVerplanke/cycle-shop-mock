@@ -81,6 +81,16 @@ export default function PriceFilter({
               setPriceRange([min, max]);
             }
           }}
+          styles={{
+            rail: { backgroundColor: '#df453e' },
+            track: { backgroundColor: '#df453e' },
+            handle: {
+              backgroundColor: '#df453e',
+              borderColor: '#df453e',
+              borderWidth: 2,
+              opacity: 1,
+            },
+          }}
         />
       </div>
       {Number.isFinite(priceFilterLowEnd) &&

@@ -30,6 +30,10 @@
     gap: 5px;
   }
 
+  &__product-container {
+    width: 100%;
+  }
+
   &__search-form button {
     padding: 7px 10px 7px 10px;
   }
@@ -48,6 +52,7 @@
 
   &__right {
     padding: 85px;
+    width: 100%;
     max-width: 770px;
   }
 
@@ -63,6 +68,7 @@
   &__productlist {
     display: flex;
     flex-wrap: wrap;
+    width: 100%;
     gap: 30px;
   }
 
@@ -95,10 +101,4 @@
     display: flex;
     justify-content: space-between;
   }
-}
-
-.price-slider {
-  --range-slider-bar-color: #ddd;
-  --range-slider-active-bar-color: #df453e;
-  --range-slider-thumb-color: #df453e;
 }
