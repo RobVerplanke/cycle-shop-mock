@@ -1,6 +1,6 @@
 import { FaStar } from 'react-icons/fa';
 import { FaRegStar } from 'react-icons/fa';
-import { ProductItem } from '../types/Product';
+import { ProductItem } from '../../types/Product';
 
 // Convert the rating (number) to the corresponding amount of stars
 export default function ProductRating({ product }: { product: ProductItem }) {
