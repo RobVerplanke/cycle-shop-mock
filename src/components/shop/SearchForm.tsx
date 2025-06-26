@@ -1,11 +1,11 @@
-import { SetStateAction, useState } from 'react';
+import { useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 
 export default function SearchForm() {
   const [searchParams, setSearchParams] = useSearchParams();
   const [input, setInput] = useState(searchParams.get('search') || '');
 
-  function onChange(e: { target: { value: SetStateAction<string> } }) {
+  function onChange(e: React.ChangeEvent<HTMLInputElement>) {
     setInput(e.target.value);
   }
 
