@@ -1,18 +1,12 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { API_BASE_URL } from '../../library/api/api';
 import axios from 'axios';
-import { SortingOption } from '../../types/SortingOptions';
+import { FetchBicyclesParams } from '../../types/SortingOptions';
 
 const initialState = {
   loading: false,
   bicycles: [],
   error: '',
-};
-
-type FetchBicyclesParams = {
-  sort: SortingOption;
-  direction?: 'asc' | 'desc';
-  search?: string;
 };
 
 export const fetchBicycles = createAsyncThunk(

@@ -1,18 +1,12 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { API_BASE_URL } from '../../library/api/api';
 import axios from 'axios';
-import { SortingOption } from '../../types/SortingOptions';
+import { FetchAccessoriesParams } from '../../types/SortingOptions';
 
 const initialState = {
   loading: false,
   accessories: [],
   error: '',
-};
-
-type FetchAccessoriesParams = {
-  sort: SortingOption;
-  direction?: 'asc' | 'desc';
-  search?: string;
 };
 
 export const fetchAccessories = createAsyncThunk(
