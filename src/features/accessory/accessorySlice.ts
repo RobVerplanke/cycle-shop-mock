@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { PRODUCTS_ENDPOINTS } from '../../library/api/api';
+import { API_BASE_URL } from '../../library/api/api';
 import axios from 'axios';
 import { SortingOption } from '../../types/SortingOptions';
 
@@ -9,11 +9,23 @@ const initialState = {
   error: '',
 };
 
+type FetchAccessoriesParams = {
+  sort: SortingOption;
+  direction?: 'asc' | 'desc';
+  search?: string;
+};
+
 export const fetchAccessories = createAsyncThunk(
   'accessory/fetchAccessories',
-  async (sortOption: SortingOption) => {
+  async ({ sort, direction = 'desc', search }: FetchAccessoriesParams) => {
+    const params = new URLSearchParams();
+
+    params.set('by', sort); // sorting option
+    if (sort === 'highToLow') params.set('direction', direction);
+    if (search) params.set('search', search);
+
     const res = await axios.get(
-      `${PRODUCTS_ENDPOINTS.accessories[sortOption]}`
+      `${API_BASE_URL}/products/accessory/sorted?${params.toString()}`
     );
     return res.data;
   }

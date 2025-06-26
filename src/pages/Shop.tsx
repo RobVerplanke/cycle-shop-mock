@@ -10,12 +10,16 @@ import { SortingOption } from '../types/SortingOptions.ts';
 import CategoryFilter from '../components/shop/CategoryFilter.tsx';
 import PriceFilter from '../components/shop/PriceFilter.tsx';
 import BreadCrumb from '../components/shop/BreadCrumb.tsx';
+import SearchForm from '../components/shop/SearchForm.tsx';
+import { useSearchParams } from 'react-router-dom';
 
-function ProductList() {
+function Shop() {
   const dispatch = useDispatch<AppDispatch>();
 
   // Determine the selected category from the url
   const { category } = useParams<{ category: ShopCategories }>();
+  const [searchParams] = useSearchParams();
+  const searchQuery = searchParams.get('search') || '';
 
   // Render counter for testing
   const renderCount = useRef(0);
@@ -29,9 +33,16 @@ function ProductList() {
 
   // Get all products and its data, displayed in the default order
   useEffect(() => {
-    dispatch(fetchBicycles(activeSortingOption));
-    dispatch(fetchAccessories(activeSortingOption));
-  }, [dispatch, activeSortingOption]);
+    if (category === 'bicycles') {
+      dispatch(
+        fetchBicycles({ sort: activeSortingOption, search: searchQuery })
+      );
+    } else if (category === 'accessories') {
+      dispatch(
+        fetchAccessories({ sort: activeSortingOption, search: searchQuery })
+      );
+    }
+  }, [dispatch, category, activeSortingOption, searchQuery]);
 
   // Reset sorting option to default after switching pages (category)
   useEffect(() => {
@@ -44,11 +55,7 @@ function ProductList() {
     <div className="shop">
       <aside className="shop__aside">
         <div className="shop__search-container">
-          <div className="shop__search-title">Search</div>
-          <div className="shop__search-form">
-            <input type="text" placeholder="Search products..." />
-            <button type="submit">SEARCH</button>
-          </div>
+          <SearchForm />
         </div>
         <div className="shop__filter-price">
           <PriceFilter
@@ -57,7 +64,6 @@ function ProductList() {
             setPriceRange={setPriceRange}
           />
         </div>
-
         {/* Show a list with clickable categories that display the corresponing product items  */}
         <div className="shop__filter-category">
           <h5>Filter by categories</h5>
@@ -97,4 +103,4 @@ function ProductList() {
   );
 }
 
-export default ProductList;
+export default Shop;
