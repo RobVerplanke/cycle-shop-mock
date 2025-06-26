@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { MdPedalBike } from 'react-icons/md';
 import { IoMenu } from 'react-icons/io5';
 import { IoClose } from 'react-icons/io5';
@@ -9,6 +9,11 @@ function Navbar() {
   const [isNavOpen, setIsNavOpen] = useState(false);
   const [isNavVisible, setIsNavVisible] = useState(true);
 
+  const location = useLocation();
+  const path = location.pathname;
+  const transparentPaths = ['/', '/about', '/contact'];
+  const isTransparent = transparentPaths.includes(path);
+
   // Toggle menu hamburger icon, make menu visible if screen width becomes larger
   function toggleMenu() {
     setIsNavOpen(!isNavOpen);
@@ -16,7 +21,7 @@ function Navbar() {
   }
 
   return (
-    <nav className="navbar">
+    <nav className={isTransparent ? 'navbar_transparent' : 'navbar_red'}>
       <div className="navbar__container">
         <div className="navbar__logo">
           <Link to="/">

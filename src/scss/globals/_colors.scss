@@ -5,6 +5,17 @@
   --text-color: white;
 }
 
+.navbar_transparent {
+  z-index: 20;
+  background-color: transparent;
+  position: absolute;
+  min-width: 100%;
+}
+
+.navbar_red {
+  background-color: #df453e;
+}
+
 .navbar {
   &__logo a {
     color: white;
