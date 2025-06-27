@@ -82,7 +82,7 @@ export default function PriceFilter({
             }
           }}
           styles={{
-            rail: { backgroundColor: '#df453e' },
+            rail: { backgroundColor: '#ddd' },
             track: { backgroundColor: '#df453e' },
             handle: {
               backgroundColor: '#df453e',
