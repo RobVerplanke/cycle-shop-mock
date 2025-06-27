@@ -9,20 +9,20 @@ import {
 import { useSelector } from 'react-redux';
 import { RootState } from '../../app/store';
 import ProductGridHeader from './ProductListHeader';
-import { SortingOption } from '../../types/SortingOptions';
 import { useMemo } from 'react';
+import { useSearchParams } from 'react-router-dom';
 
 // Displays a header with sorting options and a list of products, depending on the given category
 export default function ProductGrid({
   category,
   priceRange,
-  activeSortingOption,
-  setActiveSortingOption,
+  searchParams,
+  setSearchParams,
 }: {
   category: ShopCategories;
   priceRange: [number, number] | null;
-  activeSortingOption: SortingOption;
-  setActiveSortingOption: React.Dispatch<React.SetStateAction<SortingOption>>;
+  searchParams: URLSearchParams;
+  setSearchParams: ReturnType<typeof useSearchParams>[1];
 }) {
   // Get product data
   const bicycles = useSelector((state: RootState) => state.bicycles.bicycles);
@@ -30,6 +30,7 @@ export default function ProductGrid({
     (state: RootState) => state.accessories.accessories
   );
 
+  // Keep displayed products seperate from the list with all products
   const filteredAccessories = useMemo(() => {
     if (!priceRange) return [];
 
@@ -64,9 +65,8 @@ export default function ProductGrid({
       <div className="shop__list-header">
         <ProductGridHeader
           productList={productList}
-          category={category}
-          activeSortingOption={activeSortingOption}
-          setActiveSortingOption={setActiveSortingOption}
+          searchParams={searchParams}
+          setSearchParams={setSearchParams}
         />
       </div>
 

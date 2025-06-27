@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { API_BASE_URL } from '../../library/api/api';
 import axios from 'axios';
-import { FetchBicyclesParams } from '../../types/SortingOptions';
+import { FetchParams } from '../../types/SortingOptions';
 
 const initialState = {
   loading: false,
@@ -11,11 +11,12 @@ const initialState = {
 
 export const fetchBicycles = createAsyncThunk(
   'bicycle/fetchBicycles',
-  async ({ sort, direction = 'desc', search }: FetchBicyclesParams) => {
+  async ({ sort, direction = 'desc', search }: FetchParams) => {
     const params = new URLSearchParams();
 
     params.set('by', sort); // sorting option
-    if (sort === 'highToLow') params.set('direction', direction);
+    params.set('direction', direction); // direction is 'asc' or 'desc'
+
     if (search) params.set('search', search);
 
     const res = await axios.get(

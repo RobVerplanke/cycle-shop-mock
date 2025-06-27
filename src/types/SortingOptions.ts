@@ -1,18 +1,12 @@
-export type SortingOption =
-  | 'default'
-  | 'highToLow'
-  | 'lowToHigh'
-  | 'added'
-  | 'popularity';
-
-export type FetchBicyclesParams = {
-  sort: SortingOption;
+export type FetchParams = {
+  sort: string;
   direction?: 'asc' | 'desc';
   search?: string;
 };
 
-export type FetchAccessoriesParams = {
-  sort: SortingOption;
+export type SortingOption = {
+  text: string;
+  value: string;
+  sort: string;
   direction?: 'asc' | 'desc';
-  search?: string;
 };

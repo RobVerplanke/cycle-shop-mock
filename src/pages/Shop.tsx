@@ -6,7 +6,7 @@ import { fetchBicycles } from '../features/bicycle/bicycleSlice.ts';
 import { fetchAccessories } from '../features/accessory/accessorySlice.ts';
 import { ShopCategories } from '../types/Product.ts';
 import ProductGrid from '../components/shop/ProductGrid.tsx';
-import { SortingOption } from '../types/SortingOptions.ts';
+import { FetchParams } from '../types/SortingOptions.ts';
 import CategoryFilter from '../components/shop/CategoryFilter.tsx';
 import PriceFilter from '../components/shop/PriceFilter.tsx';
 import BreadCrumb from '../components/shop/BreadCrumb.tsx';
@@ -18,8 +18,10 @@ function Shop() {
 
   // Determine the selected category from the url
   const { category } = useParams<{ category: ShopCategories }>();
-  const [searchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams();
   const searchQuery = searchParams.get('search') || '';
+  const sortOption = searchParams.get('sort') || 'default';
+  const sortDirection = searchParams.get('direction') || 'desc';
 
   // Render counter for testing
   const renderCount = useRef(0);
@@ -28,26 +30,27 @@ function Shop() {
 
   // States
   const [priceRange, setPriceRange] = useState<[number, number] | null>(null);
-  const [activeSortingOption, setActiveSortingOption] =
-    useState<SortingOption>('default');
 
-  // Get all products and its data, displayed in the default order
+  // Update products after change in category, sorting option or after a search request
   useEffect(() => {
     if (category === 'bicycles') {
       dispatch(
-        fetchBicycles({ sort: activeSortingOption, search: searchQuery })
+        fetchBicycles({
+          sort: sortOption,
+          direction: sortDirection,
+          search: searchQuery,
+        } as FetchParams)
       );
     } else if (category === 'accessories') {
       dispatch(
-        fetchAccessories({ sort: activeSortingOption, search: searchQuery })
+        fetchAccessories({
+          sort: sortOption,
+          direction: sortDirection,
+          search: searchQuery,
+        } as FetchParams)
       );
     }
-  }, [dispatch, category, activeSortingOption, searchQuery]);
-
-  // Reset sorting option to default after switching pages (category)
-  useEffect(() => {
-    setActiveSortingOption('default');
-  }, [category]);
+  }, [dispatch, category, sortOption, sortDirection, searchQuery]);
 
   if (!category) return '';
 
@@ -93,8 +96,8 @@ function Shop() {
             <ProductGrid
               category={category as ShopCategories}
               priceRange={priceRange}
-              activeSortingOption={activeSortingOption}
-              setActiveSortingOption={setActiveSortingOption}
+              searchParams={searchParams}
+              setSearchParams={setSearchParams}
             />
           </div>
         </div>
