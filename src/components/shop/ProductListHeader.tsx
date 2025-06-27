@@ -54,22 +54,24 @@ export default function ProductGridHeader({
     <>
       {/* Show the amount of items displayed. If only one item is loaded, adjust the message */}
       <div className="shop__header-results">
-        {productList.length === 1 ? (
-          <p>Showing the single result </p>
-        ) : (
+        {productList.length === 0 && <p>No results</p>}
+        {productList.length === 1 && <p>Showing the single result</p>}
+        {productList.length > 1 && (
           <p>Showing all {productList.length} results</p>
         )}
       </div>
 
       {/* Create a selection input field with generic options */}
       <div className="shop__header-sort">
-        <select value={currentOption.value} onChange={handleSortChange}>
-          {sortingOptions.map((option) => (
-            <option key={option.value} value={option.value}>
-              {option.text}
-            </option>
-          ))}
-        </select>
+        {productList.length >= 1 && (
+          <select value={currentOption.value} onChange={handleSortChange}>
+            {sortingOptions.map((option) => (
+              <option key={option.value} value={option.value}>
+                {option.text}
+              </option>
+            ))}
+          </select>
+        )}
       </div>
     </>
   );
