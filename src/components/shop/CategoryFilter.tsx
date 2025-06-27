@@ -8,10 +8,10 @@ import { ShopCategories } from '../../types/Product';
 function CategoryFilter() {
   // Get the length of the selected product list
   const bicycleCount = useSelector(
-    (state: RootState) => state.bicycles.bicycles.length
+    (state: RootState) => state.bicycles.allBicycles.length
   );
   const accessoryCount = useSelector(
-    (state: RootState) => state.accessories.accessories.length
+    (state: RootState) => state.accessories.allAccessories.length
   );
 
   // Create an object to map over

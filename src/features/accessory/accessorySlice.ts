@@ -5,17 +5,30 @@ import { FetchParams } from '../../types/SortingOptions';
 
 const initialState = {
   loading: false,
+  allAccessories: [],
   accessories: [],
   error: '',
 };
 
-export const fetchAccessories = createAsyncThunk(
-  'accessory/fetchAccessories',
+// Get ALL accessories
+export const fetchAllAccessories = createAsyncThunk(
+  'accessory/fetchAllAccessories',
+  async () => {
+    const res = await axios.get(
+      `${API_BASE_URL}/products/accessory/sorted?by=default`
+    );
+    return res.data;
+  }
+);
+
+// Get FILTERED accessories
+export const fetchFilteredAccessories = createAsyncThunk(
+  'accessory/fetchFilteredAccessories',
   async ({ sort, direction = 'desc', search }: FetchParams) => {
     const params = new URLSearchParams();
 
-    params.set('by', sort); // sorting option
-    params.set('direction', direction); // direction is 'asc' or 'desc'
+    params.set('by', sort);
+    params.set('direction', direction);
     if (search) params.set('search', search);
 
     const res = await axios.get(
@@ -30,14 +43,24 @@ const accessorySlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(fetchAccessories.pending, (state) => {
+    builder.addCase(fetchAllAccessories.pending, (state) => {
       state.loading = true;
     });
-    builder.addCase(fetchAccessories.fulfilled, (state, action) => {
-      state.loading = false;
+    builder.addCase(fetchFilteredAccessories.pending, (state) => {
+      state.loading = true;
+    });
+    builder.addCase(fetchAllAccessories.fulfilled, (state, action) => {
+      state.allAccessories = action.payload;
       state.accessories = action.payload;
     });
-    builder.addCase(fetchAccessories.rejected, (state, action) => {
+    builder.addCase(fetchFilteredAccessories.fulfilled, (state, action) => {
+      state.accessories = action.payload;
+    });
+    builder.addCase(fetchAllAccessories.rejected, (state, action) => {
+      state.loading = false;
+      state.error = action.error.message as string;
+    });
+    builder.addCase(fetchFilteredAccessories.rejected, (state, action) => {
       state.loading = false;
       state.error = action.error.message as string;
     });

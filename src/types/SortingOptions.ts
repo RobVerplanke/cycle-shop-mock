@@ -1,6 +1,6 @@
 export type FetchParams = {
   sort: string;
-  direction?: 'asc' | 'desc';
+  direction: string;
   search?: string;
 };
 

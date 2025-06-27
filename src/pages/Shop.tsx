@@ -1,12 +1,17 @@
 import { Link, useParams } from 'react-router-dom';
 import { useEffect, useRef, useState } from 'react';
-import { AppDispatch } from '../app/store.ts';
-import { useDispatch } from 'react-redux';
-import { fetchBicycles } from '../features/bicycle/bicycleSlice.ts';
-import { fetchAccessories } from '../features/accessory/accessorySlice.ts';
+import { AppDispatch, RootState } from '../app/store.ts';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  fetchAllBicycles,
+  fetchFilteredBicycles,
+} from '../features/bicycle/bicycleSlice.ts';
+import {
+  fetchAllAccessories,
+  fetchFilteredAccessories,
+} from '../features/accessory/accessorySlice.ts';
 import { ShopCategories } from '../types/Product.ts';
 import ProductGrid from '../components/shop/ProductGrid.tsx';
-import { FetchParams } from '../types/SortingOptions.ts';
 import CategoryFilter from '../components/shop/CategoryFilter.tsx';
 import PriceFilter from '../components/shop/PriceFilter.tsx';
 import BreadCrumb from '../components/shop/BreadCrumb.tsx';
@@ -31,25 +36,54 @@ function Shop() {
   // States
   const [priceRange, setPriceRange] = useState<[number, number] | null>(null);
 
+  // Check if products are loaded in the state
+  const bicyclesLoaded = useSelector(
+    (state: RootState) => state.bicycles.allBicycles.length > 0
+  );
+  const accessoriesLoaded = useSelector(
+    (state: RootState) => state.accessories.allAccessories.length > 0
+  );
+
+  // Only update products which are not loaded in the state
+  useEffect(() => {
+    if (!bicyclesLoaded) dispatch(fetchAllBicycles());
+    if (!accessoriesLoaded) dispatch(fetchAllAccessories());
+  }, [dispatch, bicyclesLoaded, accessoriesLoaded]);
+
   // Update products after change in category, sorting option or after a search request
   useEffect(() => {
-    if (category === 'bicycles') {
-      dispatch(
-        fetchBicycles({
-          sort: sortOption,
-          direction: sortDirection,
-          search: searchQuery,
-        } as FetchParams)
-      );
-    } else if (category === 'accessories') {
-      dispatch(
-        fetchAccessories({
-          sort: sortOption,
-          direction: sortDirection,
-          search: searchQuery,
-        } as FetchParams)
-      );
-    }
+    const fetchProducts = () => {
+      const commonParams = {
+        sort: sortOption,
+        direction: sortDirection,
+      };
+
+      if (category === 'bicycles') {
+        if (searchQuery.trim() === '') {
+          dispatch(fetchFilteredBicycles(commonParams)); // zonder search
+        } else {
+          dispatch(
+            fetchFilteredBicycles({
+              ...commonParams,
+              search: searchQuery,
+            })
+          );
+        }
+      } else if (category === 'accessories') {
+        if (searchQuery.trim() === '') {
+          dispatch(fetchFilteredAccessories(commonParams));
+        } else {
+          dispatch(
+            fetchFilteredAccessories({
+              ...commonParams,
+              search: searchQuery,
+            })
+          );
+        }
+      }
+    };
+
+    fetchProducts();
   }, [dispatch, category, sortOption, sortDirection, searchQuery]);
 
   if (!category) return '';
