@@ -140,3 +140,18 @@ a,
     font-size: 0.9em;
   }
 }
+
+.review-card {
+  &__name {
+    font-weight: bold;
+  }
+
+  &__date {
+    font-style: italic;
+  }
+
+  &__body {
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+}

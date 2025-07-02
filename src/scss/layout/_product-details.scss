@@ -1,0 +1,171 @@
+.details-container {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  width: 100%;
+  max-width: 1024px;
+  margin: 0 auto;
+  padding: 40px;
+  margin: 60px auto;
+
+  .top-section {
+    display: flex;
+    gap: 40px;
+
+    &__image img {
+      max-width: 400px;
+      max-height: 400px;
+    }
+
+    &__details {
+      max-width: 700px;
+    }
+
+    &__add-item {
+      display: flex;
+      gap: 20px;
+
+      & input {
+        width: 50px;
+        height: 35px;
+      }
+
+      & button {
+        border: none;
+        height: 35px;
+        width: 120px;
+      }
+    }
+
+    &__breadcrumb {
+      display: flex;
+    }
+  }
+
+  &__bottom-section {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .bottom-section {
+    &__additionals {
+      &__navigation {
+        padding-bottom: 30px;
+
+        & button {
+          height: 30px;
+        }
+      }
+
+      &__additional table {
+        width: 100%;
+      }
+    }
+  }
+}
+
+.reviews-form form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.reviews-form {
+  &__info {
+    height: 20px;
+  }
+
+  &__rating {
+    display: flex;
+    align-items: baseline;
+    gap: 20px;
+  }
+
+  &__review {
+    &__content {
+      display: flex;
+      flex-direction: column;
+    }
+
+    &__inputfield textarea {
+      padding: 10px;
+      width: 100%;
+      height: 100px;
+    }
+
+    &__userdata {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin: 20px 0 20px 0;
+    }
+
+    &__userdata__name {
+      width: 100%;
+    }
+
+    &__userdata__name input {
+      padding: 10px;
+      width: 100%;
+      height: 50px;
+    }
+
+    &__userdata__email {
+      width: 100%;
+    }
+
+    &__userdata__email input {
+      padding: 10px;
+      width: 100%;
+      height: 50px;
+    }
+
+    &__checkbox {
+      display: flex;
+    }
+  }
+}
+
+.review-card {
+  padding: 1.2rem 1.5rem;
+  margin-bottom: 1rem;
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.8rem;
+  }
+
+  &__name {
+    font-weight: bold;
+  }
+
+  &__date {
+    font-style: italic;
+  }
+
+  &__body {
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+}
+
+#table__title {
+  display: inline;
+  justify-content: start;
+  padding-right: 40px;
+}
+
+#table__data {
+  display: inline;
+  justify-content: start;
+}
+
+input[type='radio'] {
+  display: none;
+}
+.star {
+  cursor: pointer;
+  font-size: 2rem;
+  margin: 5px;
+}

@@ -5,7 +5,7 @@ import {
   Contact,
   ErrorPage,
   Home,
-  ProductDetail,
+  ProductDetails,
   Shop,
   Checkout,
 } from '../pages/index';
@@ -21,23 +21,23 @@ const router = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: 'details/:id', // Product details - With the product-id as a dynamic segment
-        element: <ProductDetail />,
+        path: 'product/:category/:id', // Product details - With product-id and category as a dynamic segments
+        element: <ProductDetails />,
       },
       {
         path: 'product-category/:category', // Shopping page - With the category as a dynamic segment
         element: <Shop />,
       },
       {
-        path: 'contact',
+        path: 'contact', // Contact page
         element: <Contact />,
       },
       {
-        path: 'about',
+        path: 'about', // About page
         element: <About />,
       },
       {
-        path: 'checkout',
+        path: 'checkout', // Checkout page
         element: <Checkout />,
       },
     ],

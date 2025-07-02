@@ -1,6 +1,7 @@
 import { ProductItem } from '../../types/Product';
 import ProductRating from './ProductRating';
 import ProductPrice from './ProductPrice';
+import { Link } from 'react-router-dom';
 
 export function ProductCard({ product }: { product: ProductItem }) {
   return (
@@ -12,7 +13,9 @@ export function ProductCard({ product }: { product: ProductItem }) {
         <p>{product.type}</p>
       </div>
       <div className="card__name">
-        <h6>{product.name}</h6>
+        <Link to={`/product/${product.type}/${product.id}`} state={{ product }}>
+          <h6>{product.name}</h6>
+        </Link>
       </div>
       <div>
         <ProductRating product={product} />
