@@ -3,12 +3,17 @@ import SetRating from './SetRating';
 import { ReviewFormData, ReviewProps } from '../../../types/Review';
 import axios from 'axios';
 import { API_BASE_URL } from '../../../library/api/api';
+import { useDispatch } from 'react-redux';
+import { AppDispatch } from '../../../app/store';
+import { fetchReviews } from '../../../features/reviews/reviewSlice';
 
 export default function ProductReviewForm({ item_id, item_type }: ReviewProps) {
+  const dispatch = useDispatch<AppDispatch>();
   const { register, handleSubmit, watch, reset } = useForm<ReviewFormData>();
   const rating = watch('rating');
 
   async function onSubmit(data: ReviewFormData) {
+    // Add additional required data to the form data
     const payload = {
       ...data,
       item_id: item_id,
@@ -17,9 +22,14 @@ export default function ProductReviewForm({ item_id, item_type }: ReviewProps) {
     };
 
     try {
-      const res = await axios.post(`${API_BASE_URL}/api/reviews`, payload);
-      console.log('Review submitted:', res.data);
-      reset(); // Clear form after submit
+      // Send extended data to back-end
+      await axios.post(`${API_BASE_URL}/api/reviews`, payload);
+
+      // Update reviews with the new review
+      dispatch(fetchReviews({ category: item_type, id: item_id }));
+
+      // Clear form after submit
+      reset();
     } catch (err) {
       console.error('Error submitting review:', err);
     }
