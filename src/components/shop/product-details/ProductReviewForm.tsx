@@ -2,6 +2,7 @@ import { useForm } from 'react-hook-form';
 import SetRating from './SetRating';
 import { ReviewFormData, ReviewProps } from '../../../types/Review';
 import axios from 'axios';
+import { API_BASE_URL } from '../../../library/api/api';
 
 export default function ProductReviewForm({ item_id, item_type }: ReviewProps) {
   const { register, handleSubmit, watch, reset } = useForm<ReviewFormData>();
@@ -12,10 +13,11 @@ export default function ProductReviewForm({ item_id, item_type }: ReviewProps) {
       ...data,
       item_id: item_id,
       item_type: item_type,
+      rating: Number(rating),
     };
 
     try {
-      const res = await axios.post('/api/reviews', payload);
+      const res = await axios.post(`${API_BASE_URL}/api/reviews`, payload);
       console.log('Review submitted:', res.data);
       reset(); // Clear form after submit
     } catch (err) {
@@ -30,7 +32,7 @@ export default function ProductReviewForm({ item_id, item_type }: ReviewProps) {
           Your email address will not be published. Required fields are marked*
         </p>
       </div>
-
+      {/* const { item_id, item_type, name, email, review, rating } = req.body; */}
       <div className="reviews-form__rating">
         <div className="reviews-form__rating__title">
           <p>Your rating *</p>
