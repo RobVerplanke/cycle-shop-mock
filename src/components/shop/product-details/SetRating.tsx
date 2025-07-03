@@ -20,8 +20,7 @@ export default function SetRating({ register, currentRating }: SetRatingProps) {
             <span
               className="star"
               style={{
-                color:
-                  starValue <= (currentRating ?? 0) ? '#ffc107' : '#e4e5e9',
+                color: starValue <= (currentRating ?? 0) ? 'black' : '#e4e5e9',
                 cursor: 'pointer',
               }}
             >

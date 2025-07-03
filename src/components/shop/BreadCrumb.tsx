@@ -1,10 +1,26 @@
-import { useLocation } from 'react-router-dom';
-import { capitalizeString } from '../../utils/helperFunctions';
+import { Link } from 'react-router-dom';
 
-export default function BreadCrumb() {
-  const location = useLocation();
-  const shortenedPath = location.pathname.replace('/product-category/', '');
-  const path = capitalizeString(shortenedPath);
+export default function BreadCrumb({
+  type,
+  name,
+}: {
+  type: string;
+  name?: string;
+}) {
+  console.log('type: ', type);
 
-  return <span>{path}</span>;
+  const path =
+    type === 'bicycles' || type === 'bike'
+      ? `/product-category/bicycles`
+      : `/product-category/accessories`;
+
+  const CapitalizedType =
+    type === 'bicycles' || type === 'bike' ? 'Bicycles' : 'Accessories';
+
+  return (
+    <span>
+      <Link to="/">Home</Link> / <Link to={path}>{CapitalizedType}</Link> /{' '}
+      {name}
+    </span>
+  );
 }

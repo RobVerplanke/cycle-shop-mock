@@ -1,10 +1,13 @@
 import { useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import BreadCrumb from '../components/shop/BreadCrumb';
 import ProductReviews from '../components/shop/product-details/ProductReviews';
 import ProductReviewForm from '../components/shop/product-details/ProductReviewForm';
-import { ProductItem } from '../types/Product';
+import { Bicycle, ProductItem } from '../types/Product';
 import { ReviewCategory } from '../types/Review';
+import PriceRange from '../components/shop/PriceRange';
+import PriceSelect from '../components/shop/product-details/PriceSelect';
+import ProductCategory from '../components/shop/product-details/ProductCategory';
 
 export default function ProductDetails() {
   const location = useLocation();
@@ -13,6 +16,10 @@ export default function ProductDetails() {
 
   if (!product) {
     return <p>Productdetails not available</p>;
+  }
+
+  function hasFixedPrice(product: ProductItem): product is Bicycle {
+    return (product as Bicycle).price !== undefined;
   }
 
   function handleClick(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
@@ -29,29 +36,36 @@ export default function ProductDetails() {
           </div>
           <div className="top-section__details">
             <div className="top-section__breadcrumb">
-              <div className="breadcrumb__fixed">
-                <Link to="/">Home</Link>
-              </div>
               <div className="breadcrumb__path">
-                <BreadCrumb />
+                <BreadCrumb type={product.type} name={product.name} />
               </div>
             </div>
             <div className="top-section__category">
-              <p>{product.type}</p>
+              <ProductCategory type={product.type} />
             </div>
-            <div className="top-section__title">
-              <h4>{product.name}</h4>
+            <div className="top-section__name">
+              <h5>{product.name}</h5>
             </div>
             <div className="top-section__price">
-              <p>e350.00</p>
+              {hasFixedPrice(product) ? (
+                <div className="price__value">
+                  <div>€{product.price}</div>
+                </div>
+              ) : (
+                <PriceRange prices={product.prices} />
+              )}
             </div>
             <div className="top-section__introduction">
               <p>{product.introduction}</p>
             </div>
-            <div className="top-section__add-item">
-              <input type="number" />
-              <button>ADD TO CART</button>
-            </div>
+            {hasFixedPrice(product) ? (
+              <div className="top-section__add-item">
+                <input type="number" />
+                <button>ADD TO CART</button>
+              </div>
+            ) : (
+              <PriceSelect prices={product.prices} />
+            )}
           </div>
         </div>
         <div className="bottom-section">
@@ -68,18 +82,24 @@ export default function ProductDetails() {
               >
                 Description
               </button>
-              <button
-                value="additional"
-                className={
-                  activeTab === 'additional'
-                    ? 'active'
-                    : 'bottom-section__additionals__navigation__button'
-                }
-                // className="bottom-section__additionals__navigation__button"
-                onClick={handleClick}
-              >
-                Additional information
-              </button>
+
+              {!hasFixedPrice(product) ? (
+                <button
+                  value="additional"
+                  className={
+                    activeTab === 'additional'
+                      ? 'active'
+                      : 'bottom-section__additionals__navigation__button'
+                  }
+                  // className="bottom-section__additionals__navigation__button"
+                  onClick={handleClick}
+                >
+                  Additional information
+                </button>
+              ) : (
+                ''
+              )}
+
               <button
                 value="reviews"
                 className={

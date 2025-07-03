@@ -21,6 +21,10 @@
       max-width: 700px;
     }
 
+    &__name {
+      padding: 10px 0;
+    }
+
     &__add-item {
       display: flex;
       gap: 20px;
@@ -35,10 +39,19 @@
         height: 35px;
         width: 120px;
       }
+
+      button:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
     }
 
     &__breadcrumb {
       display: flex;
+    }
+
+    &__category {
+      padding: 10px 0;
     }
   }
 
@@ -150,6 +163,57 @@
   }
 }
 
+.details__price__selection {
+  padding-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+
+  &__buttons {
+    display: flex;
+    gap: 10px;
+  }
+
+  &__buttons button {
+    width: 30px;
+    height: 30px;
+  }
+
+  &__clear {
+    background-color: transparent;
+    border: none;
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+
+.details__price__selection--open {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  transition: color 0.3s ease;
+}
+
+.details__price__selection__container {
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: opacity 0.4s ease, max-height 0.4s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  &.show {
+    opacity: 1;
+    max-height: 200px;
+  }
+}
+
 #table__title {
   display: inline;
   justify-content: start;
@@ -167,5 +231,4 @@ input[type='radio'] {
 .star {
   cursor: pointer;
   font-size: 2rem;
-  margin: 5px;
 }

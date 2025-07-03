@@ -1,4 +1,4 @@
-import { Link, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { useEffect, useRef, useState } from 'react';
 import { AppDispatch, RootState } from '../app/store.ts';
 import { useDispatch, useSelector } from 'react-redux';
@@ -112,11 +112,8 @@ function Shop() {
       </aside>
       <main className="shop__right">
         <div className="shop__breadcrumb">
-          <div className="shop__breadcrumb__fixed">
-            <Link to="/">Home /</Link>
-          </div>
           <div className="shop__breadcrumb__path">
-            <BreadCrumb />
+            <BreadCrumb type={category} />
           </div>
         </div>
         <div className="shop__title">
