@@ -71,14 +71,6 @@
     }
   }
 
-  &__cart-icon {
-    display: none;
-
-    @include util.breakpoint('medium') {
-      display: block;
-    }
-  }
-
   &__cart-button:hover {
     cursor: pointer;
   }
@@ -113,5 +105,13 @@
     display: flex;
     align-items: center;
     justify-content: center;
+  }
+
+  &__cart-button {
+    display: none;
+
+    @include util.breakpoint('medium') {
+      display: flex;
+    }
   }
 }
