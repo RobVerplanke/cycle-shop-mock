@@ -4,6 +4,10 @@ import { IoMenu } from 'react-icons/io5';
 import { IoClose } from 'react-icons/io5';
 import { IoCart } from 'react-icons/io5';
 import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '../app/store';
+import { toggleCart } from '../features/cart/cartSlice';
+import CartPanel from './CartPanel';
 
 function Navbar() {
   const [isNavOpen, setIsNavOpen] = useState(false);
@@ -13,6 +17,13 @@ function Navbar() {
   const path = location.pathname;
   const transparentPaths = ['/', '/about', '/contact'];
   const isTransparent = transparentPaths.includes(path);
+
+  const dispatch = useDispatch();
+  const items = useSelector((state: RootState) => state.cart.items);
+  const total = items.reduce(
+    (sum, item) => sum + Number(item.price) * item.quantity,
+    0
+  );
 
   // Toggle menu hamburger icon, make menu visible if screen width becomes larger
   function toggleMenu() {
@@ -56,10 +67,22 @@ function Navbar() {
           </li>
         </ul>
 
-        <div className="navbar__cart-icon">
-          <IoCart size={20} />
+        <div
+          className="navbar__cart-button"
+          onClick={() => dispatch(toggleCart())}
+          role="button"
+          tabIndex={0}
+        >
+          <span className="navbar__cart-total">€ {total.toFixed(2)}</span>
+          <IoCart size={24} />
+          {items.length > 0 && (
+            <span className="navbar__cart-badge">{items.length}</span>
+          )}
         </div>
       </div>
+      <>
+        <CartPanel />
+      </>
     </nav>
   );
 }

@@ -159,3 +159,11 @@ a,
 .top-section__category {
   font-weight: bold;
 }
+
+.cart-panel {
+  &__footer {
+    & button {
+      font-weight: 700;
+    }
+  }
+}

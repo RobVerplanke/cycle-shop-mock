@@ -40,7 +40,7 @@ export default function PriceSelect({
       )[0].price;
 
       // Set price to be displayed
-      setPriceRange(`€${selectedPrice}`);
+      setPriceRange(`${selectedPrice}`);
     }
   }
 

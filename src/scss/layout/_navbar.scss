@@ -78,4 +78,40 @@
       display: block;
     }
   }
+
+  &__cart-button:hover {
+    cursor: pointer;
+  }
+
+  &__cart-button {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+
+    span {
+      font-weight: bold;
+    }
+  }
+
+  &__cart-total {
+    font-size: 0.9rem;
+  }
+
+  &__cart-badge {
+    position: absolute;
+    top: -6px;
+    right: -6px;
+    background-color: red;
+    color: white;
+    font-size: 0.7rem;
+    font-weight: bold;
+    border-radius: 999px;
+    width: 18px;
+    height: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 }

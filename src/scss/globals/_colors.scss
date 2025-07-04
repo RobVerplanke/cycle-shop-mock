@@ -259,6 +259,7 @@
 
   &__search-form button {
     background-color: #df453e;
+    border: none;
     transition: background-color 0.3s ease;
     color: white;
 
@@ -427,5 +428,43 @@
     border-bottom: 1px solid rgb(221, 221, 221);
     font-size: 1rem;
     line-height: 1.5;
+  }
+}
+
+.cart-overlay {
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.cart-panel {
+  background: #fff;
+  color: black;
+
+  .cart-header {
+    border-bottom: 1px solid #ccc;
+  }
+
+  .cart-items {
+    &__item-data {
+      border-bottom: 1px solid #ccc;
+    }
+  }
+
+  &__footer {
+    & button {
+      color: white;
+      background-color: #df453e;
+      transition: background-color 0.3s ease;
+      border: none;
+
+      &:hover {
+        cursor: pointer;
+        background-color: rgb(126, 36, 31);
+      }
+    }
+
+    &__subtotal {
+      border-bottom: 1px solid #ccc;
+      border-top: 1px solid #ccc;
+    }
   }
 }

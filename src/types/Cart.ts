@@ -9,4 +9,10 @@ export type CartItem = {
 
 export type CartState = {
   items: CartItem[];
+  isCartOpen: boolean;
+};
+
+export type CartRemoveProps = {
+  id: number;
+  size?: string;
 };
