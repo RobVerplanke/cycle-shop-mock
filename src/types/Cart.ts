@@ -1,0 +1,12 @@
+export type CartItem = {
+  id: number;
+  name: string;
+  price: string;
+  quantity: number;
+  image_url: string;
+  size?: string;
+};
+
+export type CartState = {
+  items: CartItem[];
+};

@@ -3,28 +3,60 @@ import { useLocation } from 'react-router-dom';
 import BreadCrumb from '../components/shop/BreadCrumb';
 import ProductReviews from '../components/shop/product-details/ProductReviews';
 import ProductReviewForm from '../components/shop/product-details/ProductReviewForm';
-import { Bicycle, ProductItem } from '../types/Product';
 import { ReviewCategory } from '../types/Review';
 import PriceRange from '../components/shop/PriceRange';
 import PriceSelect from '../components/shop/product-details/PriceSelect';
 import ProductCategory from '../components/shop/product-details/ProductCategory';
+import InnerImageZoom from 'react-inner-image-zoom';
+import 'react-inner-image-zoom/lib/styles.min.css';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '../app/store';
+import { addToCart, updateQuantity } from '../features/cart/cartSlice';
+import { hasFixedPrice } from '../utils/helperFunctions';
 
 export default function ProductDetails() {
+  const dispatch = useDispatch();
   const location = useLocation();
-  const product = location.state?.product as ProductItem | undefined;
+
+  const [amountOfItems, setAmountOfItems] = useState(1);
+  const product = location.state?.product;
   const [activeTab, setActiveTab] = useState('description');
 
-  if (!product) {
-    return <p>Productdetails not available</p>;
-  }
+  // Log cart items for testing
+  const cartItems = useSelector((state: RootState) => state.cart.items);
+  console.log('cartItems:', cartItems);
 
-  function hasFixedPrice(product: ProductItem): product is Bicycle {
-    return (product as Bicycle).price !== undefined;
-  }
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = Number(e.currentTarget.value);
+    setAmountOfItems(isNaN(value) ? 1 : value);
+    dispatch(
+      updateQuantity({
+        id: product.id,
+        quantity: amountOfItems,
+      })
+    );
+  };
+
+  const handleAdd = (price: string = product.price, size?: string) => {
+    dispatch(
+      addToCart({
+        id: product.id,
+        name: product.name,
+        price,
+        size,
+        quantity: amountOfItems,
+        image_url: product.image_url,
+      })
+    );
+  };
 
   function handleClick(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
     e.preventDefault();
     setActiveTab(e.currentTarget.value);
+  }
+
+  if (!product) {
+    return <p>Productdetails not available</p>;
   }
 
   return (
@@ -32,7 +64,14 @@ export default function ProductDetails() {
       <div className="details-container">
         <div className="top-section">
           <div className="top-section__image">
-            <img src={product.image_url} alt="" />
+            <InnerImageZoom
+              src={product.image_url}
+              zoomSrc={product.image_url}
+              zoomType="hover"
+              zoomScale={0.8}
+              width={400}
+              height={400}
+            />
           </div>
           <div className="top-section__details">
             <div className="top-section__breadcrumb">
@@ -60,11 +99,22 @@ export default function ProductDetails() {
             </div>
             {hasFixedPrice(product) ? (
               <div className="top-section__add-item">
-                <input type="number" />
-                <button>ADD TO CART</button>
+                <input
+                  type="number"
+                  value={amountOfItems}
+                  onChange={handleChange}
+                />
+                <button onClick={() => handleAdd(product.price.toString())}>
+                  ADD TO CART
+                </button>
               </div>
             ) : (
-              <PriceSelect prices={product.prices} />
+              <PriceSelect
+                prices={product.prices}
+                amount={amountOfItems}
+                onChange={handleChange}
+                handleAdd={handleAdd}
+              />
             )}
           </div>
         </div>

@@ -1,25 +1,26 @@
 import { useState } from 'react';
 import { PriceVariantsProps } from '../../../types/Product';
+import { getPriceRange } from '../../../utils/helperFunctions';
 
 export default function PriceSelect({
   prices,
+  amount,
+  onChange,
+  handleAdd,
 }: {
   prices: PriceVariantsProps;
+  amount: number;
+  onChange(e: React.ChangeEvent<HTMLInputElement>): void;
+  handleAdd: (price: string, size?: string) => void;
 }) {
-  // Select the lowest and highest price variant for this specific product
-  function getPriceRange(prices: PriceVariantsProps): string {
-    if (!prices.length) return 'No prices available';
-
-    const sorted = [...prices].sort((a, b) => a.price - b.price);
-    const lowest = sorted[0].price;
-    const highest = sorted[sorted.length - 1].price;
-
-    return lowest === highest ? `€${lowest}` : `€${lowest} - €${highest}`;
-  }
-
   // Price(s) to be displayed, by default show the lowest and the highest price
   const [activeVariant, setActiveVariant] = useState<string>('');
   const [priceRange, setPriceRange] = useState<string>(getPriceRange(prices));
+
+  // Deselect size button
+  function clearPriceSelection() {
+    setActiveVariant('');
+  }
 
   // Adjust the displayed price, based on the selected price variant
   function handleClick(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
@@ -29,7 +30,7 @@ export default function PriceSelect({
     const clickedSize = e.currentTarget.id;
 
     if (activeVariant === clickedSize) {
-      setActiveVariant(''); // Deselect size button
+      clearPriceSelection(); // Deselect size button
     } else {
       setActiveVariant(clickedSize); // Update selected size
 
@@ -41,10 +42,6 @@ export default function PriceSelect({
       // Set price to be displayed
       setPriceRange(`€${selectedPrice}`);
     }
-  }
-
-  function clearPriceSelection() {
-    setActiveVariant(''); // Deselect size button
   }
 
   return (
@@ -66,7 +63,6 @@ export default function PriceSelect({
         ))}
       </div>
 
-      {/* Altijd renderen, animatie op basis van klasse */}
       <div
         className={`details__price__selection__container ${
           activeVariant !== '' ? 'show' : ''
@@ -81,8 +77,13 @@ export default function PriceSelect({
         <div className="details__price__selection__value">{priceRange}</div>
       </div>
       <div className="top-section__add-item">
-        <input type="number" />
-        <button disabled={activeVariant === ''}>ADD TO CART</button>
+        <input type="number" onChange={onChange} value={amount} />
+        <button
+          disabled={activeVariant === ''}
+          onClick={() => handleAdd(priceRange, activeVariant)}
+        >
+          ADD TO CART
+        </button>
       </div>
     </div>
   );

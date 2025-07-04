@@ -7,8 +7,6 @@ export default function BreadCrumb({
   type: string;
   name?: string;
 }) {
-  console.log('type: ', type);
-
   const path =
     type === 'bicycles' || type === 'bike'
       ? `/product-category/bicycles`
