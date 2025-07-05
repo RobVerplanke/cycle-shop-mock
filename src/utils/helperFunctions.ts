@@ -1,4 +1,6 @@
+import { useLocation } from 'react-router-dom';
 import { Bicycle, PriceVariantsProps, ProductItem } from '../types/Product';
+import { useEffect } from 'react';
 
 // Capitalize only the first letter of a string
 export function capitalizeString(name: string) {
@@ -30,3 +32,14 @@ export function calculateSubTotal(price: string, quantity: number) {
   const subTotal = Number(price) * quantity;
   return subTotal.toFixed(2);
 }
+
+// Make sure the scroll postion is set to the top of the page when rendered
+export const ScrollToTop = () => {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return null;
+};

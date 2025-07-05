@@ -112,3 +112,20 @@
   display: flex;
   align-items: baseline;
 }
+
+.confirm-message {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  height: 80px;
+  padding: 1rem;
+
+  &__text {
+    display: flex;
+    gap: 10px;
+  }
+
+  &__button button {
+    padding: 1rem 2rem;
+  }
+}

@@ -14,6 +14,7 @@ import { addToCart, updateQuantity } from '../features/cart/cartSlice';
 import { hasFixedPrice } from '../utils/helperFunctions';
 import { RootState } from '../app/store';
 import { Accessory, Bicycle } from '../types/Product';
+import { ConfirmAddToCart } from '../components/shop/product-details/ConfirmAddToCart';
 
 export default function ProductDetails() {
   const dispatch = useDispatch();
@@ -40,6 +41,7 @@ export default function ProductDetails() {
   // States
   const [amountOfItems, setAmountOfItems] = useState(1);
   const [activeTab, setActiveTab] = useState('description');
+  const [confirmMessageVissible, setConfirmMessageVissible] = useState(false);
 
   // In case there is no corresponding product found
   if (!product) {
@@ -71,6 +73,8 @@ export default function ProductDetails() {
         image_url: product.image_url,
       })
     );
+    setAmountOfItems(1); // Reset quantity field
+    setConfirmMessageVissible(true); // Confirm item is added to cart
   };
 
   // Handle change between tabs
@@ -82,6 +86,7 @@ export default function ProductDetails() {
   return (
     <div className="details">
       <div className="details-container">
+        {confirmMessageVissible && <ConfirmAddToCart name={product.name} />}
         <div className="top-section">
           <div className="top-section__image">
             <InnerImageZoom
