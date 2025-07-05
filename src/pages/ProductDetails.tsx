@@ -67,6 +67,8 @@ export default function ProductDetails() {
         id: product.id,
         type: product.type,
         name: product.name,
+        introduction: product.introduction,
+        description: product.description,
         price,
         size,
         quantity: amountOfItems,

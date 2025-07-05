@@ -20,6 +20,11 @@ const cartSlice = createSlice({
 
       if (item) {
         item.quantity += action.payload.quantity;
+        item.price = action.payload.price;
+        item.name = action.payload.name;
+        item.description = action.payload.description;
+        item.introduction = action.payload.introduction;
+        item.image_url = action.payload.image_url;
       } else {
         state.items.push(action.payload);
       }
