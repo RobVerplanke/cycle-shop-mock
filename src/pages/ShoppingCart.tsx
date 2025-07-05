@@ -1,6 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../app/store';
-// import { Link } from 'react-router-dom';
 import { CartItem } from '../types/Cart';
 import { IoCloseCircleOutline } from 'react-icons/io5';
 import { removeFromCart, updateQuantity } from '../features/cart/cartSlice';
@@ -142,9 +141,6 @@ function ShoppingCart() {
               </tbody>
             </table>
           </div>
-          {/* <div className="cart__totals">
-          <Link to="/checkout">Checkout</Link>
-        </div> */}
         </div>
 
         <div className="subtotals">
@@ -169,7 +165,9 @@ function ShoppingCart() {
               <tr>
                 <td colSpan={2}>
                   <div className="subtotals__table__proceed">
-                    <button>PROCEED TO CHECKOUT</button>
+                    <Link to="/checkout">
+                      <button>PROCEED TO CHECKOUT</button>
+                    </Link>
                   </div>
                 </td>
               </tr>

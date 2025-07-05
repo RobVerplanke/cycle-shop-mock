@@ -4,6 +4,8 @@ export type CartItem = {
   id: number;
   type: ShopCategoriesUrl;
   name: string;
+  introduction: string;
+  description: string;
   price: string;
   quantity: number;
   image_url: string;

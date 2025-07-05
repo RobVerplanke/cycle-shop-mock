@@ -1,11 +1,11 @@
-import About from '../pages/About';
-import Contact from '../pages/Contact';
-import ErrorPage from '../pages/ErrorPage';
-import Home from '../pages/Home';
-import ProductDetails from '../pages/ProductDetails';
+import About from './About';
+import Contact from './Contact';
+import ErrorPage from './ErrorPage';
+import Home from './Home';
+import ProductDetails from './ProductDetails';
 import Shop from './Shop';
-import ShoppingCart from '../pages/ShoppingCart';
-import Checkout from './Checkout';
+import ShoppingCart from './ShoppingCart';
+import CheckoutForm from './CheckoutForm';
 
 export {
   About,
@@ -15,5 +15,5 @@ export {
   ProductDetails,
   Shop,
   ShoppingCart,
-  Checkout,
+  CheckoutForm,
 };
