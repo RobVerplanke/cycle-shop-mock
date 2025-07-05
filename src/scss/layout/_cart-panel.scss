@@ -69,7 +69,9 @@
       }
 
       &__name {
+        height: 1rem;
         display: flex;
+        align-items: baseline;
       }
 
       &__image img {

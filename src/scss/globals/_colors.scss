@@ -500,15 +500,6 @@
       input[type='number'] {
         border: 1px solid #ccc;
       }
-
-      .cart-item__close-button {
-        color: #888;
-        transition: color 0.2s ease;
-
-        &:hover {
-          color: #e63946;
-        }
-      }
     }
   }
 
@@ -522,6 +513,16 @@
         background-color: #d62839;
       }
     }
+  }
+}
+
+.cart-item__close-button {
+  color: #888;
+  transition: color 0.2s ease;
+
+  &:hover {
+    cursor: pointer;
+    color: #e63946;
   }
 }
 
