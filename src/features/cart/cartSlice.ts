@@ -32,11 +32,12 @@ const cartSlice = createSlice({
     },
     updateQuantity: (
       state,
-      action: PayloadAction<{ id: number; quantity: number }>
+      action: PayloadAction<{ id: number; quantity: number; size?: string }>
     ) => {
-      const item = state.items.find((i) => i.id === action.payload.id);
+      const { id, quantity, size } = action.payload;
+      const item = state.items.find((i) => i.id === id && i.size === size);
       if (item) {
-        item.quantity = action.payload.quantity;
+        item.quantity = quantity;
       }
     },
     clearCart: (state) => {

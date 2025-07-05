@@ -2,6 +2,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { removeFromCart, toggleCart } from '../features/cart/cartSlice';
 import { RootState } from '../app/store';
 import { IoCloseSharp, IoCloseCircleOutline } from 'react-icons/io5';
+import { Link } from 'react-router-dom';
 
 export default function CartPanel() {
   const isOpen = useSelector((state: RootState) => state.cart.isCartOpen);
@@ -35,7 +36,13 @@ export default function CartPanel() {
                 </div>
                 <div className="cart-item__text">
                   <div className="cart-item__name">
-                    <p>{item.name}</p>
+                    <Link
+                      to={`/product/${item.type}/${item.id}`}
+                      onClick={() => dispatch(toggleCart())}
+                      state={{ product: item }}
+                    >
+                      {item.name}
+                    </Link>
                     {item.size && <p>&nbsp;-&nbsp;{item.size}</p>}
                   </div>
                   <div className="cart-item__price">
@@ -63,8 +70,20 @@ export default function CartPanel() {
               € {total.toFixed(2)}
             </div>
           </div>
-          <button>VIEW CART</button>
-          <button>CHECKOUT</button>
+          <div className="cart-panel__footer__buttons">
+            <div>
+              <Link to="/cart">
+                <button onClick={() => dispatch(toggleCart())}>
+                  VIEW CART
+                </button>
+              </Link>
+            </div>
+            <div>
+              <Link to="/cart">
+                <button>CHECKOUT</button>
+              </Link>
+            </div>
+          </div>
         </div>
       </div>
     </>

@@ -468,3 +468,112 @@
     }
   }
 }
+
+.page-holder {
+  background-color: #ddd;
+  color: black;
+}
+
+.table-container {
+  background-color: white;
+}
+
+.cart {
+  &__items {
+    &__table {
+      border: 1px solid #ccc;
+      border-collapse: collapse;
+
+      th {
+        background-color: #f5f5f5;
+        border-bottom: 2px solid #ccc;
+      }
+
+      td {
+        border-bottom: 1px solid #ccc;
+      }
+
+      tr:last-child td {
+        border-bottom: none;
+      }
+
+      input[type='number'] {
+        border: 1px solid #ccc;
+      }
+
+      .cart-item__close-button {
+        color: #888;
+        transition: color 0.2s ease;
+
+        &:hover {
+          color: #e63946;
+        }
+      }
+    }
+  }
+
+  &__totals {
+    a {
+      background-color: #e63946;
+      color: #fff;
+      transition: background-color 0.2s ease;
+
+      &:hover {
+        background-color: #d62839;
+      }
+    }
+  }
+}
+
+.subtotals {
+  &__table {
+    border: 1px solid #ccc;
+    border-collapse: collapse;
+
+    th {
+      background-color: #f5f5f5;
+      border-bottom: 2px solid #ccc;
+    }
+
+    td {
+      border-bottom: 1px solid #ccc;
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    &__proceed {
+      button {
+        border: none;
+        background-color: #df453e;
+        transition: background-color 0.3s ease;
+        color: white;
+
+        &:hover {
+          background-color: #d62839;
+        }
+      }
+    }
+  }
+}
+
+.cart-coupon button {
+  border: none;
+  background-color: #df453e;
+  transition: background-color 0.3s ease;
+  color: white;
+}
+
+.cart-coupon,
+.cart-update {
+  &__button button {
+    border: none;
+    background-color: #df453e;
+    transition: background-color 0.3s ease;
+    color: white;
+    &:hover {
+      background-color: #d62839;
+    }
+  }
+}

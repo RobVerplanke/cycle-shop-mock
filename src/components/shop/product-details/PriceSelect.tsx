@@ -77,7 +77,13 @@ export default function PriceSelect({
         <div className="details__price__selection__value">{priceRange}</div>
       </div>
       <div className="top-section__add-item">
-        <input type="number" onChange={onChange} value={amount} />
+        <input
+          min="1"
+          step="1"
+          type="number"
+          onChange={onChange}
+          value={amount}
+        />
         <button
           disabled={activeVariant === ''}
           onClick={() => handleAdd(priceRange, activeVariant)}

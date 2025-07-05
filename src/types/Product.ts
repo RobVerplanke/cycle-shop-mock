@@ -39,3 +39,4 @@ export type Price = {
 export type PriceFilterProps = Bicycle[] | Price[];
 
 export type ShopCategories = 'bicycles' | 'accessories';
+export type ShopCategoriesUrl = 'bike' | 'accessory';

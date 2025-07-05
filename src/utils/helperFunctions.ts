@@ -24,3 +24,9 @@ export function getPriceRange(prices: PriceVariantsProps): string {
 export function hasFixedPrice(product: ProductItem): product is Bicycle {
   return (product as Bicycle).price !== undefined;
 }
+
+// Calculate the subtotal for an item
+export function calculateSubTotal(price: string, quantity: number) {
+  const subTotal = Number(price) * quantity;
+  return subTotal.toFixed(2);
+}

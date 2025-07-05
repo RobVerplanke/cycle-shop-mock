@@ -167,3 +167,46 @@ a,
     }
   }
 }
+
+.cart {
+  &__items {
+    &__table {
+      th {
+        font-weight: 600;
+      }
+    }
+  }
+
+  &__totals {
+    a {
+      text-decoration: none;
+      font-weight: 600;
+    }
+  }
+}
+
+.cart-product-name {
+  font-weight: 700;
+  font-size: 0.9em;
+}
+
+.cart-coupon,
+.cart-update {
+  &__button button {
+    font-weight: 700;
+  }
+
+  &__input input {
+    font-weight: 700;
+  }
+}
+
+.subtotals {
+  &__table {
+    &__proceed {
+      button {
+        font-weight: 700;
+      }
+    }
+  }
+}

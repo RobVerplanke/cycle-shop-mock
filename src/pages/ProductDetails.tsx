@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 import BreadCrumb from '../components/shop/BreadCrumb';
 import ProductReviews from '../components/shop/product-details/ProductReviews';
 import ProductReviewForm from '../components/shop/product-details/ProductReviewForm';
@@ -10,37 +10,60 @@ import ProductCategory from '../components/shop/product-details/ProductCategory'
 import InnerImageZoom from 'react-inner-image-zoom';
 import 'react-inner-image-zoom/lib/styles.min.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from '../app/store';
 import { addToCart, updateQuantity } from '../features/cart/cartSlice';
 import { hasFixedPrice } from '../utils/helperFunctions';
+import { RootState } from '../app/store';
+import { Accessory, Bicycle } from '../types/Product';
 
 export default function ProductDetails() {
   const dispatch = useDispatch();
   const location = useLocation();
+  const { category, id } = useParams<{ category: string; id: string }>();
+  const fallbackProduct = location.state?.product;
 
+  // Get a list of all products from the chossen categroy
+  const product =
+    useSelector((state: RootState) => {
+      if (category === 'bicycle') {
+        return state.bicycles.allBicycles.find(
+          (p: Bicycle) => p.id === Number(id)
+        );
+      }
+      if (category === 'accessory') {
+        return state.accessories.allAccessories.find(
+          (p: Accessory) => p.id === Number(id)
+        );
+      }
+      return null;
+    }) || fallbackProduct;
+
+  // States
   const [amountOfItems, setAmountOfItems] = useState(1);
-  const product = location.state?.product;
   const [activeTab, setActiveTab] = useState('description');
 
-  // Log cart items for testing
-  const cartItems = useSelector((state: RootState) => state.cart.items);
-  console.log('cartItems:', cartItems);
+  // In case there is no corresponding product found
+  if (!product) {
+    return <p>Product not found.</p>;
+  }
 
+  // Update the quantity value after change
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = Number(e.currentTarget.value);
     setAmountOfItems(isNaN(value) ? 1 : value);
+  };
+
+  // On submit, update the product with the new quantity value and add the product to the cart
+  const handleAdd = (price: string = product.price, size?: string) => {
     dispatch(
       updateQuantity({
         id: product.id,
         quantity: amountOfItems,
       })
     );
-  };
-
-  const handleAdd = (price: string = product.price, size?: string) => {
     dispatch(
       addToCart({
         id: product.id,
+        type: product.type,
         name: product.name,
         price,
         size,
@@ -50,13 +73,10 @@ export default function ProductDetails() {
     );
   };
 
+  // Handle change between tabs
   function handleClick(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
     e.preventDefault();
     setActiveTab(e.currentTarget.value);
-  }
-
-  if (!product) {
-    return <p>Productdetails not available</p>;
   }
 
   return (
@@ -101,6 +121,9 @@ export default function ProductDetails() {
               <div className="top-section__add-item">
                 <input
                   type="number"
+                  min="1"
+                  step="1"
+                  inputMode="numeric"
                   value={amountOfItems}
                   onChange={handleChange}
                 />

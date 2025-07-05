@@ -8,6 +8,7 @@ import {
   ProductDetails,
   Shop,
   Checkout,
+  ShoppingCart,
 } from '../pages/index';
 
 const router = createBrowserRouter([
@@ -35,6 +36,10 @@ const router = createBrowserRouter([
       {
         path: 'about', // About page
         element: <About />,
+      },
+      {
+        path: 'cart', // Cart page
+        element: <ShoppingCart />,
       },
       {
         path: 'checkout', // Checkout page
