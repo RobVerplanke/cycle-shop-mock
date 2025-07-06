@@ -52,9 +52,11 @@ const bicycleSlice = createSlice({
     builder.addCase(fetchAllBicycles.fulfilled, (state, action) => {
       state.allBicycles = action.payload;
       state.bicycles = action.payload;
+      state.loading = false;
     });
     builder.addCase(fetchFilteredBicycles.fulfilled, (state, action) => {
       state.bicycles = action.payload;
+      state.loading = false;
     });
     builder.addCase(fetchAllBicycles.rejected, (state, action) => {
       state.loading = false;

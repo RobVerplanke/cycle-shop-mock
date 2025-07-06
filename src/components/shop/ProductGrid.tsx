@@ -1,4 +1,4 @@
-// import { SyncLoader } from 'react-spinners';
+import { SyncLoader } from 'react-spinners';
 import { ProductCard } from './ProductCard';
 import {
   Accessory,
@@ -29,6 +29,14 @@ export default function ProductGrid({
   const accessories = useSelector(
     (state: RootState) => state.accessories.accessories
   );
+
+  const isLoadingBicycles = useSelector(
+    (state: RootState) => state.bicycles.loading
+  );
+  const isLoadingAccessories = useSelector(
+    (state: RootState) => state.accessories.loading
+  );
+  const isLoading = isLoadingBicycles || isLoadingAccessories;
 
   // Keep displayed products seperate from the list with all products
   const filteredAccessories = useMemo(() => {
@@ -62,20 +70,29 @@ export default function ProductGrid({
 
   return (
     <>
-      <div className="shop__list-header">
-        <ProductGridHeader
-          productList={productList}
-          searchParams={searchParams}
-          setSearchParams={setSearchParams}
-        />
-      </div>
-
-      {/* <div className="shop__spinner">
-        <SyncLoader color="#df453e" margin={6} size={12} />
-      </div> */}
-      {productList.map((product: ProductItem) => (
-        <ProductCard key={product.id} product={product} />
-      ))}
+      {isLoading ? (
+        <div className="shop__spinner">
+          <div>
+            <SyncLoader color="#df453e" margin={6} size={12} />
+          </div>
+          <div>Loading... This can take a while.</div>
+        </div>
+      ) : productList.length ? (
+        <>
+          <div className="shop__list-header">
+            <ProductGridHeader
+              productList={productList}
+              searchParams={searchParams}
+              setSearchParams={setSearchParams}
+            />
+          </div>
+          {productList.map((product: ProductItem) => (
+            <ProductCard key={product.id} product={product} />
+          ))}
+        </>
+      ) : (
+        <p>No products found.</p>
+      )}
     </>
   );
 }

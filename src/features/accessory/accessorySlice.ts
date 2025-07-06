@@ -52,9 +52,11 @@ const accessorySlice = createSlice({
     builder.addCase(fetchAllAccessories.fulfilled, (state, action) => {
       state.allAccessories = action.payload;
       state.accessories = action.payload;
+      state.loading = false;
     });
     builder.addCase(fetchFilteredAccessories.fulfilled, (state, action) => {
       state.accessories = action.payload;
+      state.loading = false;
     });
     builder.addCase(fetchAllAccessories.rejected, (state, action) => {
       state.loading = false;
