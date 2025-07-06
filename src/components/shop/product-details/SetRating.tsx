@@ -1,8 +1,10 @@
 import { FaStar } from 'react-icons/fa6';
 import { SetRatingProps } from '../../../types/Review';
+import { MAX_AMOUNT_STARS } from '../../../library/constants';
 
 export default function SetRating({ register, currentRating }: SetRatingProps) {
-  const totalStars = 5;
+  // Set maximum amount of rating stars/points
+  const totalStars = MAX_AMOUNT_STARS;
 
   return (
     <>
