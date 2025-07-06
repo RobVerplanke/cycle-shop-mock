@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 
+// Show location at the top of the shop and details page
 export default function BreadCrumb({
   type,
   name,
@@ -7,11 +8,13 @@ export default function BreadCrumb({
   type: string;
   name?: string;
 }) {
+  // Create a custom path for each category
   const path =
     type === 'bicycles' || type === 'bike'
       ? `/product-category/bicycles`
       : `/product-category/accessories`;
 
+  // Make text presentable to display
   const CapitalizedType =
     type === 'bicycles' || type === 'bike' ? 'Bicycles' : 'Accessories';
 

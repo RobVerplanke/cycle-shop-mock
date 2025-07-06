@@ -10,14 +10,17 @@ import { toggleCart } from '../features/cart/cartSlice';
 import CartPanel from './CartPanel';
 
 function Navbar() {
+  // States
   const [isNavOpen, setIsNavOpen] = useState(false);
   const [isNavVisible, setIsNavVisible] = useState(true);
 
+  // Make header for the Homepage, Aboutpage and Contactpage transparent
   const location = useLocation();
   const path = location.pathname;
   const transparentPaths = ['/', '/about', '/contact'];
   const isTransparent = transparentPaths.includes(path);
 
+  // Get the amount of items in the cart
   const dispatch = useDispatch();
   const items = useSelector((state: RootState) => state.cart.items);
   const total = items.reduce(

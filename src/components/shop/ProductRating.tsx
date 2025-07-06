@@ -20,6 +20,7 @@ export default function ProductRating({ product }: { product: ProductItem }) {
   );
 }
 
+// Convert rating points to full stars
 export function ReviewRating({ review }: { review: ReviewFormData }) {
   const fullStars = review.rating;
 

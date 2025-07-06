@@ -13,7 +13,7 @@ function ShoppingCart() {
   // Get all cart items
   const items = useSelector((state: RootState) => state.cart.items);
 
-  // State
+  // States
   const [totalPrice, setTotalPrice] = useState(0);
   const [quantities, setQuantities] = useState<{ [key: string]: number }>({});
 

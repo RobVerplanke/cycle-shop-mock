@@ -3,6 +3,7 @@ import ProductRating from './ProductRating';
 import ProductPrice from './ProductPrice';
 import { Link } from 'react-router-dom';
 
+// Product card
 export function ProductCard({ product }: { product: ProductItem }) {
   return (
     <div className="card">

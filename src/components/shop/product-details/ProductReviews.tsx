@@ -8,19 +8,24 @@ import { ReviewRating } from '../ProductRating';
 export default function ProductReviews({ item_id, item_type }: ReviewProps) {
   const dispatch = useDispatch<AppDispatch>();
 
+  // Get all reviews for the selected product
   const productReviews = useSelector((state: RootState) =>
     state.reviews.reviews.filter(
       (review: ReviewProps) =>
         review.item_id === item_id && review.item_type === item_type
     )
   );
+
+  // Determine if there are any reviews
   const reviewsLoaded = productReviews.length > 0;
 
+  // Keep reviews up-to-date
   useEffect(() => {
     if (!reviewsLoaded)
       dispatch(fetchReviews({ category: item_type, id: item_id }));
   }, [dispatch, item_id, item_type, reviewsLoaded]);
 
+  // No reviews are written yet for this product
   if (!productReviews.length) {
     return (
       <div className="reviews">
@@ -33,6 +38,7 @@ export default function ProductReviews({ item_id, item_type }: ReviewProps) {
     );
   }
 
+  // There is at least one review written for this product
   return (
     <div className="reviews">
       {productReviews.map((review: ReviewFormData, index) => (

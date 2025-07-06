@@ -12,6 +12,7 @@ export default function ProductReviewForm({ item_id, item_type }: ReviewProps) {
   const { register, handleSubmit, watch, reset } = useForm<ReviewFormData>();
   const rating = watch('rating');
 
+  // Send data to the back-end server
   async function onSubmit(data: ReviewFormData) {
     // Add additional required data to the form data
     const payload = {

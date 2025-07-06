@@ -1,7 +1,7 @@
 import { sortingOptions } from '../../library/sortingOptions';
 import { ProductItem } from '../../types/Product';
 
-type Props = {
+type GridHeaderProps = {
   productList: ProductItem[];
   searchParams: URLSearchParams;
   setSearchParams: (
@@ -13,10 +13,12 @@ export default function ProductGridHeader({
   productList,
   searchParams,
   setSearchParams,
-}: Props) {
+}: GridHeaderProps) {
+  //Determine selected sorting method
   const currentSortParam = searchParams.get('sort') ?? 'added';
   const currentDirectionParam = searchParams.get('direction') ?? 'desc';
 
+  // If price is selected as sorting option, also determine the sorting direction
   const currentOption =
     sortingOptions.find((opt) => {
       if (opt.sort === 'price') {

@@ -1,6 +1,7 @@
 import { GiConfirmed } from 'react-icons/gi';
 import { Link } from 'react-router-dom';
 
+// Confirm message, shown at the top og the page when a product is added to the cart succesfully
 export function ConfirmAddToCart({ name }: { name: string }) {
   return (
     <div className="confirm-message">

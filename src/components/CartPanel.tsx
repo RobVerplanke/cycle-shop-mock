@@ -5,10 +5,13 @@ import { IoCloseSharp, IoCloseCircleOutline } from 'react-icons/io5';
 import { Link } from 'react-router-dom';
 
 export default function CartPanel() {
-  const isOpen = useSelector((state: RootState) => state.cart.isCartOpen);
-  const items = useSelector((state: RootState) => state.cart.items);
   const dispatch = useDispatch();
 
+  // Get cart items and a open/close state for the side panel
+  const items = useSelector((state: RootState) => state.cart.items);
+  const isOpen = useSelector((state: RootState) => state.cart.isCartOpen);
+
+  // Calculate the total of the subtotals, shown as 'Subtotal' at the bottom of the panel
   const total = items.reduce(
     (sum, item) => sum + Number(item.price) * item.quantity,
     0

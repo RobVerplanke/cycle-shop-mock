@@ -37,6 +37,7 @@ export default function PriceFilter({
   const [priceFilterHighEnd, setPriceFilterHighEnd] =
     useState<number>(maxPrice);
 
+  // Keep values up-to-date
   useEffect(() => {
     if (hasPrices) {
       setPriceFilterLowEnd(minPrice);
@@ -44,11 +45,6 @@ export default function PriceFilter({
       setPriceRange([minPrice, maxPrice]);
     }
   }, [minPrice, maxPrice, setPriceRange, hasPrices]);
-
-  // Directly update product list when price range is adjusted on the filter
-  // useEffect(() => {
-  //   setPriceRange([priceFilterLowEnd, priceFilterHighEnd]);
-  // }, [priceFilterLowEnd, priceFilterHighEnd, setPriceRange]);
 
   // Check if prices are loaded
   if (!hasPrices) return null;

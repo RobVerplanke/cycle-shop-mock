@@ -1,5 +1,6 @@
 import { SortingOption } from '../types/SortingOptions';
 
+// Set content for the sorting options selection
 export const sortingOptions: SortingOption[] = [
   { text: 'Default sorting', value: 'default', sort: 'added' },
   { text: 'Sort by popularity', value: 'popularity', sort: 'popularity' },

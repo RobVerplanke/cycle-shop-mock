@@ -10,7 +10,7 @@ const initialState = {
   error: '',
 };
 
-// Get ALL bike
+// Get ALL bikes
 export const fetchAllBicycles = createAsyncThunk(
   'bicycle/fetchAllBicycles',
   async () => {

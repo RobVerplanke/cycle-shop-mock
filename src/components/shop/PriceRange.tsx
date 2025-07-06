@@ -6,6 +6,7 @@ export default function PriceRange({ prices }: { prices: PriceVariantsProps }) {
   function getPriceRange(prices: PriceVariantsProps): string {
     if (!prices.length) return 'No prices available';
 
+    // Sort the prices and select the lowest and highest price
     const sorted = [...prices].sort((a, b) => a.price - b.price);
     const lowest = sorted[0].price;
     const highest = sorted[sorted.length - 1].price;
