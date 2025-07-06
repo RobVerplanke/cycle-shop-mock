@@ -8,7 +8,7 @@ import {
   ProductDetails,
   Shop,
   ShoppingCart,
-  CheckoutForm,
+  CheckoutPage,
 } from '../pages/index';
 
 const router = createBrowserRouter([
@@ -43,7 +43,7 @@ const router = createBrowserRouter([
       },
       {
         path: 'checkout', // Checkout page
-        element: <CheckoutForm />,
+        element: <CheckoutPage />,
       },
     ],
   },

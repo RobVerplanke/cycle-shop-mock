@@ -5,7 +5,7 @@ import Home from './Home';
 import ProductDetails from './ProductDetails';
 import Shop from './Shop';
 import ShoppingCart from './ShoppingCart';
-import CheckoutForm from './CheckoutForm';
+import CheckoutPage from './CheckoutPage';
 
 export {
   About,
@@ -15,5 +15,5 @@ export {
   ProductDetails,
   Shop,
   ShoppingCart,
-  CheckoutForm,
+  CheckoutPage,
 };

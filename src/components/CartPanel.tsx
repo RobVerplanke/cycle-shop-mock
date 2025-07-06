@@ -104,8 +104,10 @@ export default function CartPanel() {
                   </Link>
                 </div>
                 <div>
-                  <Link to="/cart">
-                    <button>CHECKOUT</button>
+                  <Link to="/checkout">
+                    <button onClick={() => dispatch(toggleCart())}>
+                      CHECKOUT
+                    </button>
                   </Link>
                 </div>
               </>

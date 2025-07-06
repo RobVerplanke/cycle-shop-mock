@@ -217,3 +217,12 @@ a,
     }
   }
 }
+
+.checkout-products {
+  background-color: #ddd;
+
+  &__cart-badge {
+    font-size: 0.7rem;
+    font-weight: bold;
+  }
+}

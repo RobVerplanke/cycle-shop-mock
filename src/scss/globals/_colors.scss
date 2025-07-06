@@ -593,3 +593,18 @@
     }
   }
 }
+
+.checkout-page {
+  background-color: white;
+  color: black;
+}
+
+.checkout-products {
+  background-color: #ddd;
+
+  &__cart-badge {
+    background-color: red;
+    color: white;
+    border-radius: 999px;
+  }
+}

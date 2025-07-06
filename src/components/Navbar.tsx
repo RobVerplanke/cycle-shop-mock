@@ -34,6 +34,10 @@ function Navbar() {
     setIsNavVisible(!isNavVisible);
   }
 
+  function handleClick() {
+    if (!path.includes('/cart')) dispatch(toggleCart());
+  }
+
   return (
     <nav className={isTransparent ? 'navbar_transparent' : 'navbar_red'}>
       <div className="navbar__container">
@@ -72,7 +76,7 @@ function Navbar() {
 
         <div
           className="navbar__cart-button"
-          onClick={() => dispatch(toggleCart())}
+          onClick={handleClick}
           role="button"
           tabIndex={0}
         >
