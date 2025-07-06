@@ -185,6 +185,12 @@ a,
   }
 }
 
+.cart-items {
+  &__empty {
+    font-weight: 600;
+  }
+}
+
 .cart-product-name,
 .cart-item__name {
   font-weight: 700;

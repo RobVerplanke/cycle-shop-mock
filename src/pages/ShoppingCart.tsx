@@ -48,132 +48,141 @@ function ShoppingCart() {
   return (
     <div className="page-holder">
       <div className="table-container">
-        <div className="cart">
-          <h5>Cart</h5>
-          <br />
-          <div className="cart__items">
-            <table className="cart__items__table">
-              <thead>
-                <tr>
-                  <th>Remove</th>
-                  <th>Image</th>
-                  <th>Product</th>
-                  <th>Price</th>
-                  <th>Quantity</th>
-                  <th>Subtotal</th>
-                </tr>
-              </thead>
-              <tbody>
-                {items.map((item: CartItem, index) => {
-                  const key = `${item.id}-${item.size ?? ''}`;
-                  return (
-                    <tr key={index}>
-                      <td>
-                        <IoCloseCircleOutline
-                          className="cart-item__close-button"
-                          size={30}
-                          onClick={() =>
-                            dispatch(
-                              removeFromCart({ id: item.id, size: item.size })
-                            )
-                          }
-                        />
-                      </td>
-                      <td id="cart-product-image">
-                        <img src={item.image_url} alt="Product image" />
-                      </td>
-                      <td>
-                        <div className="cart-product-name">
-                          <Link
-                            to={`/product/${item.type}/${item.id}`}
-                            state={{ product: item }}
-                          >
-                            {item.name}
-                          </Link>
-                          {item.size && <p>&nbsp;-&nbsp;{item.size}</p>}
+        {items.length === 0 ? (
+          <p>Your cart is currently empty.</p>
+        ) : (
+          <>
+            <div className="cart">
+              <h5>Cart</h5>
+              <br />
+              <div className="cart__items">
+                <table className="cart__items__table">
+                  <thead>
+                    <tr>
+                      <th>Remove</th>
+                      <th>Image</th>
+                      <th>Product</th>
+                      <th>Price</th>
+                      <th>Quantity</th>
+                      <th>Subtotal</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {items.map((item: CartItem, index) => {
+                      const key = `${item.id}-${item.size ?? ''}`;
+                      return (
+                        <tr key={index}>
+                          <td>
+                            <IoCloseCircleOutline
+                              className="cart-item__close-button"
+                              size={30}
+                              onClick={() =>
+                                dispatch(
+                                  removeFromCart({
+                                    id: item.id,
+                                    size: item.size,
+                                  })
+                                )
+                              }
+                            />
+                          </td>
+                          <td id="cart-product-image">
+                            <img src={item.image_url} alt="Product image" />
+                          </td>
+                          <td>
+                            <div className="cart-product-name">
+                              <Link
+                                to={`/product/${item.type}/${item.id}`}
+                                state={{ product: item }}
+                              >
+                                {item.name}
+                              </Link>
+                              {item.size && <p>&nbsp;-&nbsp;{item.size}</p>}
+                            </div>
+                          </td>
+                          <td>€{Number(item.price).toFixed(2)}</td>
+                          <td>
+                            <input
+                              type="number"
+                              min="1"
+                              step="1"
+                              inputMode="numeric"
+                              value={quantities[key] ?? item.quantity}
+                              onChange={(e) =>
+                                setQuantities({
+                                  ...quantities,
+                                  [key]: Number(e.target.value),
+                                })
+                              }
+                            />
+                          </td>
+                          <td>
+                            €
+                            {calculateSubTotal(
+                              item.price,
+                              quantities[key] ?? item.quantity
+                            )}
+                          </td>
+                        </tr>
+                      );
+                    })}
+                    <tr>
+                      <td colSpan={4}>
+                        <div className="cart-coupon">
+                          <div className="cart-coupon__input">
+                            <input type="text" placeholder="Coupon code" />
+                          </div>
+                          <div className="cart-coupon__button">
+                            <button>APPLY COUPON</button>
+                          </div>
                         </div>
                       </td>
-                      <td>€{Number(item.price).toFixed(2)}</td>
-                      <td>
-                        <input
-                          type="number"
-                          min="1"
-                          step="1"
-                          inputMode="numeric"
-                          value={quantities[key] ?? item.quantity}
-                          onChange={(e) =>
-                            setQuantities({
-                              ...quantities,
-                              [key]: Number(e.target.value),
-                            })
-                          }
-                        />
-                      </td>
-                      <td>
-                        €
-                        {calculateSubTotal(
-                          item.price,
-                          quantities[key] ?? item.quantity
-                        )}
+                      <td colSpan={2}>
+                        <div className="cart-update">
+                          <div className="cart-update__button">
+                            <button onClick={handleClick}>UPDATE CART</button>
+                          </div>
+                        </div>
                       </td>
                     </tr>
-                  );
-                })}
-                <tr>
-                  <td colSpan={4}>
-                    <div className="cart-coupon">
-                      <div className="cart-coupon__input">
-                        <input type="text" placeholder="Coupon code" />
-                      </div>
-                      <div className="cart-coupon__button">
-                        <button>APPLY COUPON</button>
-                      </div>
-                    </div>
-                  </td>
-                  <td colSpan={2}>
-                    <div className="cart-update">
-                      <div className="cart-update__button">
-                        <button onClick={handleClick}>UPDATE CART</button>
-                      </div>
-                    </div>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
+                  </tbody>
+                </table>
+              </div>
+            </div>
 
-        <div className="subtotals">
-          <table className="subtotals__table">
-            <thead>
-              <tr>
-                <th>
-                  <h5>Cart Totals</h5>
-                </th>
-                <th></th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Subtotal</td>
-                <td>€{totalPrice.toFixed(2)}</td>
-              </tr>
-              <tr>
-                <td>Total</td>
-                <td>€{totalPrice.toFixed(2)}</td>
-              </tr>
-              <tr>
-                <td colSpan={2}>
-                  <div className="subtotals__table__proceed">
-                    <Link to="/checkout">
-                      <button>PROCEED TO CHECKOUT</button>
-                    </Link>
-                  </div>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+            <div className="subtotals">
+              <table className="subtotals__table">
+                <thead>
+                  <tr>
+                    <th>
+                      <h5>Cart Totals</h5>
+                    </th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Subtotal</td>
+                    <td>€{totalPrice.toFixed(2)}</td>
+                  </tr>
+                  <tr>
+                    <td>Total</td>
+                    <td>€{totalPrice.toFixed(2)}</td>
+                  </tr>
+                  <tr>
+                    <td colSpan={2}>
+                      <div className="subtotals__table__proceed">
+                        <Link to="/checkout">
+                          <button>PROCEED TO CHECKOUT</button>
+                        </Link>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </>
+        )}
       </div>
     </div>
   );
