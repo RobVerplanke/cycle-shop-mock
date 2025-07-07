@@ -104,8 +104,8 @@ export default function CheckoutForm() {
             <span>Total</span>
           </div>
           <br />
-          {items.map((item) => (
-            <div className="order-row">
+          {items.map((item, index) => (
+            <div key={index} className="order-row">
               <span>
                 {item.name} × {item.quantity}
               </span>
