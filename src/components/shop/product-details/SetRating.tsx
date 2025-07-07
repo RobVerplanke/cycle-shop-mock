@@ -16,7 +16,10 @@ export default function SetRating({ register, currentRating }: SetRatingProps) {
             <input
               type="radio"
               value={starValue}
-              {...register('rating', { valueAsNumber: true })}
+              {...register('rating', {
+                valueAsNumber: true,
+                required: 'Rating is required',
+              })}
               style={{ display: 'none' }}
             />
             <span

@@ -9,7 +9,13 @@ import { fetchReviews } from '../../../features/reviews/reviewSlice';
 
 export default function ProductReviewForm({ item_id, item_type }: ReviewProps) {
   const dispatch = useDispatch<AppDispatch>();
-  const { register, handleSubmit, watch, reset } = useForm<ReviewFormData>();
+  const {
+    register,
+    handleSubmit,
+    watch,
+    reset,
+    formState: { errors },
+  } = useForm<ReviewFormData>();
   const rating = watch('rating');
 
   // Send data to the back-end server
@@ -51,6 +57,11 @@ export default function ProductReviewForm({ item_id, item_type }: ReviewProps) {
         <div className="reviews-form__rating__start">
           <SetRating register={register} currentRating={rating} />
         </div>
+        {errors.rating && (
+          <p className="error-message">
+            {errors.rating.message || 'Rating is required'}
+          </p>
+        )}
       </div>
 
       <div className="reviews-form__review">
@@ -59,18 +70,38 @@ export default function ProductReviewForm({ item_id, item_type }: ReviewProps) {
             <p>Your review *</p>
           </div>
           <div className="reviews-form__review__inputfield">
-            <textarea {...register('review')} id=""></textarea>
+            <textarea
+              {...register('review', { required: 'Review is required' })}
+              id=""
+            ></textarea>
+            {errors.review && (
+              <p className="error-message">{errors.review.message}</p>
+            )}
           </div>
         </div>
 
         <div className="reviews-form__review__userdata">
           <div className="reviews-form__review__userdata__name">
             <p>Name *</p>
-            <input type="text" {...register('name')} id="" />
+            <input
+              type="text"
+              {...register('name', { required: 'Name is required' })}
+              id=""
+            />
+            {errors.name && (
+              <p className="error-message">{errors.name.message}</p>
+            )}
           </div>
           <div className="reviews-form__review__userdata__email">
             <p>Email *</p>
-            <input type="text" {...register('email')} id="" />
+            <input
+              type="text"
+              {...register('email', { required: 'Email is required' })}
+              id=""
+            />
+            {errors.email && (
+              <p className="error-message">{errors.email.message}</p>
+            )}
           </div>
         </div>
 
