@@ -1,16 +1,16 @@
+import { useSearchParams } from 'react-router-dom';
+import { useMemo } from 'react';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../app/store';
 import { SyncLoader } from 'react-spinners';
-import { ProductCard } from './ProductCard';
+import { ProductCard } from './';
 import {
   Accessory,
   Bicycle,
   ProductItem,
   ShopCategories,
 } from '../../types/Product';
-import { useSelector } from 'react-redux';
-import { RootState } from '../../app/store';
-import ProductGridHeader from './ProductListHeader';
-import { useMemo } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import ProductGridHeader from './ProductGridHeader';
 
 // Displays a header with sorting options and a list of products, depending on the given category
 export default function ProductGrid({

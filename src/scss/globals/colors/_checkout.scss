@@ -1,0 +1,25 @@
+.checkout-page {
+  background-color: white;
+  color: black;
+}
+
+.checkout-products {
+  background-color: #ddd;
+
+  &__cart-badge {
+    background-color: red;
+    color: white;
+    border-radius: 999px;
+  }
+}
+
+.place-order {
+  border: none;
+  background-color: #df453e;
+  transition: background-color 0.3s ease;
+  color: white;
+
+  &:hover {
+    background-color: rgb(144, 40, 35);
+  }
+}

@@ -1,0 +1,77 @@
+.shop {
+  background-color: rgb(230, 230, 230);
+  color: black;
+  &__search-container,
+  &__filter-price,
+  &__filter-category,
+  &__recently {
+    background-color: white;
+  }
+
+  &__right {
+    background-color: white;
+  }
+
+  &__right h2 {
+    color: #df453e;
+  }
+
+  &__search-form button {
+    background-color: #df453e;
+    border: none;
+    transition: background-color 0.3s ease;
+    color: white;
+
+    &:hover {
+      background-color: rgb(144, 40, 35);
+    }
+  }
+
+  &__search-form input {
+    border: solid 1px rgb(226, 226, 226);
+  }
+
+  &__list-header select {
+    border: none;
+    background-color: white;
+  }
+
+  &__filter-category {
+    & ul a {
+      color: #df453e;
+    }
+  }
+}
+
+.card {
+  &__type {
+    color: gray;
+  }
+}
+
+.price {
+  &__variant-button {
+    background-color: white;
+    border: 1px solid rgb(226, 226, 226);
+    transition: border 300ms ease-out;
+
+    &:hover {
+      border: 1px solid gray;
+    }
+
+    &--active {
+      background-color: white;
+      border: 1px solid gray;
+      transition: border 300ms ease-out;
+    }
+  }
+}
+
+.details {
+  background-color: rgb(238, 238, 238);
+}
+
+.details-container {
+  background-color: white;
+  color: black;
+}

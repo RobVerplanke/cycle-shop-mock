@@ -1,0 +1,151 @@
+.discover {
+  &__overlay {
+    background-image: linear-gradient(transparent, rgb(32, 32, 32));
+  }
+
+  &__list-style {
+    color: #df453e;
+  }
+
+  &__button button {
+    background-color: #df453e;
+    transition: background-color 0.3s ease;
+    color: white;
+
+    &:hover {
+      cursor: pointer;
+      background-color: rgb(144, 40, 35);
+    }
+  }
+}
+
+.specifications {
+  background-color: white;
+  color: black;
+
+  &__overlay {
+    color: white;
+    background-image: linear-gradient(transparent, rgb(32, 32, 32));
+
+    &:hover {
+      background-image: linear-gradient(rgba(32, 32, 32, 0.3), rgb(32, 32, 32));
+    }
+  }
+}
+
+.newbike {
+  &__overlay {
+    background-image: linear-gradient(transparent, rgb(32, 32, 32));
+  }
+
+  &__button button {
+    background-color: #df453e;
+    transition: background-color 0.3s ease;
+    color: white;
+
+    &:hover {
+      cursor: pointer;
+      background-color: rgb(144, 40, 35);
+    }
+  }
+}
+
+.programme {
+  background-color: rgb(238, 238, 238);
+  color: black;
+
+  &__movie {
+    color: white;
+    &__overlay {
+      background-image: linear-gradient(transparent, rgb(32, 32, 32));
+    }
+  }
+
+  &__content__button button {
+    background-color: #df453e;
+    transition: background-color 0.3s ease;
+    color: white;
+
+    &:hover {
+      cursor: pointer;
+      background-color: rgb(144, 40, 35);
+    }
+  }
+}
+
+.stories {
+  background-color: white;
+  color: black;
+
+  &__overlay {
+    background-image: linear-gradient(transparent, rgb(32, 32, 32));
+
+    &:hover {
+      background-image: linear-gradient(rgba(32, 32, 32, 0.3), rgb(32, 32, 32));
+    }
+
+    &__title {
+      color: white;
+    }
+
+    &__year {
+      color: #df453e;
+    }
+  }
+}
+
+.telephone {
+  background-color: white;
+  color: black;
+
+  &__sales__icon {
+    color: #df453e;
+  }
+
+  &__service__icon {
+    color: #df453e;
+  }
+
+  &__dealer__icon {
+    color: #df453e;
+  }
+}
+
+.process {
+  background-color: white;
+  color: black;
+}
+
+.process__steps__step__number {
+  color: #df453e;
+}
+
+.form {
+  &__button button {
+    background-color: #df453e;
+    transition: background-color 0.3s ease;
+    color: white;
+
+    &:hover {
+      cursor: pointer;
+      background-color: rgb(144, 40, 35);
+    }
+  }
+}
+
+.contact {
+  &__overlay {
+    background-image: linear-gradient(transparent, rgb(32, 32, 32));
+  }
+}
+
+.contact-details {
+  background-color: rgb(238, 238, 238);
+  color: black;
+}
+
+.about {
+  &__overlay {
+    background-image: linear-gradient(transparent, rgb(32, 32, 32));
+  }
+}

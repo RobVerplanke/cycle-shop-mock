@@ -1,20 +1,21 @@
 import { useState } from 'react';
-import { useLocation, useParams } from 'react-router-dom';
-import BreadCrumb from '../components/shop/BreadCrumb';
-import ProductReviews from '../components/shop/product-details/ProductReviews';
-import ProductReviewForm from '../components/shop/product-details/ProductReviewForm';
-import { ReviewCategory } from '../types/Review';
-import PriceRange from '../components/shop/PriceRange';
-import PriceSelect from '../components/shop/product-details/PriceSelect';
-import ProductCategory from '../components/shop/product-details/ProductCategory';
-import InnerImageZoom from 'react-inner-image-zoom';
-import 'react-inner-image-zoom/lib/styles.min.css';
 import { useDispatch, useSelector } from 'react-redux';
+import { useLocation, useParams } from 'react-router-dom';
+import { RootState } from '../app/store';
+import { ReviewCategory } from '../types/Review';
+import { BreadCrumb, PriceRange } from '../components/shop';
+import {
+  ProductReviews,
+  ProductReviewForm,
+  PriceSelect,
+  ProductCategory,
+  ConfirmAddToCart,
+} from '../components/shop/product-details';
+import InnerImageZoom from 'react-inner-image-zoom';
 import { addToCart, updateQuantity } from '../features/cart/cartSlice';
 import { hasFixedPrice } from '../utils/helperFunctions';
-import { RootState } from '../app/store';
 import { Accessory, Bicycle } from '../types/Product';
-import { ConfirmAddToCart } from '../components/shop/product-details/ConfirmAddToCart';
+import 'react-inner-image-zoom/lib/styles.min.css';
 
 export default function ProductDetails() {
   const dispatch = useDispatch();

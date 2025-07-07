@@ -1,5 +1,5 @@
 import { ProductItem, Bicycle } from '../../types/Product';
-import PriceVariants from './PriceVariants';
+import { PriceVariants } from './';
 
 export default function ProductPrice({ product }: { product: ProductItem }) {
   // Typeguard to check if the product has a fixed price or a variable price

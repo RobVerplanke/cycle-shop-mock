@@ -12,10 +12,12 @@ import {
 } from '../features/accessory/accessorySlice.ts';
 import { ShopCategories } from '../types/Product.ts';
 import ProductGrid from '../components/shop/ProductGrid.tsx';
-import CategoryFilter from '../components/shop/CategoryFilter.tsx';
-import PriceFilter from '../components/shop/PriceFilter.tsx';
-import BreadCrumb from '../components/shop/BreadCrumb.tsx';
-import SearchForm from '../components/shop/SearchForm.tsx';
+import {
+  BreadCrumb,
+  CategoryFilter,
+  PriceFilter,
+  SearchForm,
+} from '../components/shop';
 import { useSearchParams } from 'react-router-dom';
 
 function Shop() {

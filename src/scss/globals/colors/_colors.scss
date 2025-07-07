@@ -1,0 +1,44 @@
+@use '../../util/' as util;
+
+:root {
+  --background-color: #222;
+  --text-color: white;
+}
+
+.header {
+  color: white;
+
+  &__buy-button button {
+    background-color: #df453e;
+    transition: background-color 0.3s ease;
+    color: white;
+
+    &:hover {
+      background-color: rgb(144, 40, 35);
+    }
+  }
+}
+
+.footer__link {
+  color: white;
+  transition: color 0.3s ease;
+  cursor: pointer;
+
+  &:hover {
+    color: rgb(144, 40, 35);
+  }
+}
+
+.error-message {
+  padding-top: 5px;
+  color: #df453e;
+}
+
+.social-link {
+  color: white;
+  cursor: pointer;
+
+  &:hover {
+    color: rgb(144, 40, 35);
+  }
+}

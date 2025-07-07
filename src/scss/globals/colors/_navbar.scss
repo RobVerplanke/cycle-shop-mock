@@ -1,0 +1,50 @@
+@use '../../util/' as util;
+
+.navbar_transparent {
+  z-index: 20;
+  background-color: transparent;
+  position: absolute;
+  min-width: 100%;
+}
+
+.navbar_red {
+  background-color: #df453e;
+}
+
+.navbar {
+  &__logo a {
+    color: white;
+  }
+
+  &__menu-icon {
+    background-color: #222;
+    color: rgb(144, 40, 35);
+  }
+
+  &__menu li {
+    background-color: #222;
+    border-bottom: 1px solid #555555;
+
+    @include util.breakpoint('medium') {
+      background-color: transparent;
+    }
+  }
+
+  &__cart-icon a {
+    color: white;
+  }
+}
+
+.navbar__item a {
+  color: white;
+
+  &:hover {
+    color: rgb(144, 40, 35);
+  }
+
+  @include util.breakpoint('medium') {
+    &:hover {
+      color: white;
+    }
+  }
+}
