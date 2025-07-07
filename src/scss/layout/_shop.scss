@@ -74,7 +74,11 @@
     display: flex;
     flex-wrap: wrap;
     width: 100%;
-    gap: 30px;
+    gap: 60px;
+
+    @include util.breakpoint('medium') {
+      gap: 20px;
+    }
   }
 
   &__list-header {

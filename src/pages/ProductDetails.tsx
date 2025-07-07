@@ -2,8 +2,12 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation, useParams } from 'react-router-dom';
 import { RootState } from '../app/store';
+import InnerImageZoom from 'react-inner-image-zoom';
 import { ReviewCategory } from '../types/Review';
+import { Accessory, Bicycle } from '../types/Product';
 import { BreadCrumb, PriceRange } from '../components/shop';
+import { addToCart, updateQuantity } from '../features/cart/cartSlice';
+import { hasFixedPrice } from '../utils/helperFunctions';
 import {
   ProductReviews,
   ProductReviewForm,
@@ -11,10 +15,7 @@ import {
   ProductCategory,
   ConfirmAddToCart,
 } from '../components/shop/product-details';
-import InnerImageZoom from 'react-inner-image-zoom';
-import { addToCart, updateQuantity } from '../features/cart/cartSlice';
-import { hasFixedPrice } from '../utils/helperFunctions';
-import { Accessory, Bicycle } from '../types/Product';
+
 import 'react-inner-image-zoom/lib/styles.min.css';
 
 export default function ProductDetails() {
@@ -225,12 +226,6 @@ export default function ProductDetails() {
                 </div>
               </div>
             )}
-          </div>
-          <div className="bottom-section__related-items">
-            <div className="bottom-section__related-items__title">
-              <h2>RELATED PRODUCTS</h2>
-            </div>
-            <div className="bottom-section__related-items__cards"></div>
           </div>
         </div>
       </div>

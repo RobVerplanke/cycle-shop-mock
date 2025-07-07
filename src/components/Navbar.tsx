@@ -34,6 +34,7 @@ function Navbar() {
     setIsNavVisible(!isNavVisible);
   }
 
+  // Disable opening cart panel when the cart page is already opened
   function handleClick() {
     if (!path.includes('/cart')) dispatch(toggleCart());
   }

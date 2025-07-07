@@ -33,28 +33,44 @@ export default function SearchForm() {
     });
   }
 
+  function handleClear() {
+    setInput('');
+    setSearchParams((prev) => {
+      const newParams = new URLSearchParams(prev);
+      newParams.delete('search');
+      return newParams;
+    });
+  }
+
   return (
     <>
-      <div className="shop__search-title">Search</div>
-      <form className="shop__search-form" onSubmit={handleSubmit}>
+      <div className="shop__search-title" id="search-label">
+        Search
+      </div>
+      <form
+        className="shop__search-form"
+        onSubmit={handleSubmit}
+        role="search"
+        aria-labelledby="search-label"
+      >
+        <label htmlFor="product-search" className="visually-hidden">
+          Search for products
+        </label>
         <input
+          id="product-search"
           value={input}
           type="text"
           placeholder="Search products..."
           onChange={onChange}
+          aria-describedby="search-helptext"
         />
-        <button type="submit">Search</button>
-        <button
-          type="button"
-          onClick={() => {
-            setInput('');
-            setSearchParams((prev) => {
-              const newParams = new URLSearchParams(prev);
-              newParams.delete('search');
-              return newParams;
-            });
-          }}
-        >
+        <div id="search-helptext" className="visually-hidden">
+          Enter a product name and press Search
+        </div>
+        <button type="submit" aria-label="Submit search">
+          Search
+        </button>
+        <button type="button" onClick={handleClear} aria-label="Clear search">
           Clear
         </button>
       </form>

@@ -65,6 +65,9 @@ export default function ProductGridHeader({
 
       {/* Create a selection input field with generic options */}
       <div className="shop__header-sort">
+        <label htmlFor="sortSelect" className="visually-hidden">
+          Sort products
+        </label>
         {productList.length >= 1 && (
           <select value={currentOption.value} onChange={handleSortChange}>
             {sortingOptions.map((option) => (

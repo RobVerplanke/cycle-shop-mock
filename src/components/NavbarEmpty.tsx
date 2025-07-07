@@ -1,5 +1,7 @@
 import { Link } from 'react-router-dom';
 import { MdPedalBike } from 'react-icons/md';
+
+// Empty navbar replaces navigation when checkout page is active
 function NavbarEmpty() {
   return (
     <nav>

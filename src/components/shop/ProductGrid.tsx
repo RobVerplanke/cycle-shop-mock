@@ -3,6 +3,7 @@ import { useMemo } from 'react';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../app/store';
 import { SyncLoader } from 'react-spinners';
+import ProductGridHeader from './ProductGridHeader';
 import { ProductCard } from './';
 import {
   Accessory,
@@ -10,7 +11,6 @@ import {
   ProductItem,
   ShopCategories,
 } from '../../types/Product';
-import ProductGridHeader from './ProductGridHeader';
 
 // Displays a header with sorting options and a list of products, depending on the given category
 export default function ProductGrid({

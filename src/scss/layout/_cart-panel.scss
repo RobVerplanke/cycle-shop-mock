@@ -34,13 +34,6 @@
     justify-content: space-between;
   }
 
-  .cart-header-close,
-  .cart-item__close-button {
-    &:hover {
-      cursor: pointer;
-    }
-  }
-
   .cart-items {
     flex: 1;
     overflow-y: auto;

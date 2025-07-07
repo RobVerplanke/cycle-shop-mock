@@ -7,47 +7,54 @@ export default function PriceVariants({
 }: {
   prices: PriceVariantsProps;
 }) {
-  // Price(s) to be displayed, by default show the lowest and the highest price
   const [activeVariant, setActiveVariant] = useState<string>('');
   const [priceRange, setPriceRange] = useState<string>(getPriceRange(prices));
 
-  // Adjust the displayed price, based on the selected price variant
-  function handleClick(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
+  function handleClick(e: React.MouseEvent<HTMLButtonElement>) {
     e.preventDefault();
-
-    // Get the choosen size
-    const clickedSize = e.currentTarget.id;
+    const clickedSize = e.currentTarget.value;
 
     if (activeVariant === clickedSize) {
-      setActiveVariant(''); // Deselect size button
-      setPriceRange(getPriceRange(prices)); // Display default price range again
+      setActiveVariant('');
+      setPriceRange(getPriceRange(prices));
     } else {
-      setActiveVariant(clickedSize); // Update selected size
-
-      // Get the corresponding price for the choosen variant
-      const selectedPrice = prices.filter(
-        (price) => price.size === e.currentTarget.id
-      )[0].price;
-
-      // Set price to be displayed
-      setPriceRange(`€${selectedPrice}`);
+      setActiveVariant(clickedSize);
+      const selectedPrice = prices.find(
+        (price) => price.size === clickedSize
+      )?.price;
+      setPriceRange(
+        selectedPrice ? `€${selectedPrice}` : getPriceRange(prices)
+      );
     }
   }
 
   return (
     <>
-      <div className="price__value">{priceRange}</div>
-      <div className="price__selection">
+      <div className="price__value" id="price-label">
+        {priceRange}
+      </div>
+
+      <div
+        className="price__selection"
+        role="radiogroup"
+        aria-labelledby="price-label"
+      >
         {prices.map((price, index) => {
+          const isActive = price.size === activeVariant;
+
           return (
             <button
               key={index}
+              type="button"
               className={
-                price.size === activeVariant
+                isActive
                   ? 'price__variant-button--active'
                   : 'price__variant-button'
               }
-              id={price.size}
+              value={price.size}
+              role="radio"
+              aria-checked={isActive}
+              aria-label={`Variant ${price.size}`}
               onClick={handleClick}
             >
               {price.size}

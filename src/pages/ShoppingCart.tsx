@@ -9,24 +9,11 @@ import { Link } from 'react-router-dom';
 
 function ShoppingCart() {
   const dispatch = useDispatch();
-
-  // Get all cart items
   const items = useSelector((state: RootState) => state.cart.items);
 
-  // States
   const [totalPrice, setTotalPrice] = useState(0);
   const [quantities, setQuantities] = useState<{ [key: string]: number }>({});
 
-  // Update total price after click on 'UPDATE CART'-button
-  const handleClick = () => {
-    Object.entries(quantities).forEach(([key, quantity]) => {
-      const [idStr, size] = key.split('-');
-      const id = Number(idStr);
-      dispatch(updateQuantity({ id, size: size || undefined, quantity }));
-    });
-  };
-
-  // Keep track of quantity values for each product
   useEffect(() => {
     const initialQuantities = items.reduce((acc, item) => {
       const key = `${item.id}-${item.size ?? ''}`;
@@ -36,27 +23,41 @@ function ShoppingCart() {
     setQuantities(initialQuantities);
   }, [items]);
 
-  // Calculate the new total price when items are changed/removed
   useEffect(() => {
     const total = items.reduce(
-      (acc, item) => (acc += Number(item.price) * item.quantity),
+      (acc, item) => acc + Number(item.price) * item.quantity,
       0
     );
     setTotalPrice(total);
   }, [items]);
 
+  const handleClick = () => {
+    Object.entries(quantities).forEach(([key, quantity]) => {
+      const [idStr, size] = key.split('-');
+      const id = Number(idStr);
+      dispatch(updateQuantity({ id, size: size || undefined, quantity }));
+    });
+  };
+
   return (
     <div className="page-holder">
       <div className="table-container">
         {items.length === 0 ? (
-          <p>Your cart is currently empty.</p>
+          <p role="status">Your cart is currently empty.</p>
         ) : (
           <>
             <div className="cart">
-              <h5>Cart</h5>
+              <h5 id="cart-heading">Cart</h5>
               <br />
-              <div className="cart__items">
+              <div
+                className="cart__items"
+                role="region"
+                aria-labelledby="cart-heading"
+              >
                 <table className="cart__items__table">
+                  <caption className="sr-only">
+                    Items in your shopping cart
+                  </caption>
                   <thead>
                     <tr>
                       <th>Remove</th>
@@ -70,12 +71,12 @@ function ShoppingCart() {
                   <tbody>
                     {items.map((item: CartItem, index) => {
                       const key = `${item.id}-${item.size ?? ''}`;
+                      const quantity = quantities[key] ?? item.quantity;
                       return (
                         <tr key={index}>
                           <td>
-                            <IoCloseCircleOutline
-                              className="cart-item__close-button"
-                              size={30}
+                            <button
+                              type="button"
                               onClick={() =>
                                 dispatch(
                                   removeFromCart({
@@ -84,16 +85,29 @@ function ShoppingCart() {
                                   })
                                 )
                               }
-                            />
+                              className="cart-item__close-button"
+                              aria-label={`Remove ${item.name}${
+                                item.size ? `, size ${item.size}` : ''
+                              }`}
+                            >
+                              <IoCloseCircleOutline
+                                size={30}
+                                aria-hidden="true"
+                              />
+                            </button>
                           </td>
                           <td id="cart-product-image">
-                            <img src={item.image_url} alt="Product image" />
+                            <img
+                              src={item.image_url}
+                              alt={`Image of ${item.name}`}
+                            />
                           </td>
                           <td>
                             <div className="cart-product-name">
                               <Link
                                 to={`/product/${item.type}/${item.id}`}
                                 state={{ product: item }}
+                                aria-label={`View details for ${item.name}`}
                               >
                                 {item.name}
                               </Link>
@@ -102,12 +116,19 @@ function ShoppingCart() {
                           </td>
                           <td>€{Number(item.price).toFixed(2)}</td>
                           <td>
+                            <label
+                              htmlFor={`quantity-${key}`}
+                              className="sr-only"
+                            >
+                              Quantity for {item.name}
+                            </label>
                             <input
+                              id={`quantity-${key}`}
                               type="number"
                               min="1"
                               step="1"
                               inputMode="numeric"
-                              value={quantities[key] ?? item.quantity}
+                              value={quantity}
                               onChange={(e) =>
                                 setQuantities({
                                   ...quantities,
@@ -116,13 +137,7 @@ function ShoppingCart() {
                               }
                             />
                           </td>
-                          <td>
-                            €
-                            {calculateSubTotal(
-                              item.price,
-                              quantities[key] ?? item.quantity
-                            )}
-                          </td>
+                          <td>€{calculateSubTotal(item.price, quantity)}</td>
                         </tr>
                       );
                     })}
@@ -130,17 +145,26 @@ function ShoppingCart() {
                       <td colSpan={4}>
                         <div className="cart-coupon">
                           <div className="cart-coupon__input">
-                            <input type="text" placeholder="Coupon code" />
+                            <label htmlFor="coupon" className="sr-only">
+                              Coupon code
+                            </label>
+                            <input
+                              id="coupon"
+                              type="text"
+                              placeholder="Coupon code"
+                            />
                           </div>
                           <div className="cart-coupon__button">
-                            <button>APPLY COUPON</button>
+                            <button type="button">APPLY COUPON</button>
                           </div>
                         </div>
                       </td>
                       <td colSpan={2}>
                         <div className="cart-update">
                           <div className="cart-update__button">
-                            <button onClick={handleClick}>UPDATE CART</button>
+                            <button type="button" onClick={handleClick}>
+                              UPDATE CART
+                            </button>
                           </div>
                         </div>
                       </td>
@@ -150,7 +174,7 @@ function ShoppingCart() {
               </div>
             </div>
 
-            <div className="subtotals">
+            <div className="subtotals" role="region" aria-label="Cart totals">
               <table className="subtotals__table">
                 <thead>
                   <tr>
@@ -173,7 +197,7 @@ function ShoppingCart() {
                     <td colSpan={2}>
                       <div className="subtotals__table__proceed">
                         <Link to="/checkout">
-                          <button>PROCEED TO CHECKOUT</button>
+                          <button type="button">PROCEED TO CHECKOUT</button>
                         </Link>
                       </div>
                     </td>

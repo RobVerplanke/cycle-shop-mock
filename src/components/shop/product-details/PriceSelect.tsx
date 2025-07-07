@@ -46,51 +46,57 @@ export default function PriceSelect({
 
   return (
     <div className="details__price__selection">
-      <div className="details__price__selection__buttons">
-        {prices.map((price, index) => (
-          <button
-            key={index}
-            className={
-              price.size === activeVariant
-                ? 'price__variant-button--active'
-                : 'price__variant-button'
-            }
-            id={price.size}
-            onClick={handleClick}
-          >
-            {price.size}
-          </button>
-        ))}
-      </div>
-
-      <div
-        className={`details__price__selection__container ${
-          activeVariant !== '' ? 'show' : ''
-        }`}
+      <fieldset
+        className="details__price__selection__field"
+        role="radiogroup"
+        aria-label="Choose product size"
       >
-        <button
-          className="details__price__selection__clear"
-          onClick={clearPriceSelection}
+        <div className="details__price__selection__buttons">
+          {prices.map((price, index) => (
+            <button
+              key={index}
+              className={
+                price.size === activeVariant
+                  ? 'price__variant-button--active'
+                  : 'price__variant-button'
+              }
+              id={price.size}
+              onClick={handleClick}
+            >
+              {price.size}
+            </button>
+          ))}
+        </div>
+
+        <div
+          className={`details__price__selection__container ${
+            activeVariant !== '' ? 'show' : ''
+          }`}
         >
-          Clear
-        </button>
-        <div className="details__price__selection__value">{priceRange}</div>
-      </div>
-      <div className="top-section__add-item">
-        <input
-          min="1"
-          step="1"
-          type="number"
-          onChange={onChange}
-          value={amount}
-        />
-        <button
-          disabled={activeVariant === ''}
-          onClick={() => handleAdd(priceRange, activeVariant)}
-        >
-          ADD TO CART
-        </button>
-      </div>
+          <button
+            className="details__price__selection__clear"
+            onClick={clearPriceSelection}
+          >
+            Clear
+          </button>
+          <div className="details__price__selection__value">€{priceRange}</div>
+        </div>
+        <div className="top-section__add-item">
+          <input
+            min="1"
+            step="1"
+            type="number"
+            onChange={onChange}
+            value={amount}
+          />
+          <button
+            disabled={activeVariant === ''}
+            onClick={() => handleAdd(priceRange, activeVariant)}
+          >
+            ADD TO CART
+          </button>
+        </div>
+      </fieldset>
     </div>
   );
 }

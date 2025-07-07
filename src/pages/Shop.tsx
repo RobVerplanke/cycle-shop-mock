@@ -1,7 +1,9 @@
-import { useParams } from 'react-router-dom';
-import { useEffect, useRef, useState } from 'react';
-import { AppDispatch, RootState } from '../app/store.ts';
+import { useEffect, useState } from 'react';
+import { useParams, useSearchParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import { AppDispatch, RootState } from '../app/store.ts';
+import ProductGrid from '../components/shop/ProductGrid.tsx';
+import { ShopCategories } from '../types/Product.ts';
 import {
   fetchAllBicycles,
   fetchFilteredBicycles,
@@ -10,15 +12,12 @@ import {
   fetchAllAccessories,
   fetchFilteredAccessories,
 } from '../features/accessory/accessorySlice.ts';
-import { ShopCategories } from '../types/Product.ts';
-import ProductGrid from '../components/shop/ProductGrid.tsx';
 import {
   BreadCrumb,
   CategoryFilter,
   PriceFilter,
   SearchForm,
 } from '../components/shop';
-import { useSearchParams } from 'react-router-dom';
 
 function Shop() {
   const dispatch = useDispatch<AppDispatch>();
@@ -29,11 +28,6 @@ function Shop() {
   const searchQuery = searchParams.get('search') || '';
   const sortOption = searchParams.get('sort') || 'default';
   const sortDirection = searchParams.get('direction') || 'desc';
-
-  // Render counter for testing
-  const renderCount = useRef(0);
-  renderCount.current += 1;
-  console.log('Render count:', renderCount.current);
 
   // States
   const [priceRange, setPriceRange] = useState<[number, number] | null>(null);

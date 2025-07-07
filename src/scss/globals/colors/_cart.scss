@@ -36,6 +36,15 @@
   }
 }
 
+.cart-header-close,
+.cart-item__close-button {
+  background-color: transparent;
+  border: none;
+  &:hover {
+    cursor: pointer;
+  }
+}
+
 .page-holder {
   background-color: #ddd;
   color: black;

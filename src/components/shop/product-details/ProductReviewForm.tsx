@@ -18,9 +18,7 @@ export default function ProductReviewForm({ item_id, item_type }: ReviewProps) {
   } = useForm<ReviewFormData>();
   const rating = watch('rating');
 
-  // Send data to the back-end server
   async function onSubmit(data: ReviewFormData) {
-    // Add additional required data to the form data
     const payload = {
       ...data,
       item_id: item_id,
@@ -29,13 +27,8 @@ export default function ProductReviewForm({ item_id, item_type }: ReviewProps) {
     };
 
     try {
-      // Send extended data to back-end
       await axios.post(`${API_BASE_URL}/api/reviews`, payload);
-
-      // Update reviews with the new review
       dispatch(fetchReviews({ category: item_type, id: item_id }));
-
-      // Clear form after submit
       reset();
     } catch (err) {
       console.error('Error submitting review:', err);
@@ -43,78 +36,104 @@ export default function ProductReviewForm({ item_id, item_type }: ReviewProps) {
   }
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form onSubmit={handleSubmit(onSubmit)} noValidate>
       <div className="reviews-form__info">
         <p>
-          Your email address will not be published. Required fields are marked*
+          Your email address will not be published. Required fields are marked{' '}
+          <span aria-hidden="true">*</span>
         </p>
       </div>
-      {/* const { item_id, item_type, name, email, review, rating } = req.body; */}
-      <div className="reviews-form__rating">
-        <div className="reviews-form__rating__title">
-          <p>Your rating *</p>
-        </div>
-        <div className="reviews-form__rating__start">
-          <SetRating register={register} currentRating={rating} />
-        </div>
+
+      <fieldset
+        className="reviews-form__rating"
+        aria-required="true"
+        aria-invalid={errors.rating ? 'true' : 'false'}
+      >
+        <legend>
+          Your rating <span aria-hidden="true">*</span>
+        </legend>
+        <SetRating register={register} currentRating={rating} />
         {errors.rating && (
-          <p className="error-message">
+          <p className="error-message" role="alert" id="rating-error">
             {errors.rating.message || 'Rating is required'}
           </p>
         )}
-      </div>
+      </fieldset>
 
-      <div className="reviews-form__review">
-        <div className="reviews-form__review__content">
-          <div className="reviews-form__review__content__title">
-            <p>Your review *</p>
-          </div>
-          <div className="reviews-form__review__inputfield">
-            <textarea
-              {...register('review', { required: 'Review is required' })}
-              id=""
-            ></textarea>
-            {errors.review && (
-              <p className="error-message">{errors.review.message}</p>
-            )}
-          </div>
+      <fieldset className="reviews-form__review">
+        <legend>
+          Your review <span aria-hidden="true">*</span>
+        </legend>
+        <div className="reviews-form__review__inputfield">
+          <label htmlFor="review-text" className="sr-only">
+            Review text
+          </label>
+          <textarea
+            id="review-text"
+            {...register('review', { required: 'Review is required' })}
+            aria-invalid={errors.review ? 'true' : 'false'}
+            aria-describedby={errors.review ? 'review-error' : undefined}
+            rows={5}
+          />
+          {errors.review && (
+            <p className="error-message" role="alert" id="review-error">
+              {errors.review.message}
+            </p>
+          )}
         </div>
 
         <div className="reviews-form__review__userdata">
           <div className="reviews-form__review__userdata__name">
-            <p>Name *</p>
+            <label htmlFor="review-name">
+              Name <span aria-hidden="true">*</span>
+            </label>
             <input
               type="text"
+              id="review-name"
               {...register('name', { required: 'Name is required' })}
-              id=""
+              aria-invalid={errors.name ? 'true' : 'false'}
+              aria-describedby={errors.name ? 'name-error' : undefined}
             />
             {errors.name && (
-              <p className="error-message">{errors.name.message}</p>
+              <p className="error-message" role="alert" id="name-error">
+                {errors.name.message}
+              </p>
             )}
           </div>
           <div className="reviews-form__review__userdata__email">
-            <p>Email *</p>
+            <label htmlFor="review-email">
+              Email <span aria-hidden="true">*</span>
+            </label>
             <input
-              type="text"
-              {...register('email', { required: 'Email is required' })}
-              id=""
+              type="email"
+              id="review-email"
+              {...register('email', {
+                required: 'Email is required',
+                pattern: {
+                  value: /^\S+@\S+\.\S+$/,
+                  message: 'Please enter a valid email address',
+                },
+              })}
+              aria-invalid={errors.email ? 'true' : 'false'}
+              aria-describedby={errors.email ? 'email-error' : undefined}
             />
             {errors.email && (
-              <p className="error-message">{errors.email.message}</p>
+              <p className="error-message" role="alert" id="email-error">
+                {errors.email.message}
+              </p>
             )}
           </div>
         </div>
 
         <div className="reviews-form__review__checkbox">
-          <div className="reviews-form__review__checkbox__input">
-            <input type="checkbox" name="" id="" />
-          </div>
-          <div className="reviews-form__review__checkbox__option">
+          <input type="checkbox" id="save-info" />
+          <label htmlFor="save-info">
             Save my name, email, and website in this browser for the next time I
             comment.
-          </div>
+          </label>
         </div>
-      </div>
+      </fieldset>
+
       <button type="submit">SUBMIT</button>
     </form>
   );

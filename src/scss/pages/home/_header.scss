@@ -47,7 +47,7 @@
 
     @include util.breakpoint('medium') {
       min-width: 1024px;
-      padding: 200px 40px;
+      padding: 200px 0;
     }
   }
 
