@@ -106,9 +106,6 @@ function Shop() {
           <h5>Filter by categories</h5>
           <CategoryFilter />
         </div>
-        <div className="shop__recently">
-          <h5>Recently viewed products</h5>
-        </div>
       </aside>
       <main className="shop__right">
         <div className="shop__breadcrumb">
