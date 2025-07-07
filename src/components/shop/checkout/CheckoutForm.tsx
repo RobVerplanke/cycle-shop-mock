@@ -1,10 +1,27 @@
+import { useSelector } from 'react-redux';
+import { RootState } from '../../../app/store';
+import { useEffect, useState } from 'react';
+
 export default function CheckoutForm() {
+  // Get cart items
+  const items = useSelector((state: RootState) => state.cart.items);
+
+  const [totalPrice, setTotalPrice] = useState(0);
+
+  // Calculate the total price
+  useEffect(() => {
+    const total = items.reduce(
+      (acc, item) => (acc += Number(item.price) * item.quantity),
+      0
+    );
+    setTotalPrice(total);
+  }, [items]);
+
   return (
     <form className="checkout-form">
       <div className="form-section">
-        <h5>Contact</h5>
-
         <div className="form-grid">
+          <h5>Contact</h5>
           <div className="form-group">
             <label htmlFor="firstName">First Name *</label>
             <input type="text" id="firstName" name="firstName" required />
@@ -86,17 +103,26 @@ export default function CheckoutForm() {
             <span>Product</span>
             <span>Total</span>
           </div>
-          <div className="order-row">
-            <span>Bike Classic × 1</span>
-            <span>€499.00</span>
-          </div>
+          <br />
+          {items.map((item) => (
+            <div className="order-row">
+              <span>
+                {item.name} × {item.quantity}
+              </span>
+              <span>€{item.price}</span>
+            </div>
+          ))}
+          <br />
+
           <div className="order-row">
             <span>Shipping</span>
             <span>Free shipping</span>
           </div>
+          <br />
+
           <div className="order-row total">
             <span>Total</span>
-            <span>€499.00</span>
+            <span>€{totalPrice.toFixed(2)}</span>
           </div>
         </div>
 

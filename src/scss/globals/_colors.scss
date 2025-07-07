@@ -608,3 +608,14 @@
     border-radius: 999px;
   }
 }
+
+.place-order {
+  border: none;
+  background-color: #df453e;
+  transition: background-color 0.3s ease;
+  color: white;
+
+  &:hover {
+    background-color: #d62839;
+  }
+}
