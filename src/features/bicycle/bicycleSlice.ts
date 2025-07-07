@@ -4,7 +4,7 @@ import axios from 'axios';
 import { FetchParams } from '../../types/SortingOptions';
 
 const initialState = {
-  loading: false,
+  loading: true,
   allBicycles: [],
   bicycles: [],
   error: '',

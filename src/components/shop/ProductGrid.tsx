@@ -75,7 +75,7 @@ export default function ProductGrid({
           <div>
             <SyncLoader color="#df453e" margin={6} size={12} />
           </div>
-          <div>Loading... This can take a while.</div>
+          <div>Loading - This can take a while...</div>
         </div>
       ) : productList.length ? (
         <>
