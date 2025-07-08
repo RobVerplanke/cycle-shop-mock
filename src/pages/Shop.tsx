@@ -103,7 +103,7 @@ function Shop() {
           <CategoryFilter />
         </div>
       </aside>
-      <main className="shop__right">
+      <div className="shop__right">
         <div className="shop__breadcrumb">
           <div className="shop__breadcrumb__path">
             <BreadCrumb type={category} />
@@ -125,7 +125,7 @@ function Shop() {
             />
           </div>
         </div>
-      </main>
+      </div>
     </div>
   );
 }
