@@ -2,6 +2,11 @@
 
 This project is a mock webshop for a fictional bicycle store. The goal is to gain hands-on experience with both modern frontend and backend technologies, and to build a scalable, full-stack e-commerce application.
 
+### Design
+
+The design of this project is based on a template i selected as visual inspiration:
+https://websitedemos.net/cycle-shop-02/?customize=template
+
 ## ⚙️ Technologies Used
 
 ### Frontend
