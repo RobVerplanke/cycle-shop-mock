@@ -1,10 +1,9 @@
-import { Outlet } from 'react-router-dom';
+import { Outlet, useLocation } from 'react-router-dom';
+import { ScrollToTop } from './utils/helperFunctions';
+import NavbarEmpty from './components/NavbarEmpty';
 import Footer from './components/Footer';
 import Navbar from './components/Navbar';
-import { ScrollToTop } from './utils/helperFunctions';
-import { useLocation } from 'react-router-dom';
 import './scss/style.scss';
-import NavbarEmpty from './components/NavbarEmpty';
 
 function App() {
   const location = useLocation();
@@ -14,10 +13,12 @@ function App() {
   const shouldShowNavbar = !hideNavbarOnRoutes.includes(location.pathname);
 
   return (
-    <div>
+    <div className="page">
       {shouldShowNavbar ? <Navbar /> : <NavbarEmpty />}
       <ScrollToTop />
-      <Outlet />
+      <main className="page__main">
+        <Outlet />
+      </main>
       <Footer />
     </div>
   );
