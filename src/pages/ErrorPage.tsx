@@ -1,7 +1,7 @@
 function ErrorPage({ error }: { error: string }) {
   return (
     <div>
-      <p>ErrorPage page: ${error}</p>
+      <p>{error}</p>
     </div>
   );
 }
