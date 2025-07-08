@@ -11,7 +11,9 @@ export default function PriceRange({ prices }: { prices: PriceVariantsProps }) {
     const lowest = sorted[0].price;
     const highest = sorted[sorted.length - 1].price;
 
-    return lowest === highest ? `€${lowest}` : `€${lowest} - €${highest}`;
+    return lowest === highest
+      ? `€${lowest.toFixed(2)}`
+      : `€${lowest.toFixed(2)} - €${highest.toFixed(2)}`;
   }
 
   // Price(s) to be displayed, by default show the lowest and the highest price

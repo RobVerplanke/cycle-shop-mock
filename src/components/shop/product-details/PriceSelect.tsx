@@ -79,7 +79,9 @@ export default function PriceSelect({
           >
             Clear
           </button>
-          <div className="details__price__selection__value">€{priceRange}</div>
+          <div className="details__price__selection__value">
+            €{Number(priceRange).toFixed(2)}
+          </div>
         </div>
         <div className="top-section__add-item">
           <input

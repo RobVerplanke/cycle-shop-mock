@@ -23,7 +23,7 @@ export default function PriceVariants({
         (price) => price.size === clickedSize
       )?.price;
       setPriceRange(
-        selectedPrice ? `€${selectedPrice}` : getPriceRange(prices)
+        selectedPrice ? `€${selectedPrice.toFixed(2)}` : getPriceRange(prices)
       );
     }
   }

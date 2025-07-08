@@ -115,7 +115,7 @@ export default function CheckoutForm() {
               <span>
                 {item.name} × {item.quantity}
               </span>
-              <span>€{item.price}</span>
+              <span>€{Number(item.price).toFixed(2)}</span>
             </div>
           ))}
           <br />

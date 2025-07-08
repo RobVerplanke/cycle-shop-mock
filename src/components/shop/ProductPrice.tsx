@@ -13,7 +13,7 @@ export default function ProductPrice({ product }: { product: ProductItem }) {
     <div className="price">
       {hasFixedPrice(product) ? (
         <div className="price__value">
-          <div>€{product.price}</div>
+          <div>€{product.price.toFixed(2)}</div>
         </div>
       ) : (
         <PriceVariants prices={product.prices} />

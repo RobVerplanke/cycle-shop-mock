@@ -72,7 +72,7 @@ export default function CartPanel() {
                     </div>
                     <div className="cart-item__price">
                       <p>{item.quantity}</p>
-                      <p>&nbsp;×&nbsp;€ {item.price}</p>
+                      <p>&nbsp;×&nbsp;€ {Number(item.price).toFixed(2)}</p>
                     </div>
                   </div>
                 </div>

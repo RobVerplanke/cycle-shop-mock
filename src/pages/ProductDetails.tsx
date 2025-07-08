@@ -117,7 +117,7 @@ export default function ProductDetails() {
             <div className="top-section__price">
               {hasFixedPrice(product) ? (
                 <div className="price__value">
-                  <div>€{product.price}</div>
+                  <div>€{product.price.toFixed(2)}</div>
                 </div>
               ) : (
                 <PriceRange prices={product.prices} />

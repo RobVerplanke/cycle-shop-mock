@@ -19,7 +19,9 @@ export function getPriceRange(prices: PriceVariantsProps): string {
   const lowest = sorted[0].price;
   const highest = sorted[sorted.length - 1].price;
 
-  return lowest === highest ? `€${lowest}` : `€${lowest} - €${highest}`;
+  return lowest === highest
+    ? `€${lowest.toFixed(2)}`
+    : `€${lowest.toFixed(2)} - €${highest.toFixed(2)}`;
 }
 
 // Check if the product has one price or multiple prices for each variant (size)

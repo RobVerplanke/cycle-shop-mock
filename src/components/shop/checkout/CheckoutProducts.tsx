@@ -57,7 +57,7 @@ export default function CheckoutProducts() {
           Subtotal
         </div>
         <div className="checkout-products__container__subtotal__price">
-          €{totalPrice}
+          €{totalPrice.toFixed(2)}
         </div>
       </div>
       <div className="checkout-products__container__total">
@@ -65,7 +65,7 @@ export default function CheckoutProducts() {
           <strong>Total</strong>
         </div>
         <div className="checkout-products__container__total__price">
-          <strong>€{totalPrice}</strong>
+          <strong>€{totalPrice.toFixed(2)}</strong>
         </div>
       </div>
     </div>
