@@ -52,7 +52,17 @@ export default function ProductGrid({
   }, [accessories, priceRange]);
 
   // Prevent infinite numbers
-  if (!priceRange) return null;
+  if (!priceRange)
+    return (
+      <div className="shop__spinner">
+        <div>
+          <SyncLoader color="#df453e" margin={6} size={12} />
+        </div>
+        <div>
+          <p className="info-message">Waking up the server, please wait...</p>
+        </div>
+      </div>
+    );
 
   // Keep displayed products seperate from the list with all products
   const filteredBicycles = bicycles.filter(
@@ -75,7 +85,7 @@ export default function ProductGrid({
           <div>
             <SyncLoader color="#df453e" margin={6} size={12} />
           </div>
-          <div>Loading - This can take a while...</div>
+          <div>Loading products...</div>
         </div>
       ) : productList.length ? (
         <>
