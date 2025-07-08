@@ -7,6 +7,12 @@ export default function CheckoutForm() {
   const items = useSelector((state: RootState) => state.cart.items);
 
   const [totalPrice, setTotalPrice] = useState(0);
+  const [showMockMessage, setShowMockMessage] = useState(false);
+
+  function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    setShowMockMessage(true);
+  }
 
   // Calculate the total price
   useEffect(() => {
@@ -18,7 +24,7 @@ export default function CheckoutForm() {
   }, [items]);
 
   return (
-    <form className="checkout-form">
+    <form className="checkout-form" onSubmit={handleSubmit}>
       <div className="form-section">
         <div className="form-grid">
           <h5>Contact</h5>
@@ -145,6 +151,11 @@ export default function CheckoutForm() {
           Place Order
         </button>
       </div>
+      {showMockMessage && (
+        <p className="checkout-form__message">
+          This is a mock webshop – your order was not actually placed.
+        </p>
+      )}
     </form>
   );
 }
