@@ -1,5 +1,9 @@
 @use '../util/' as util;
 
+.details {
+  flex: 1;
+}
+
 .details-container {
   display: flex;
   flex-direction: column;

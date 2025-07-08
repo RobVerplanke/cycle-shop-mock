@@ -49,7 +49,6 @@ This project started as a frontend-only exercise and has evolved into a full-sta
 - Managing global state with Redux Toolkit
 - Creating and connecting a backend with Express.js
 - Storing and retrieving data from a database
-- Structuring full-stack applications using modern best practices
+- Structuring full-stack applications
 
-🛠️ Built as a learning project  
-📦 Still in development – not intended for production use
+🛠️ Built as a learning project, not intended for production use
