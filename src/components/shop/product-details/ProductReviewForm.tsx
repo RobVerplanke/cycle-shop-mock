@@ -43,6 +43,7 @@ export default function ProductReviewForm({ item_id, item_type }: ReviewProps) {
           <span aria-hidden="true">*</span>
         </p>
       </div>
+      <br />
 
       <fieldset
         className="reviews-form__rating"
@@ -50,7 +51,8 @@ export default function ProductReviewForm({ item_id, item_type }: ReviewProps) {
         aria-invalid={errors.rating ? 'true' : 'false'}
       >
         <legend>
-          Your rating <span aria-hidden="true">*</span>
+          <strong>Your rating</strong>
+          <span aria-hidden="true">*</span>
         </legend>
         <SetRating register={register} currentRating={rating} />
         {errors.rating && (
@@ -62,7 +64,8 @@ export default function ProductReviewForm({ item_id, item_type }: ReviewProps) {
 
       <fieldset className="reviews-form__review">
         <legend>
-          Your review <span aria-hidden="true">*</span>
+          <strong>Your review</strong>
+          <span aria-hidden="true">*</span>
         </legend>
         <div className="reviews-form__review__inputfield">
           <label htmlFor="review-text" className="sr-only">
@@ -85,7 +88,8 @@ export default function ProductReviewForm({ item_id, item_type }: ReviewProps) {
         <div className="reviews-form__review__userdata">
           <div className="reviews-form__review__userdata__name">
             <label htmlFor="review-name">
-              Name <span aria-hidden="true">*</span>
+              <strong>Name</strong>
+              <span aria-hidden="true">*</span>
             </label>
             <input
               type="text"
@@ -102,7 +106,8 @@ export default function ProductReviewForm({ item_id, item_type }: ReviewProps) {
           </div>
           <div className="reviews-form__review__userdata__email">
             <label htmlFor="review-email">
-              Email <span aria-hidden="true">*</span>
+              <strong>Email</strong>
+              <span aria-hidden="true">*</span>
             </label>
             <input
               type="email"
