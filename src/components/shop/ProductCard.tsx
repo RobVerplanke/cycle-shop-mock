@@ -7,7 +7,13 @@ export default function ProductCard({ product }: { product: ProductItem }) {
   return (
     <article className="card" aria-labelledby={`product-title-${product.id}`}>
       <div className="card__thumbnail">
-        <img src={product.image_url} alt={`Afbeelding van ${product.name}`} />
+        <Link
+          to={`/product/${product.type}/${product.id}`}
+          state={{ product }}
+          aria-label={`Bekijk productpagina van ${product.name}`}
+        >
+          <img src={product.image_url} alt={`Afbeelding van ${product.name}`} />
+        </Link>
       </div>
 
       <div className="card__type">
